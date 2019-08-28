@@ -26,7 +26,7 @@ const Header = ({ phoneNumber, text }) => {
           </ul>
         </nav>
         <div className="header__contacts contacts">
-          <a href="#" className="header__phone-number">
+          <a href={`tel: ${phoneNumber}`} className="header__phone-number">
             {phoneNumber}
           </a>
           <button className="header__call-back">{text}</button>
