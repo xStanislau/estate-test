@@ -22,7 +22,7 @@ export const fetchFailed = error => ({
 
 const initialState = {
   isLoaded: false,
-  data: null
+  data: []
 };
 
 //reducer
@@ -55,10 +55,8 @@ export const fetch = id => async dispatch => {
   dispatch(fetchStart());
   try {
     const response = await getData(id);
-    if (response.data.status === "err") {
-      throw Error(response.data.message);
-    }
-    dispatch(fetchSuccesseded(response.data));
+
+    dispatch(fetchSuccesseded(response));
   } catch (error) {
     dispatch(fetchFailed(error));
   }
