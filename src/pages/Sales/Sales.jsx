@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import SalesItems from "../SaleItems/SaleItems";
+import { fetch } from "../../redux/reducers/sales";
 
-const Sales = ({ title, items }) => {
+const Sales = ({ title, items, fetch }) => {
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
+
   return (
     <>
       <h1>{title}</h1>
@@ -12,7 +17,17 @@ const Sales = ({ title, items }) => {
   );
 };
 
-Sales.defaultProps = {};
+Sales.defaultProps = {
+  items: []
+};
+
 Sales.propTypes = {};
 
-export default connect()(Sales);
+const mapStateToProps = state => {
+  return { items: state.sales.data.items };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetch }
+)(Sales);

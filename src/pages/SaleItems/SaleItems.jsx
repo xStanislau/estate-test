@@ -6,12 +6,14 @@ import Card from "../../components/Card/Card";
 const SaleItems = ({ items }) => {
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
-          {items.map(item => {
+          {items.map((item, idx) => {
+            if (!item.saleOffer) {
+            }
             return (
-              <Col xs={10} sm={4} md={4}>
-                <Card />
+              <Col xs={4} sm={6} md={4} key={item.id}>
+                <Card {...item} saleOffer={{}} />
               </Col>
             );
           })}
