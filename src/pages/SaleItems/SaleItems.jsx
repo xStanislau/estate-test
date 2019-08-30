@@ -1,19 +1,26 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Pagination } from "react-bootstrap";
 import Card from "../../components/Card/Card";
+import "./SaleItems.scss";
 
 const SaleItems = ({ items }) => {
   return (
     <>
-      <Container fluid>
+      <Container fluid className="sails-items">
         <Row>
           {items.map((item, idx) => {
-            if (!item.saleOffer) {
-            }
             return (
-              <Col xs={4} sm={6} md={4} key={item.id}>
-                <Card {...item} saleOffer={{}} />
+              <Col
+                xs={12}
+                sm={12}
+                md={6}
+                lg={6}
+                xl={3}
+                key={item.id}
+                className="sails-items__item"
+              >
+                <Card {...item} saleOffer={{ price: "1000", currency: "$" }} />
               </Col>
             );
           })}

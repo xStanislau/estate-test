@@ -1,10 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Card.scss";
+import { CardImg } from "react-bootstrap";
+import * as imgConfig from "../../config/images";
+import { SimpleImg } from "react-simple-img";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const Card = ({
   src,
   alt,
+  images: [image],
   description,
   houseArea,
   landArea,
@@ -14,14 +19,21 @@ const Card = ({
   location: { settlementName, mkadDistance },
   saleOffer: { price, currency }
 }) => {
+  const { id: imgId } = image;
+  const { PREFIXES, URL } = imgConfig;
+  const imgSrc = `${URL}/${imgId}-jqestate-${PREFIXES[1024]}`;
   return (
     <div className="card">
       <div className="card__img-wraper">
-        <img
-          className="card__img"
-          src={"https://place-hold.it/950x515"}
-          alt={alt}
-        />
+        <LazyLoadComponent>
+          <div
+            className="card__img"
+            style={{
+              backgroundImage: `url(${imgSrc})`,
+              backgroundRepeat: "no-repeat"
+            }}
+          />
+        </LazyLoadComponent>
       </div>
       <p className="card__house-description">{`${settlementName}, ${mkadDistance} км, ${id}`}</p>
       {price && currency && (

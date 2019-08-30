@@ -1,12 +1,51 @@
 .card {
+  animation-name: example;
+  animation-duration: 1.2s;
   &__img-wraper {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
   &__img {
-    width: 100%;
     height: auto;
+    width: 100%;
+    height: 25vw;
+    min-height: 220px;
+    height: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @media (max-width: 1200px) {
+    .card {
+      &__img {
+        max-height: 240px;
+        min-height: 240px;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .card {
+      &__img {
+        max-height: 240px;
+        min-height: 190px;
+      }
+    }
+  }
+}
+
+/* Standard syntax */
+@keyframes example {
+  from {
+    background-color: black;
+    opacity: 0.1;
+  }
+  to {
+    background-color: #fff;
+    opacity: 1;
   }
 }
