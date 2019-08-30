@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./Card.scss";
-import { CardImg } from "react-bootstrap";
 import * as imgConfig from "../../config/images";
-import { SimpleImg } from "react-simple-img";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
 
 const Card = ({

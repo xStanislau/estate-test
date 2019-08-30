@@ -3,16 +3,21 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import SalesItems from "../SaleItems/SaleItems";
 import { fetch } from "../../redux/reducers/sales";
+import Pagination from "../../components/Pagination/Pagination";
 
-const Sales = ({ title, items, fetch }) => {
+const Sales = ({ title, items, pagination, fetch, isLoaded }) => {
   useEffect(() => {
     fetch();
   }, [fetch]);
-
   return (
     <>
       <h1>{title}</h1>
-      <SalesItems items={items} />
+      {isLoaded && (
+        <>
+          <SalesItems items={items} />
+          <Pagination {...pagination} fetch={fetch} />
+        </>
+      )}
     </>
   );
 };
@@ -24,7 +29,11 @@ Sales.defaultProps = {
 Sales.propTypes = {};
 
 const mapStateToProps = state => {
-  return { items: state.sales.data.items };
+  return {
+    items: state.sales.data.items,
+    pagination: state.sales.data.pagination,
+    isLoaded: state.sales.isLoaded
+  };
 };
 
 export default connect(

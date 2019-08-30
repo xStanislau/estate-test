@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Container, Row, Col, Pagination } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import Card from "../../components/Card/Card";
 import "./SaleItems.scss";
 
