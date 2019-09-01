@@ -1,0 +1,95 @@
+.header {
+  padding: 20px 35px;
+  background-color: #fff;
+  color: #333333;
+  position: fixed;
+  z-index: 3;
+  top: 0px;
+  left: 0;
+  right: 0;
+  overflow: auto;
+
+  &__inner {
+    margin: 0 auto;
+    max-width: 1600px;
+  }
+
+  &__nav-link {
+    font-weight: 500;
+    color: #333333;
+    margin-right: 20px;
+
+    :last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__nav-link.active {
+    font-size: 16px;
+    color: rgb(212, 83, 105);
+  }
+
+  &__phone-number {
+    color: #333333;
+  }
+
+  .btn {
+    margin-left: 15px;
+    padding: 8px 20px;
+    background-color: rgb(54, 185, 87);
+    border-radius: 20px;
+    color: white;
+  }
+
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      background: white;
+      overflow-y: auto;
+      position: fixed;
+      padding-top: 80px;
+      padding-bottom: 20px;
+      top: 0px;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      z-index: -1;
+    }
+
+    .navbar-nav {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-bottom: auto;
+      min-height: calc(100% - 80px);
+      margin-bottom: auto;
+    }
+
+    &__nav-link {
+      margin-right: 0;
+      margin-bottom: 15px;
+      :last-child {
+        margin-right: 0;
+      }
+    }
+
+    &__phone-number {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    &__contacts {
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: 0 auto;
+    }
+
+    .btn {
+      width: 100%;
+      margin-left: 0px;
+    }
+  }
+}

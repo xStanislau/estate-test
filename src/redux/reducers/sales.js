@@ -1,9 +1,9 @@
 import { getData } from "../../api/sales/sales";
 
 // actions
-const LOAD_DATA = "app/dashboard/LOAD_DATA";
-const LOAD_DATA_SUCCEEDED = "app/dashboard/LOAD_DATA_SUCCEEDED";
-const LOAD_DATA_FAILED = "app/dashboard/LOAD_DATA_FAILED";
+const LOAD_DATA = "app/sales/LOAD_DATA";
+const LOAD_DATA_SUCCEEDED = "app/sales/LOAD_DATA_SUCCEEDED";
+const LOAD_DATA_FAILED = "app/sales/LOAD_DATA_FAILED";
 
 // action creators
 export const fetchStart = () => ({
@@ -51,10 +51,10 @@ export default function reducer(state = initialState, action) {
 }
 
 // async action
-export const fetch = id => async dispatch => {
+export const fetch = offset => async dispatch => {
   dispatch(fetchStart());
   try {
-    const response = await getData(id);
+    const response = await getData(offset);
 
     dispatch(fetchSuccesseded(response));
   } catch (error) {

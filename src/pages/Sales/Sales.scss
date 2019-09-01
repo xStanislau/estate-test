@@ -1,0 +1,12 @@
+.wrapper {
+  padding-top: 80px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sales {
+  &__title {
+    font-size: 32px;
+    margin: 20px 0px 20px 30px;
+  }
+}

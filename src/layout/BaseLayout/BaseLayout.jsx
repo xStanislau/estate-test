@@ -5,8 +5,4 @@ const BaseLayout = ({ children }) => {
   return <Header phoneNumber="+7(495)432-45-45" text="Обратный звонок" />;
 };
 
-BaseLayout.defaultProps = {};
-
-BaseLayout.PropTypes = {};
-
 export default BaseLayout;

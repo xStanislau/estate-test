@@ -5,7 +5,8 @@ import Sales from "../pages/Sales/Sales";
 export default () => {
   return (
     <Switch>
-      <Route exact path="/sales" component={Sales} />
+      <Route exact path="/" component={Sales} />
+      <Route component={() => <h1>Page not found</h1>} />
     </Switch>
   );
 };

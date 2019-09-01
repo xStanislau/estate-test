@@ -1,32 +1,42 @@
 import React, { useEffect } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import SalesItems from "../SaleItems/SaleItems";
+import SalesItems from "./SaleItems/SaleItems";
 import { fetch } from "../../redux/reducers/sales";
 import Pagination from "../../components/Pagination/Pagination";
+import Header from "../../components/Header/Header";
+import "./Sales.scss";
+import Loader from "../../components/Loader/Loader";
 
-const Sales = ({ title, items, pagination, fetch, isLoaded }) => {
+const Sales = ({ items, pagination, fetch, isLoaded }) => {
   useEffect(() => {
     fetch();
   }, [fetch]);
+  const warning = "Нет объектов";
   return (
-    <>
-      <h1>{title}</h1>
-      {isLoaded && (
+    <div className="wrapper">
+      <Header text="Обратный звонок" phoneNumber="+7(496)132-03-90" />
+      <h1 className="sales__title">Элитная недвижимость в Подмосковье</h1>
+      {isLoaded ? (
         <>
-          <SalesItems items={items} />
-          <Pagination {...pagination} fetch={fetch} />
+          {items.length < 1 ? (
+            warning
+          ) : (
+            <>
+              <SalesItems items={items} />
+              <Pagination {...pagination} fetch={fetch} />
+            </>
+          )}
         </>
+      ) : (
+        <Loader />
       )}
-    </>
+    </div>
   );
 };
 
 Sales.defaultProps = {
   items: []
 };
-
-Sales.propTypes = {};
 
 const mapStateToProps = state => {
   return {

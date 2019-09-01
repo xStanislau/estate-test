@@ -1,10 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Navbar, Nav } from "react-bootstrap";
+import "./Header.scss";
 
 const Header = ({ phoneNumber, text }) => {
   const navItems = [
-    { text: "Продажа", link: "/sale" },
+    { text: "Продажа", link: "/" },
     { text: "Аренда", link: "/rent" },
     { text: "Посёлки", link: "/towns" },
     { text: "О компании", link: "/company-info" }
@@ -12,32 +13,35 @@ const Header = ({ phoneNumber, text }) => {
 
   return (
     <header className="header">
-      <div className="header__inner">
-        <nav className="nav header__nav">
-          <ul className="nav__list">
+      <Navbar className="header__inner" expand="lg">
+        <Navbar.Brand href="/sales">Logo</Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="mr-auto">
             {navItems.map(item => {
               const { link, text } = item;
               return (
-                <li className="nav__item">
-                  <NavLink to={link}>{text}</NavLink>
-                </li>
+                <NavLink
+                  className="header__nav-link"
+                  to={link}
+                  activeClassName="active"
+                  key={text}
+                >
+                  {text}
+                </NavLink>
               );
             })}
-          </ul>
-        </nav>
-        <div className="header__contacts contacts">
-          <a href={`tel: ${phoneNumber}`} className="header__phone-number">
-            {phoneNumber}
-          </a>
-          <button className="header__call-back">{text}</button>
-        </div>
-      </div>
+          </Nav>
+          <div className="header__contacts contacts ">
+            <a href={`tel: ${phoneNumber}`} className="header__phone-number">
+              {phoneNumber}
+            </a>
+            <button className="header__call-back btn">{text}</button>
+          </div>
+        </Navbar.Collapse>
+      </Navbar>
     </header>
   );
 };
-
-Header.defaultProps = {};
-
-Header.PropTypes = {};
 
 export default Header;

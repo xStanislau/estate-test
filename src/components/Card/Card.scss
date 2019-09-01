@@ -1,11 +1,14 @@
 .card {
   animation-name: example;
   animation-duration: 1.2s;
+  border: none;
+
   &__img-wraper {
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 20px;
   }
 
   &__img {
@@ -17,6 +20,34 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+  }
+
+  &__size-info {
+    display: flex;
+    flex-direction: start;
+  }
+
+  &__land-area,
+  &__house-area {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 15px;
+  }
+
+  &__land-area img,
+  &__house-area img {
+    margin-right: 15px;
+  }
+
+  &__house-price {
+    min-height: 20px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &__house-description {
+    margin-bottom: 5px;
   }
 
   @media (max-width: 1200px) {
@@ -36,16 +67,31 @@
       }
     }
   }
+
+  @media (max-width: 768px) {
+    .card {
+      &__img {
+        max-height: 320px;
+        min-height: 320px;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .card {
+      &__img {
+        max-height: 220px;
+        min-height: 220px;
+      }
+    }
+  }
 }
 
-/* Standard syntax */
 @keyframes example {
   from {
-    background-color: black;
     opacity: 0.1;
   }
   to {
-    background-color: #fff;
     opacity: 1;
   }
 }
