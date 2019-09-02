@@ -3,6 +3,7 @@ export default {
   flat: "Квартира",
   room: "Комната",
   house: "Дом",
+  land: "Участок",
   office: "Офис",
   warehouse: "Склад",
   townhouse: "Таунхаус"

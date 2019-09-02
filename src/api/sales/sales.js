@@ -4,6 +4,7 @@ export const getData = async offset => {
   try {
     const path = "/v1/properties/country";
     let url = `${BASE_URL}${path}`;
+
     if (offset) {
       url += `?pagination[offset]=${offset}`;
     }

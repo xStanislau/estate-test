@@ -1,5 +1,5 @@
 .header {
-  padding: 20px 35px;
+  padding: 10px 35px;
   background-color: #fff;
   color: #333333;
   position: fixed;
@@ -8,6 +8,7 @@
   left: 0;
   right: 0;
   overflow: auto;
+  border-bottom: 1px solid #ebebeb;
 
   &__inner {
     margin: 0 auto;
@@ -36,7 +37,7 @@
   .btn {
     margin-left: 15px;
     padding: 8px 20px;
-    background-color: rgb(54, 185, 87);
+    background-color: #1ec659;
     border-radius: 20px;
     color: white;
   }

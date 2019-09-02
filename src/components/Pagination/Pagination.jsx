@@ -6,17 +6,21 @@ const Pagination = ({ total: totalItems, fetch }) => {
   let [currentPageIndex, setstate] = useState(0);
   const totalPages = Math.ceil(totalItems / itemPerPage);
   const lastPageNumber = totalPages;
-  const offsetFromEnd = totalPages - 2;
-  let offSetFromCurrentLeft = 2 + currentPageIndex;
+  let offsetFromEnd = totalPages - 2;
   const offSetFromCurrentRight = 1;
+  let offSetFromCurrentLeft = 2 + currentPageIndex;
   let offsetStartIndex;
 
   if (currentPageIndex > 2) {
     offsetStartIndex = currentPageIndex - offSetFromCurrentRight;
   }
 
-  if (currentPageIndex > lastPageNumber - 3) {
-    offSetFromCurrentLeft = currentPageIndex;
+  if (currentPageIndex >= lastPageNumber - 3) {
+    offSetFromCurrentLeft = offsetFromEnd;
+    offsetStartIndex = offsetStartIndex - 1;
+    if (currentPageIndex >= lastPageNumber) {
+      offsetFromEnd = totalPages;
+    }
   }
 
   const Items = new Array(totalPages).fill(0).map((page, index) => {
@@ -27,6 +31,7 @@ const Pagination = ({ total: totalItems, fetch }) => {
           fetch(index * 32);
           setstate(index);
         }}
+        active={currentPageIndex === index}
       >
         {index}
       </BsPagination.Item>
@@ -47,13 +52,12 @@ const Pagination = ({ total: totalItems, fetch }) => {
       {[
         Items.slice(offsetStartIndex, offSetFromCurrentLeft),
         <BsPagination.Ellipsis key={currentPageIndex} />,
-        Items.slice(offsetFromEnd, lastPageIndex)
+        Items.slice(offsetFromEnd, lastPageIndex + 2)
       ]}
-
       <BsPagination.Last
         onClick={() => {
           fetch(lastPageOffset);
-          setstate();
+          setstate(lastPageIndex);
         }}
       />
     </BsPagination>

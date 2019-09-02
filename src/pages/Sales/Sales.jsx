@@ -11,7 +11,9 @@ const Sales = ({ items, pagination, fetch, isLoaded }) => {
   useEffect(() => {
     fetch();
   }, [fetch]);
+
   const warning = "Нет объектов";
+
   return (
     <div className="wrapper">
       <Header text="Обратный звонок" phoneNumber="+7(496)132-03-90" />

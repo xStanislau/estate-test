@@ -1,3 +1,5 @@
+$border-style: 1px solid #ebebeb;
+
 .sails-items {
   margin-bottom: 30px;
   min-width: 320px;
@@ -7,5 +9,60 @@
     padding-bottom: 15px;
     min-height: 332px;
     border: 1px solid lightgray;
+    border-top: none;
+
+    &:nth-child(1) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(2) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(3) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(4) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(2n) {
+      border-left: none;
+      border-right: none;
+    }
+
+    &:nth-child(4n) {
+      border-right: $border-style;
+    }
+  }
+
+  @media (max-width: 1200px) {
+    &__item {
+      &:nth-child(2n) {
+        border-right: $border-style;
+      }
+    }
+  }
+
+  @media (max-width: 992px) {
+    .sails-items {
+      &__row {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    &__item {
+      &:nth-child(2n) {
+        border-right: $border-style;
+        border-left: $border-style;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
   }
 }
