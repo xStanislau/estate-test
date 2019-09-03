@@ -4,14 +4,14 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2);
-  animation: 0.1s loaderAnimation;
-  z-index: 100;
-  .spinner-border {
+  background-color: white;
+  animation: 0.3s loaderAnimation;
+  z-index: 1000;
+  &__inner {
     position: absolute;
     top: 50%;
     left: 50%;
-    // transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
   }
 }
 
