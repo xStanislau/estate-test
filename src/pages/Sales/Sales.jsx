@@ -15,9 +15,8 @@ const Sales = ({ items, pagination, fetch, isLoaded }) => {
   const warning = "Нет объектов";
 
   return (
-    <div className="wrapper">
-      <Header text="Обратный звонок" phoneNumber="+7(496)132-03-90" />
-      <h1 className="sales__title">Элитная недвижимость в Подмосковье</h1>
+    <>
+      <h1 className="h1 sales__title">Элитная недвижимость в Подмосковье</h1>
       {isLoaded ? (
         <>
           {items.length < 1 ? (
@@ -32,7 +31,7 @@ const Sales = ({ items, pagination, fetch, isLoaded }) => {
       ) : (
         <Loader />
       )}
-    </div>
+    </>
   );
 };
 

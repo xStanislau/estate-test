@@ -1,7 +1,7 @@
 import React from "react";
 import * as imgConfig from "../../../config/images";
 
-const CardImg = ({ children, ...rest }) => {
+const CardImg = ({ children, className, ...rest }) => {
   let imgStyle = {};
 
   if (rest.image) {
@@ -14,7 +14,7 @@ const CardImg = ({ children, ...rest }) => {
   }
 
   return (
-    <div className="card__img" style={imgStyle}>
+    <div className={className} style={imgStyle}>
       {children}
     </div>
   );

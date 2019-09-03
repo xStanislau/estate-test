@@ -34,13 +34,13 @@ const Header = ({ phoneNumber, text }) => {
     <header className="header">
       <Navbar className="header__inner" expand="lg">
         <Navbar.Brand href="/sales">Logo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse
-          id="basic-navbar-nav"
+        <Navbar.Toggle
+          aria-controls="basic-navbar-nav"
           onClick={() => {
             toggleMenu(!isOpen);
           }}
-        >
+        />
+        <Navbar.Collapse id="basic-navbar-nav">
           <HeaderMenu items={menu.items} />
           <div className="header__contacts contacts ">
             <a href={`tel: ${phoneNumber}`} className="header__phone-number">

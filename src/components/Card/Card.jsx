@@ -19,12 +19,11 @@ const Card = ({
   const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
-
   return (
     <>
       <LazyLoadComponent>
         <div className="card">
-          <Link to="#">
+          <Link to={`/sales/${id}`}>
             <div className="card__img-wraper">
               {rest.badge && (
                 <Badge
@@ -45,11 +44,11 @@ const Card = ({
               )}
             </div>
           </Link>
-          <Link>
+          <Link to={`/sales/${id}`}>
             <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
               ""}`}</p>
           </Link>
-          <CardPrice {...rest} />
+          <CardPrice className="card__house-price" {...rest} />
           <div className="card__size-info">
             {area && (
               <div className="card__land-area">
