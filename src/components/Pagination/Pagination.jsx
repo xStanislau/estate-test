@@ -4,7 +4,7 @@ import { Pagination as BsPagination } from "react-bootstrap";
 const Pagination = ({ total: totalItems, fetch }) => {
   const itemPerPage = 32;
   let [currentPageIndex, setstate] = useState(0);
-  const totalPages = Math.ceil(totalItems / itemPerPage);
+  const totalPages = totalItems && Math.ceil(totalItems / itemPerPage);
   const lastPageNumber = totalPages;
   let offsetFromEnd = totalPages - 2;
   const offSetFromCurrentRight = 1;

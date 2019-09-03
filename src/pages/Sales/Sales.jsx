@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import { fetch } from "../../redux/reducers/sales";
 import SalesItems from "./SaleItems/SaleItems";
 import Pagination from "../../components/Pagination/Pagination";
-import Header from "../../components/Header/Header";
 import Loader from "../../components/Loader/Loader";
 import "./Sales.scss";
 
@@ -17,20 +16,11 @@ const Sales = ({ items, pagination, fetch, isLoaded }) => {
   return (
     <>
       <h1 className="h1 sales__title">Элитная недвижимость в Подмосковье</h1>
-      {isLoaded ? (
-        <>
-          {items.length < 1 ? (
-            warning
-          ) : (
-            <>
-              <SalesItems items={items} />
-              <Pagination {...pagination} fetch={fetch} />
-            </>
-          )}
-        </>
-      ) : (
-        <Loader />
-      )}
+      <>
+        {isLoaded ? <SalesItems items={items} /> : <Loader />}
+        <Pagination {...pagination} fetch={fetch} />
+      </>
+      )
     </>
   );
 };

@@ -30,7 +30,8 @@ export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_DATA:
       return {
-        ...state
+        ...state,
+        isLoaded: false
       };
     case LOAD_DATA_FAILED:
       return {

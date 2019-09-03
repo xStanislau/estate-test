@@ -11,6 +11,10 @@ $border-style: 1px solid #ebebeb;
     border: 1px solid lightgray;
     border-top: none;
 
+    &:last-child {
+      border-right: $border-style;
+    }
+
     &:nth-child(1) {
       border-top: $border-style;
     }
@@ -33,6 +37,10 @@ $border-style: 1px solid #ebebeb;
     }
 
     &:nth-child(4n) {
+      border-right: $border-style;
+    }
+
+    &:last-child {
       border-right: $border-style;
     }
   }

@@ -1,5 +1,3 @@
-import { getData } from "../../api/sales/sales";
-
 // actions
 const LOAD_SALE = "app/sale/LOAD_SALE";
 
