@@ -4,7 +4,7 @@
   color: #202430;
   position: fixed;
   z-index: 3;
-  top: 0px;
+  top: 0;
   left: 0;
   right: 0;
   overflow: auto;
@@ -13,6 +13,7 @@
   &__inner {
     margin: 0 auto;
     max-width: 1600px;
+    z-index: -1;
   }
 
   &__nav-link {
@@ -50,10 +51,13 @@
       padding-top: 80px;
       padding-bottom: 20px;
       top: 0px;
-      bottom: 0px;
       left: 0px;
+      bottom: 0px;
       right: 0px;
       z-index: -1;
+      animation-name: fadeInTop;
+      animation-timing-function: ease-in-out;
+      animation-duration: 0.43s;
     }
 
     .navbar-nav {
@@ -92,5 +96,15 @@
       width: 100%;
       margin-left: 0px;
     }
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    top: -100px;
+    opacity: 0.1;
+  }
+  to {
+    opacity: 1;
   }
 }
