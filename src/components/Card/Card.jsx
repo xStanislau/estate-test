@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Card.scss";
 import propertyKind from "../../config/propertyKind";
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import {
+  LazyLoadComponent,
+  trackWindowScroll
+} from "react-lazy-load-image-component";
 import Badge from "../Badge/Badge";
 import CardPrice from "./CardPrice/CardPrice";
 import CardImg from "./CardImg/CardImg";
@@ -14,60 +17,59 @@ const Card = ({
   kind,
   id,
   location: { localityName, mkadDistance },
+  scrollPosition,
   ...rest
 }) => {
   const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
-  return (
-    <>
-      <LazyLoadComponent>
-        <div className="card">
-          <Link to={`/sales/${id}`}>
-            <div className="card__img-wraper">
-              {rest.badge && (
-                <Badge
-                  className="card__badge"
-                  variant="danger"
-                  style={{ backgroundColor: rest.badge.color }}
-                >
-                  {rest.badge.title}
-                </Badge>
-              )}
 
-              {!image ? (
-                <CardImg className="card__img" image={image}>
-                  <h5 className="text-center ">No image</h5>
-                </CardImg>
-              ) : (
-                <CardImg className="card__img" image={image} />
-              )}
-            </div>
-          </Link>
-          <Link to={`/sales/${id}`}>
-            <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
-              ""}`}</p>
-          </Link>
-          <CardPrice className="card__house-price" {...rest} />
-          <div className="card__size-info">
-            {area && (
-              <div className="card__land-area">
-                <img src="./home.png" alt="home" />
-                <span>
-                  {area} м<sup>2</sup>
-                </span>
-              </div>
+  return (
+    <LazyLoadComponent scrollPosition={scrollPosition}>
+      <div className="card">
+        <Link to={`/sales/${id}`}>
+          <div className="card__img-wraper">
+            {rest.badge && (
+              <Badge
+                className="card__badge"
+                variant="danger"
+                style={{ backgroundColor: rest.badge.color }}
+              >
+                {rest.badge.title}
+              </Badge>
             )}
-            {landArea && (
-              <div className="card__house-area">
-                <img src="./land.png" alt="home" />
-                <span> {landArea} сот</span>
-              </div>
+            {!image ? (
+              <CardImg className="card__img" image={image}>
+                <h5 className="text-center ">No image</h5>
+              </CardImg>
+            ) : (
+              <CardImg className="card__img" image={image} />
             )}
           </div>
+        </Link>
+        <Link to={`/sales/${id}`}>
+          <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
+            ""}`}</p>
+        </Link>
+        <CardPrice className="card__house-price" {...rest} />
+        <div className="card__size-info">
+          {area && (
+            <div className="card__land-area">
+              <img src="./home.png" alt="home" />
+              <span>
+                {area} м<sup>2</sup>
+              </span>
+            </div>
+          )}
+          {landArea && (
+            <div className="card__house-area">
+              <img src="./land.png" alt="home" />
+              <span> {landArea} сот</span>
+            </div>
+          )}
         </div>
-      </LazyLoadComponent>
-    </>
+      </div>
+    </LazyLoadComponent>
   );
 };
 
@@ -77,4 +79,4 @@ Card.defaultProps = {
   landArea: ""
 };
 
-export default Card;
+export default trackWindowScroll(Card);
