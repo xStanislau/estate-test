@@ -1,6 +1,8 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Card from "../../../components/Card/Card";
+import Badge from "../../../components/Badge/Badge";
+
 import "./SaleItems.scss";
 
 const SaleItems = ({ items }) => {
@@ -10,15 +12,10 @@ const SaleItems = ({ items }) => {
         {items &&
           items.map((item, idx) => {
             let {
-              saleOffer,
               images,
               kind,
               location: { localityName }
             } = item;
-
-            if (!saleOffer) {
-              saleOffer = { price: "", currency: "" };
-            }
 
             if ((!images.length && !kind) || !localityName) {
               return null;
@@ -34,7 +31,7 @@ const SaleItems = ({ items }) => {
                 key={item.id}
                 className="sails-items__item"
               >
-                <Card {...item} saleOffer={saleOffer} />
+                <Card {...item} />
               </Col>
             );
           })}

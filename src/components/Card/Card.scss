@@ -11,6 +11,15 @@
     margin-bottom: 20px;
   }
 
+  &__badge {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    border-radius: 0;
+    padding: 12px 10px;
+    z-index: 2;
+  }
+
   &__img {
     height: auto;
     width: 100%;

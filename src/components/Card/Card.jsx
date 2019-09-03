@@ -1,8 +1,11 @@
 import React from "react";
 import "./Card.scss";
-import * as imgConfig from "../../config/images";
 import propertyKind from "../../config/propertyKind";
 import { LazyLoadComponent } from "react-lazy-load-image-component";
+import Badge from "../Badge/Badge";
+import CardPrice from "./CardPrice/CardPrice";
+import CardImg from "./CardImg/CardImg";
+import { Link } from "react-router-dom";
 
 const Card = ({
   images: [image],
@@ -11,18 +14,8 @@ const Card = ({
   kind,
   id,
   location: { localityName, mkadDistance },
-  saleOffer: { price, currency }
+  ...rest
 }) => {
-  let imgStyle = {};
-
-  if (image) {
-    const { id: imgId } = image;
-    const { PREFIXES, URL } = imgConfig;
-    const imgSrc = `${URL}/${imgId}-jqestate-${PREFIXES[1024]}`;
-    imgStyle.backgroundImage = `url(${imgSrc})`;
-    imgStyle.backgroundRepeat = "no-repeat";
-  }
-
   const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
@@ -31,19 +24,32 @@ const Card = ({
     <>
       <LazyLoadComponent>
         <div className="card">
-          <div className="card__img-wraper">
-            {!image ? (
-              <div className="card__img" style={imgStyle}>
-                <h5 className="text-center ">No image</h5>
-              </div>
-            ) : (
-              <div className="card__img" style={imgStyle} />
-            )}
-          </div>
+          <Link to="#">
+            <div className="card__img-wraper">
+              {rest.badge && (
+                <Badge
+                  className="card__badge"
+                  variant="danger"
+                  style={{ backgroundColor: rest.badge.color }}
+                >
+                  {rest.badge.title}
+                </Badge>
+              )}
 
-          <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
-            ""}`}</p>
-          <div className="card__house-price">{`${currency} ${price}`}</div>
+              {!image ? (
+                <CardImg className="card__img" image={image}>
+                  <h5 className="text-center ">No image</h5>
+                </CardImg>
+              ) : (
+                <CardImg className="card__img" image={image} />
+              )}
+            </div>
+          </Link>
+          <Link>
+            <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
+              ""}`}</p>
+          </Link>
+          <CardPrice {...rest} />
           <div className="card__size-info">
             {area && (
               <div className="card__land-area">
@@ -67,7 +73,6 @@ const Card = ({
 };
 
 Card.defaultProps = {
-  description: "Дом в посёлке Ромашково",
   price: "",
   area: "",
   landArea: ""

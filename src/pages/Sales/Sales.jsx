@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import SalesItems from "./SaleItems/SaleItems";
 import { fetch } from "../../redux/reducers/sales";
+import SalesItems from "./SaleItems/SaleItems";
 import Pagination from "../../components/Pagination/Pagination";
 import Header from "../../components/Header/Header";
-import "./Sales.scss";
 import Loader from "../../components/Loader/Loader";
+import "./Sales.scss";
 
 const Sales = ({ items, pagination, fetch, isLoaded }) => {
   useEffect(() => {

@@ -3,14 +3,14 @@ import { NavLink } from "react-router-dom";
 import { Navbar, Nav } from "react-bootstrap";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import "./Header.scss";
-import mocks from "../../constants/mocks";
+import constants from "../../constants/";
 
 const Header = ({ phoneNumber, text }) => {
   const [isOpen, toggleMenu] = useState(false);
   const body = document.querySelector("body");
   const {
     header: { menu }
-  } = mocks;
+  } = constants;
   if (isOpen) {
     body.classList.add("overflow-hidden");
   } else {
