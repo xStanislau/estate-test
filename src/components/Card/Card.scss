@@ -56,6 +56,24 @@
 
   &__house-description {
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    color: #9fa0a4;
+    position: relative;
+    &::after {
+      box-shadow: inset -38px 8px 44px -18px rgba(255, 255, 255, 1);
+      position: absolute;
+      content: "";
+      top: 0;
+      bottom: 0;
+      left: calc(100% - 40px);
+      right: 0px;
+    }
+    &:hover {
+      text-decoration: none;
+      color: red;
+      color: #9fa0a4;
+    }
   }
 
   @media (max-width: 1200px) {

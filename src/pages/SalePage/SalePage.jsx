@@ -78,7 +78,7 @@ class Sale extends Component {
               </ul>
             </div>
             <div className="sale__info">
-              <h3 className="h3">Коммуникации</h3>
+              <h3 className="h3 sale__info-title">Коммуникации</h3>
               {communication && (
                 <ul className="sale__communication">
                   {communications.communicationTypes.map(element => {
