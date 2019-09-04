@@ -5,22 +5,11 @@
   right: 0;
   bottom: 0;
   background-color: white;
-  animation: 0.3s loaderAnimation;
   z-index: 1000;
   &__inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-}
-
-@keyframes loaderAnimation {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
