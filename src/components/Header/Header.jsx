@@ -40,7 +40,7 @@ const Header = ({ phoneNumber, text }) => {
             toggleMenu(!isOpen);
           }}
         />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Collapse id="basic-navbar-nav" timeout={0}>
           <HeaderMenu items={menu.items} />
           <div className="header__contacts contacts ">
             <a href={`tel: ${phoneNumber}`} className="header__phone-number">

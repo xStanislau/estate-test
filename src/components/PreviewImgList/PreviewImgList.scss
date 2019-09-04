@@ -1,0 +1,12 @@
+.preview-image {
+  margin-right: 3px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    opacity: 0.9;
+    transition: all 0.22s ease-in-out;
+    cursor: pointer;
+  }
+}

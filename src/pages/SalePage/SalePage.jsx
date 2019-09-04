@@ -1,55 +1,131 @@
-import React, { useEffect } from "react";
+import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import { loadSaleData } from "../../redux/reducers/sale";
-import CardImg from "../../components/Card/CardImg/CardImg";
 import CardPrice from "../../components/Card/CardPrice/CardPrice";
+import PhotoGallery from "../../components/PhotoGallery/PhotoGallery";
+import propertyKind from "../../config/propertyKind";
+import equipmentTypes from "../../config/equipment";
+import specificationTypes from "../../config/specification";
+import communications from "../../config/communications";
 
-const Sale = ({
-  match: {
-    params: { id }
-  },
-  loadSaleData,
-  ...rest
-}) => {
-  const { item } = rest;
+import "./SalePage.scss";
+class Sale extends Component {
+  componentDidMount() {
+    const {
+      match: {
+        params: { id }
+      }
+    } = this.props;
+    this.props.loadSaleData(id);
+  }
 
-  useEffect(() => {
-    loadSaleData(id);
-  }, [loadSaleData]);
+  render() {
+    const { item, ...rest } = this.props;
 
-  return (
-    <div className="wrapper">
-      <div className="sale">
-        {!item || !item.images[0] ? (
-          <CardImg className="card__img">
-            <h5 className="text-center ">No image</h5>
-          </CardImg>
-        ) : (
-          <CardImg className="card__img" image={item.images[0]} />
-        )}
-        <h1>Дом</h1>
-        <div className="sale__short-info">
-          <CardPrice className="sale__price" {...rest} />
-          <ul className="sale__short-info">
-            <li className="sale__short-info-item">
-              <span className="sale__short-info-number"></span>
-              <span className="sale__short-info-text"></span>
-            </li>
-          </ul>
-        </div>
-        <div className="sale__info">
-          <h3>Участок</h3>
-          <ul className="sale__house">
-            <li className="sale__land-item"></li>
-          </ul>
-          <h3>Коммуникации</h3>
-          <ul className="sale__land">
-            <li className="sale__land-item"></li>
-          </ul>
+    const {
+      kind,
+      specification,
+      specification: { area, bedrooms, rooms, balcones },
+      equipment,
+      communication,
+      landDetails: { area: landArea },
+      saleOffer,
+      location: { localityName, mkadDistance }
+    } = item;
+
+    const noContent = "-";
+    debugger;
+    return (
+      <div className="wrapper">
+        <div className="sale">
+          <div className="sale__content">
+            <h1 className="h1 my-5">
+              <span>{`${propertyKind[kind] || noContent}, `}</span>
+              <span>
+                {area} м<sup>2</sup>
+              </span>
+              <span>{`, в Посёлке ${localityName}, ${mkadDistance} `}</span>
+            </h1>
+          </div>
+
+          <PhotoGallery item={item} className="img-gallery" />
+          <div className="sale__content">
+            <div className="sale__short-info">
+              <CardPrice className="sale__price" saleOffer={saleOffer} />
+              <ul className="sale__short-info-list">
+                <li className="sale__short-info-item">
+                  <strong className="sale__short-info-number">
+                    {bedrooms || noContent}
+                  </strong>
+                  <span className="sale__short-info-text">
+                    {specificationTypes.bedrooms}
+                  </span>
+                </li>
+                <li className="sale__short-info-item">
+                  <strong className="sale__short-info-number">
+                    {landArea || noContent}
+                  </strong>
+                  <span className="sale__short-info-text">соток</span>
+                </li>
+                <li className="sale__short-info-item">
+                  <strong className="sale__short-info-number">
+                    {area || noContent}
+                  </strong>
+                  <span className="sale__short-info-text">
+                    {specificationTypes["area"]}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className="sale__info">
+              <h3 className="h3">Коммуникации</h3>
+              {communication && (
+                <ul className="sale__communication">
+                  {communications.communicationTypes.map(element => {
+                    const { translation, communicationType } = element;
+                    let currentTypeValues = communications[communicationType];
+                    const incomingValue = communication[communicationType];
+
+                    let communicationValue;
+                    if (communicationType === "powerSupply") {
+                      communicationValue = `${incomingValue}${communications[communicationType]}`;
+                    } else {
+                      communicationValue = currentTypeValues[incomingValue];
+                    }
+
+                    return (
+                      <li className="sale__communication-item">
+                        <span className="sale__communication-label">
+                          {translation}
+                        </span>
+                        <span className="sale__communication-value">
+                          {communicationValue}
+                        </span>
+                      </li>
+                    );
+                  })}
+                </ul>
+              )}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+Sale.defaultProps = {
+  item: {
+    kind: "",
+    specification: {},
+    equipment: {},
+    saleOffer: {},
+    location: {
+      localityName: "",
+      mkadDistance: ""
+    },
+    landDetails: {}
+  }
 };
 
 const mapStateToProps = state => {
