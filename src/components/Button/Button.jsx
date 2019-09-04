@@ -1,9 +1,7 @@
 import React from "react";
 
-const Button = () => {
-  return (
-    <div>
-      <button className="header__call-back btn">{text}</button>
-    </div>
-  );
+const Button = ({ className, children }) => {
+  return <button className={className}>{children}</button>;
 };
+
+export default Button;

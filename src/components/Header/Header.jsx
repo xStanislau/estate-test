@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import "./Header.scss";
 import constants from "../../constants/";
+import Button from "../Button/Button";
 
-const Header = ({ phoneNumber, text }) => {
+const Header = () => {
   const [isOpen, toggleMenu] = useState(false);
   const body = document.querySelector("body");
   const {
-    header: { menu }
+    header: { menu, phoneNumber, buttonText }
   } = constants;
   if (isOpen) {
     body.classList.add("overflow-hidden");
@@ -43,10 +43,10 @@ const Header = ({ phoneNumber, text }) => {
         <Navbar.Collapse id="basic-navbar-nav" timeout={0}>
           <HeaderMenu items={menu.items} />
           <div className="header__contacts contacts ">
-            <a href={`tel: ${phoneNumber}`} className="header__phone-number">
+            <a href="tel: +7(495)432-45-45" className="header__phone-number">
               {phoneNumber}
             </a>
-            <button className="header__call-back btn">{text}</button>
+            <Button className="header__call-back btn">{buttonText}</Button>
           </div>
         </Navbar.Collapse>
       </Navbar>
