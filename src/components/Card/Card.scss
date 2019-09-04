@@ -33,6 +33,7 @@
   &__size-info {
     display: flex;
     flex-direction: start;
+    color: #4c4338;
   }
 
   &__land-area,
@@ -51,6 +52,7 @@
     min-height: 20px;
     margin-bottom: 15px;
     font-size: 18px;
+    color: #27241e;
     font-weight: bold;
   }
 
@@ -58,10 +60,11 @@
     margin-bottom: 5px;
     white-space: nowrap;
     overflow: hidden;
-    color: #9fa0a4;
+    color: #a29b99;
     position: relative;
+
     &::after {
-      box-shadow: inset -38px 8px 44px -18px rgba(255, 255, 255, 1);
+      box-shadow: inset -68px 0px 29px -18px white;
       position: absolute;
       content: "";
       top: 0;
@@ -69,6 +72,7 @@
       left: calc(100% - 40px);
       right: 0px;
     }
+
     &:hover {
       text-decoration: none;
       color: red;

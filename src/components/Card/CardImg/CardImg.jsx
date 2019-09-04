@@ -11,6 +11,8 @@ const CardImg = ({ children, className, ...rest }) => {
     const imgSrc = `${URL}/${imgId}-jqestate-${PREFIXES[1024]}`;
     imgStyle.backgroundImage = `url(${imgSrc})`;
     imgStyle.backgroundRepeat = "no-repeat";
+  } else {
+    imgStyle.backgroundColor = "#aaa";
   }
 
   return (

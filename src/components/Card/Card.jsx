@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Card.scss";
 import propertyKind from "../../config/propertyKind";
 import {
@@ -38,13 +38,7 @@ const Card = ({
                 {rest.badge.title}
               </Badge>
             )}
-            {!image ? (
-              <CardImg className="card__img" image={image}>
-                <h5 className="text-center ">No image</h5>
-              </CardImg>
-            ) : (
-              <CardImg className="card__img" image={image} />
-            )}
+            <CardImg className="card__img" image={image}></CardImg>
           </div>
         </Link>
         <Link to={`/sales/${id}`}>
