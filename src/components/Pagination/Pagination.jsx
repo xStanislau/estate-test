@@ -52,7 +52,7 @@ const Pagination = ({ total: totalItems, fetch }) => {
       {[
         Items.slice(offsetStartIndex, offSetFromCurrentLeft),
         <BsPagination.Ellipsis key={currentPageIndex} />,
-        Items.slice(offsetFromEnd, lastPageIndex + 2)
+        Items.slice(offsetFromEnd, lastPageIndex)
       ]}
       <BsPagination.Last
         onClick={() => {

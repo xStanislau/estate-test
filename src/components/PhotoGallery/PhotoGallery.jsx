@@ -1,6 +1,5 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import * as imgConfig from "../../config/images";
-import Badge from "../../components/Badge/Badge";
 import ReactBnbGallery from "react-bnb-gallery";
 import ImageGalleryPreview from "./ImageGalleryPreview/ImageGalleryPreview";
 import PreviewImgList from "../PreviewImgList/PreviewImgList";

@@ -5,14 +5,14 @@ import Pagination from "../../components/Pagination/Pagination";
 import Loader from "../../components/Loader/Loader";
 import CardGrid from "../../components/CardGrid/CardGrid";
 
-const Sales = ({ items, pagination, fetch, isLoaded }) => {
+const Towns = ({ items, pagination, fetch, isLoaded }) => {
   useEffect(() => {
     fetch();
   }, [fetch]);
 
   return (
     <>
-      <h1 className="h1 page-title">Элитная недвижимость</h1>
+      <h1 className="h1 page-title">Посёлки</h1>
       <>
         {isLoaded ? <CardGrid items={items} /> : <Loader />}
         <Pagination {...pagination} fetch={fetch} />
@@ -21,7 +21,7 @@ const Sales = ({ items, pagination, fetch, isLoaded }) => {
   );
 };
 
-Sales.defaultProps = {
+Towns.defaultProps = {
   items: []
 };
 
@@ -36,4 +36,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { fetch }
-)(Sales);
+)(Towns);
