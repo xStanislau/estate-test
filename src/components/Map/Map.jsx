@@ -7,6 +7,7 @@ const Map = props => {
     width: "100%",
     height: "100%"
   };
+
   return (
     <GoogleMap
       google={props.google}
@@ -18,6 +19,7 @@ const Map = props => {
     </GoogleMap>
   );
 };
+
 export default GoogleApiWrapper({
-  apiKey: "AIzaSyB-vEiJqgg-OJswVZDIdfmK7u4PKakad7A"
+  apiKey: "AIzaSyAt9mDktcQUnIDHmphZepDm2uRDMBSWp3k"
 })(Map);
