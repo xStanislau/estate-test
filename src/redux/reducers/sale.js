@@ -1,4 +1,4 @@
-import { getSaleData } from "../../api/sales/sale";
+import { getData } from "../../api/sales/sales";
 // actions
 const LOAD_SALE_DATA = "app/sale/LOAD_DATA";
 const LOAD_SALE_ID = "app/sale/LOAD_DATA";
@@ -69,7 +69,8 @@ export default function reducer(state = initialState, action) {
 export const loadData = id => async dispatch => {
   dispatch(loadSaleData());
   try {
-    const response = await getSaleData(id);
+    const options = { type: "filter", property: "id", value: id };
+    const response = await getData([options]);
 
     dispatch(loadSaleDataSucceeded(response));
   } catch (error) {

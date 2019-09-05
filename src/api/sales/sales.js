@@ -1,9 +1,17 @@
-import { BASE_URL } from "../urls";
+import constants from "../../constants/index";
+import { buildQueryString } from "../../utils/buildQueryString";
 
-export const getData = async (offset = 0) => {
+export const getData = async (
+  options = [
+    { type: "pagination", property: "offset", value: 0 },
+    { type: "filter", property: "kind", value: "house" }
+  ]
+) => {
   try {
     const path = "/v1/properties/country";
-    let url = `${BASE_URL}${path}?pagination[offset]=${offset}&filter[kind]=house`;
+    const querryString = buildQueryString(options);
+    const { api } = constants;
+    const url = `${api.baseUrl}${path}${querryString}`;
 
     const response = await fetch(url);
 

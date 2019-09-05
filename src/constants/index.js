@@ -11,5 +11,36 @@ export default {
     phoneNumber: "+7(495)432-45-45",
     buttonText: "Обратный звонок"
   },
-  warning: "Нет объектов"
+  warning: "Нет объектов",
+  api: {
+    baseUrl: "https://api.jqestate.ru",
+    baseImgUrl: "https://images.jqestate.ru"
+  },
+  queryOptions: {
+    rent: [
+      {
+        type: "filterNot",
+        property: "rentOffer.isDisabled",
+        value: "true"
+      },
+      {
+        type: "filter",
+        property: "rentOffer.price",
+        value: "0.."
+      }
+    ],
+    sales: [
+      {
+        type: "filterNot",
+        property: "saleOffer.isDisabled",
+        value: "true"
+      },
+      {
+        type: "filter",
+        property: "saleOffer.price",
+        value: "0.."
+      }
+    ],
+    pagination: { type: "pagination", property: "offset", value: 0 }
+  }
 };

@@ -23,7 +23,6 @@ const Card = ({
   const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
-
   return (
     <LazyLoadComponent scrollPosition={scrollPosition}>
       <div className="card">
@@ -45,6 +44,7 @@ const Card = ({
           <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
             ""}`}</p>
         </Link>
+
         <CardPrice className="card__house-price" {...rest} />
         <div className="card__size-info">
           {area && (

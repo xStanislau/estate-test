@@ -4,18 +4,26 @@ import { fetch } from "../../redux/reducers/sales";
 import Pagination from "../../components/Pagination/Pagination";
 import Loader from "../../components/Loader/Loader";
 import CardGrid from "../../components/CardGrid/CardGrid";
+import constants from "../../constants/";
 
-const Rent = ({ items, pagination, fetch, isLoaded }) => {
+const Rent = ({
+  items,
+  pagination,
+  fetch,
+  isLoaded,
+  location: { pathname }
+}) => {
   useEffect(() => {
-    fetch();
+    const { queryOptions } = constants;
+    fetch(queryOptions[pathname.slice(1, pathname.length)]);
   }, [fetch]);
 
   return (
     <>
       <h1 className="h1 page-title">Аренда недвижимости</h1>
       {!isLoaded && <Loader />}
-      <CardGrid items={items} />
-      <Pagination {...pagination} fetch={fetch} />
+      <CardGrid pathname={pathname} items={items} />
+      <Pagination {...pagination} fetch={fetch} pathname={pathname} />
     </>
   );
 };

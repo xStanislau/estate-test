@@ -5,7 +5,13 @@ import Pagination from "../../components/Pagination/Pagination";
 import Loader from "../../components/Loader/Loader";
 import CardGrid from "../../components/CardGrid/CardGrid";
 
-const Towns = ({ items, pagination, fetch, isLoaded }) => {
+const Towns = ({
+  items,
+  pagination,
+  fetch,
+  isLoaded,
+  location: { pathname }
+}) => {
   useEffect(() => {
     fetch();
   }, [fetch]);
@@ -15,7 +21,7 @@ const Towns = ({ items, pagination, fetch, isLoaded }) => {
       <h1 className="h1 page-title">Посёлки</h1>
       <>
         {isLoaded ? <CardGrid items={items} /> : <Loader />}
-        <Pagination {...pagination} fetch={fetch} />
+        <Pagination {...pagination} fetch={fetch} pathname={pathname} />
       </>
     </>
   );

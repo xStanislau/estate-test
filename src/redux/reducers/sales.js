@@ -52,10 +52,15 @@ export default function reducer(state = initialState, action) {
 }
 
 // async action
-export const fetch = offset => async dispatch => {
+export const fetch = options => async dispatch => {
   dispatch(fetchStart());
   try {
-    const response = await getData(offset);
+    // const options = {
+    //   type: "pagination",
+    //   property: "offset",
+    //   value: offset
+    // };
+    const response = await getData(options);
 
     dispatch(fetchSuccesseded(response));
   } catch (error) {

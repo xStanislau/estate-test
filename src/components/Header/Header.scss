@@ -7,12 +7,14 @@
   top: 0;
   left: 0;
   right: 0;
-  overflow: auto;
   border-bottom: 1px solid #ebebeb;
 
   &__inner {
     margin: 0 auto;
     max-width: 1600px;
+    padding: 0;
+    min-width: 320px;
+
     z-index: -1;
   }
 
@@ -69,6 +71,8 @@
       margin-bottom: auto;
       min-height: calc(100% - 80px);
       margin-bottom: auto;
+      min-width: 320px;
+      overflow: auto;
     }
 
     &__nav-link {

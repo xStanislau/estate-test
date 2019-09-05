@@ -6,7 +6,7 @@ import BaseLayout from "../layout/BaseLayout/BaseLayout";
 import Rent from "./../pages/Rent/Rent";
 import About from "./../pages/About/About";
 import Towns from "./../pages/Towns/Towns";
-
+import Map from "../components/Map/Map";
 export default () => {
   return (
     <BaseLayout>
@@ -19,6 +19,7 @@ export default () => {
         <Route exact path="/towns/" component={Towns} />
         <Route path="/towns/:id" component={SalePage} />
         <Route path="/about" component={About} />
+        <Route path="/contacts" component={Map} />
         <Route component={() => <h1>Page not found</h1>} />
       </Switch>
     </BaseLayout>

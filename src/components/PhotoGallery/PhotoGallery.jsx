@@ -3,8 +3,8 @@ import * as imgConfig from "../../config/images";
 import ReactBnbGallery from "react-bnb-gallery";
 import ImageGalleryPreview from "./ImageGalleryPreview/ImageGalleryPreview";
 import PreviewImgList from "../PreviewImgList/PreviewImgList";
-import "./PhotoGallery.scss";
 import PhotoBadge from "./PhotoBadge/PhotoBadge";
+import "./PhotoGallery.scss";
 
 class PhotoGallery extends Component {
   constructor() {

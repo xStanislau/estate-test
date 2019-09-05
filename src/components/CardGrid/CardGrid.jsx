@@ -4,7 +4,7 @@ import { Container, Row } from "react-bootstrap";
 import Card from "../Card/Card";
 import "./CardGrid.scss";
 
-const CardGrid = ({ items, className }) => {
+const CardGrid = ({ items, className, ...rest }) => {
   return (
     <Container fluid className={`${className} grid`}>
       <Row className="grid__row">
@@ -22,7 +22,7 @@ const CardGrid = ({ items, className }) => {
 
             return (
               <GridItem key={item.id} className="grid__item">
-                <Card {...item} />
+                <Card {...item} {...rest} />
               </GridItem>
             );
           })}

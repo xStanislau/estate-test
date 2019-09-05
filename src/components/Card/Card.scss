@@ -64,7 +64,8 @@
     position: relative;
 
     &::after {
-      box-shadow: inset -68px 0px 29px -18px white;
+      box-shadow: inset -4.5rem 0 5rem -2rem rgba(255, 255, 255, 1);
+
       position: absolute;
       content: "";
       top: 0;

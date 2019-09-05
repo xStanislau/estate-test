@@ -43,7 +43,7 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav" timeout={0}>
           <HeaderMenu items={menu.items} />
           <div className="header__contacts contacts ">
-            <a href="tel: +7(495)432-45-45" className="header__phone-number">
+            <a href={`tel:${phoneNumber}`} className="header__phone-number">
               {phoneNumber}
             </a>
             <Button className="header__call-back btn">{buttonText}</Button>
