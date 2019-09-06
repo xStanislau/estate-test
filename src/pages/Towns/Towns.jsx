@@ -17,13 +17,14 @@ const Towns = ({
   }, [fetch]);
 
   return (
-    <>
+    <main className="main-container">
       <h1 className="h1 page-title">Посёлки</h1>
       <>
         {isLoaded ? <CardGrid items={items} /> : <Loader />}
         <Pagination {...pagination} fetch={fetch} pathname={pathname} />
       </>
-    </>
+      ``
+    </main>
   );
 };
 

@@ -4,12 +4,12 @@ import NavMenu from "../NavMenu/NavMenu";
 
 const HeaderMenu = ({ items }) => {
   return (
-    <NavMenu className="mr-auto">
+    <NavMenu className="mr-auto header-menu">
       {items.map(item => {
         const { link, text } = item;
         return (
           <NavLink
-            className="header__nav-link"
+            className="nav-link"
             link={link}
             activeClassName="active"
             key={text}

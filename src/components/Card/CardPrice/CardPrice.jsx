@@ -2,7 +2,7 @@ import React from "react";
 
 const CardPrice = props => {
   const { className, pathname } = props;
-  let offer = pathname == "/rent" ? props.rentOffer : props.saleOffer;
+  let offer = pathname === "/rent" ? props.rentOffer : props.saleOffer;
 
   const { price, currency } = offer || { price: "", currency: "" };
   let formatedPrice = Number(price).toLocaleString({

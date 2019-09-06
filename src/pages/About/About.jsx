@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div>
+    <main className="content-wrapper main-container">
       <h1 className="h1 page-title">About Company</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad, officiis
@@ -39,7 +39,7 @@ const About = () => {
         Eveniet tenetur ipsa dolorem quis, dignissimos repudiandae a, beatae
         quos nostrum non consequuntur rerum nemo nihil. Amet, non?
       </p>
-    </div>
+    </main>
   );
 };
 

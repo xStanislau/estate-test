@@ -6,7 +6,7 @@ import "./CardGrid.scss";
 
 const CardGrid = ({ items, className, ...rest }) => {
   return (
-    <Container fluid className={`${className} grid`}>
+    <Container fluid className={`${className || ""} grid`}>
       <Row className="grid__row">
         {items &&
           items.map(item => {

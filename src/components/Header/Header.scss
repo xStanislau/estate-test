@@ -1,24 +1,22 @@
-.header {
-  padding: 10px 35px;
+header {
+  padding: 20px 35px;
   background-color: #fff;
   color: #202430;
-  position: fixed;
   z-index: 3;
   top: 0;
   left: 0;
   right: 0;
   border-bottom: 1px solid #ebebeb;
+  transition: all 0.24s ease-in-out;
 
-  &__inner {
-    margin: 0 auto;
+  .inner {
     max-width: 1600px;
-    padding: 0;
     min-width: 320px;
-
-    z-index: -1;
+    padding: 0;
+    margin: 0 auto;
   }
 
-  &__nav-link {
+  .nav-link {
     font-weight: 500;
     color: #202430;
     margin-right: 20px;
@@ -28,12 +26,27 @@
     }
   }
 
-  &__nav-link.active {
-    font-size: 16px;
-    color: #ec5167;
+  .navbar-light {
+    .header-menu {
+      .nav-link.active {
+        font-size: 16px;
+        color: #ec5167;
+      }
+    }
   }
 
-  &__phone-number {
+  .navbar-light {
+    .header-menu {
+      .nav-link {
+        &:hover {
+          font-size: 16px;
+          color: #ec5167;
+        }
+      }
+    }
+  }
+
+  .phone-number {
     color: #202430;
   }
 
@@ -76,7 +89,7 @@
       overflow: auto;
     }
 
-    &__nav-link {
+    .nav-link {
       margin-right: 0;
       margin-bottom: 15px;
       :last-child {
@@ -84,12 +97,12 @@
       }
     }
 
-    &__phone-number {
+    .phone-number {
       margin-bottom: 10px;
       text-align: center;
     }
 
-    &__contacts {
+    .contacts {
       max-width: 300px;
       display: flex;
       flex-direction: column;
@@ -101,6 +114,12 @@
       width: 100%;
       margin-left: 0px;
     }
+  }
+}
+
+.header.fixed {
+  .inner {
+    z-index: -1;
   }
 }
 

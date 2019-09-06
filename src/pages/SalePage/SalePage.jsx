@@ -45,7 +45,7 @@ class Sale extends Component {
     return (
       <>
         {!isLoaded && <Loader />}
-        <div className="sale">
+        <main className="sale main-container">
           <div className="sale__content">
             <h1 className="h1 my-5">
               <span>{`${propertyKind[kind] || noContent}, `}</span>
@@ -120,7 +120,7 @@ class Sale extends Component {
             </div>
             <Button onClick={goBack(history)}>Назад</Button>
           </div>
-        </div>
+        </main>
       </>
     );
   }

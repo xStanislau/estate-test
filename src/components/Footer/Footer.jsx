@@ -7,25 +7,27 @@ import "./Footer.scss";
 
 const Footer = () => {
   return (
-    <div className="footer">
-      <a className="footer__logo navbar-brand">Logo</a>
-      <NavMenu className="footer__menu">
-        <NavLink className="footer__link" link="/about" text="О компании" />
-        <NavLink className="footer__link" link="contacts" text="Контакты" />
-        <NavLink className="footer__link" link="/about" text="FAQ" />
-      </NavMenu>
-      <div className="footer__contacts">
-        <a
-          href={`tel:${constants.header.phoneNumber}`}
-          className="footer__phone-number"
-        >
-          {constants.header.phoneNumber}
-        </a>
-        <Button className="footer__call-back btn btn-danger">
-          {constants.header.buttonText}
-        </Button>
+    <footer>
+      <div className="inner">
+        <NavLink className="logo" link="/" text="Logo" />
+        <NavMenu className="menu">
+          <NavLink className="link" link="/about" text="О компании" />
+          <NavLink className="link" link="contacts" text="Контакты" />
+          <NavLink className="link" link="/about" text="FAQ" />
+        </NavMenu>
+        <div className="contacts">
+          <a
+            href={`tel:${constants.header.phoneNumber}`}
+            className="phone-number"
+          >
+            {constants.header.phoneNumber}
+          </a>
+          <Button className="call-back btn btn-danger">
+            {constants.header.buttonText}
+          </Button>
+        </div>
       </div>
-    </div>
+    </footer>
   );
 };
 

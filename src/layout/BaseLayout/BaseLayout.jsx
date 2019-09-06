@@ -5,10 +5,8 @@ import Footer from "../../components/Footer/Footer";
 const BaseLayout = ({ children }) => {
   return (
     <>
-      <div className="wrapper">
-        <Header />
-        {children}
-      </div>
+      <Header offsetTop={81} />
+      {children}
       <Footer />
     </>
   );

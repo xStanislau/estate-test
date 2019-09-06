@@ -17,13 +17,13 @@ const Sales = ({
   }, [fetch]);
 
   return (
-    <>
+    <main className="main-container">
       <h1 className="h1 page-title">Элитная недвижимость</h1>
       <>
         {isLoaded ? <CardGrid items={items} /> : <Loader />}
         <Pagination {...pagination} fetch={fetch} pathname={pathname} />
       </>
-    </>
+    </main>
   );
 };
 

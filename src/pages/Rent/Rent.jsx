@@ -19,12 +19,12 @@ const Rent = ({
   }, [fetch]);
 
   return (
-    <>
+    <main className="main-container">
       <h1 className="h1 page-title">Аренда недвижимости</h1>
       {!isLoaded && <Loader />}
       <CardGrid pathname={pathname} items={items} />
       <Pagination {...pagination} fetch={fetch} pathname={pathname} />
-    </>
+    </main>
   );
 };
 
