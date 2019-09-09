@@ -55,6 +55,18 @@ export default {
         value: "0.."
       }
     ],
+    filter: [
+      {
+        type: "filter",
+        property: "kind",
+        value: "house"
+      },
+      {
+        type: "filter",
+        property: "saleOffer.price",
+        value: "0.."
+      }
+    ],
 
     pagination: { type: "pagination", property: "offset", value: 0 }
   }
