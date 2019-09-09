@@ -8,11 +8,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-}
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -20,6 +15,6 @@ code {
 
 #root {
   display: flex;
-  height: 100%;
+  min-height: 100%;
   flex-direction: column;
 }

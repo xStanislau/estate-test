@@ -3,13 +3,8 @@
     margin-bottom: 20px;
   }
 
-  &__content {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-
   &__price {
-    margin-right: 50px;
+    margin-right: 100px;
   }
 
   &__short-info {
@@ -17,7 +12,7 @@
     align-items: center;
     font-size: 26px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: 60px;
   }
 
@@ -34,10 +29,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    color: #232323;
   }
 
   &__short-info-text {
     font-size: 14px;
+    color: #4d4d4d;
   }
 
   &__communication-item {

@@ -1,13 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-
 import { loadSaleId, loadData } from "../../redux/reducers/sale";
 import CardPrice from "../../components/Card/CardPrice/CardPrice";
 import PhotoGallery from "../../components/PhotoGallery/PhotoGallery";
 import propertyKind from "../../config/propertyKind";
 import specificationTypes from "../../config/specification";
-import communications from "../../config/communications";
+import Communication from "../../pages/SalePage/Communications/Communications";
 import Loader from "../../components/Loader/Loader";
 import Button from "../../components/Button/Button";
 import "./SalePage.scss";
@@ -46,7 +45,7 @@ class Sale extends Component {
       <>
         {!isLoaded && <Loader />}
         <main className="sale main-container">
-          <div className="sale__content">
+          <div className="sale__content content-wrapper">
             <h1 className="h1 my-5">
               <span>{`${propertyKind[kind] || noContent}, `}</span>
               <span>
@@ -57,7 +56,7 @@ class Sale extends Component {
           </div>
 
           <PhotoGallery item={item} className="img-gallery" />
-          <div className="sale__content">
+          <div className="sale__content content-wrapper">
             <div className="sale__short-info">
               <CardPrice className="sale__price" saleOffer={saleOffer} />
               <ul className="sale__short-info-list">
@@ -87,36 +86,7 @@ class Sale extends Component {
             </div>
             <div className="sale__info">
               <h3 className="h3 sale__info-title">Коммуникации</h3>
-              {communication && (
-                <ul className="sale__communication">
-                  {communications.communicationTypes.map(element => {
-                    const { translation, communicationType } = element;
-                    let currentTypeValues = communications[communicationType];
-                    const incomingValue = communication[communicationType];
-
-                    let communicationValue;
-                    if (communicationType === "powerSupply") {
-                      communicationValue = `${incomingValue}${communications[communicationType]}`;
-                    } else {
-                      communicationValue = currentTypeValues[incomingValue];
-                    }
-
-                    return (
-                      <li
-                        key={element.communicationType}
-                        className="sale__communication-item"
-                      >
-                        <span className="sale__communication-label">
-                          {translation}
-                        </span>
-                        <span className="sale__communication-value">
-                          {communicationValue}
-                        </span>
-                      </li>
-                    );
-                  })}
-                </ul>
-              )}
+              {communication && <Communication communication={communication} />}
             </div>
             <Button onClick={goBack(history)}>Назад</Button>
           </div>

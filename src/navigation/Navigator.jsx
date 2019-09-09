@@ -19,7 +19,16 @@ export default () => {
         <Route exact path="/towns/" component={Towns} />
         <Route path="/towns/:id" component={SalePage} />
         <Route path="/about" component={About} />
-        <Route path="/contacts" component={Map} />
+        <Route
+          path="/contacts"
+          component={() => {
+            return (
+              <div className="main-container position-relative h-100">
+                <Map className="map" />;
+              </div>
+            );
+          }}
+        />
         <Route component={() => <h1>Page not found</h1>} />
       </Switch>
     </BaseLayout>

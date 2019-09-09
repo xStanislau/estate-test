@@ -1,5 +1,4 @@
 header {
-  padding: 20px 35px;
   background-color: #fff;
   color: #202430;
   z-index: 3;
@@ -12,13 +11,12 @@ header {
   .inner {
     max-width: 1600px;
     min-width: 320px;
-    padding: 0;
+    padding: 20px 35px;
     margin: 0 auto;
   }
 
   .nav-link {
     font-weight: 500;
-    color: #202430;
     margin-right: 20px;
 
     :last-child {
@@ -28,6 +26,10 @@ header {
 
   .navbar-light {
     .header-menu {
+      .nav-link {
+        color: #232323;
+      }
+
       .nav-link.active {
         font-size: 16px;
         color: #ec5167;

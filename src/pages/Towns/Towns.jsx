@@ -23,7 +23,6 @@ const Towns = ({
         {isLoaded ? <CardGrid items={items} /> : <Loader />}
         <Pagination {...pagination} fetch={fetch} pathname={pathname} />
       </>
-      ``
     </main>
   );
 };
