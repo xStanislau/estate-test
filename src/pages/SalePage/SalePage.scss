@@ -3,16 +3,19 @@
     margin-bottom: 20px;
   }
 
+  &__content-inner {
+    display: flex;
+  }
+
   &__price {
     margin-right: 100px;
+    margin-bottom: 20px;
   }
 
   &__short-info {
     text-align: left;
     align-items: center;
     font-size: 26px;
-    display: flex;
-    justify-content: flex-start;
     min-height: 60px;
   }
 
@@ -20,16 +23,22 @@
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
   }
 
   &__short-info-item {
-    padding: 30px 20px;
+    padding-bottom: 10px;
     display: flex;
-    flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     color: #232323;
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+  }
+
+  &__short-info-number {
+    margin-right: 15px;
   }
 
   &__short-info-text {

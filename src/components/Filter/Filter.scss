@@ -1,0 +1,60 @@
+.filter {
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  max-width: 300px;
+  width: 100%;
+  background-color: white;
+  z-index: 3;
+
+  &__submit-btn {
+    background-color: #ff4c4e;
+    border-color: #ff4c4e;
+    box-shadow: none;
+    outline: none;
+    border: none;
+
+    &:hover {
+      background-color: #ff4c4e;
+      box-shadow: none;
+      outline: none;
+      border: none;
+    }
+  }
+  &__submit-btn.btn.btn-primary {
+    &:active {
+      background-color: #ff4c4e;
+      box-shadow: none;
+      outline: none;
+      border: none;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  &__range {
+    display: flex;
+    width: 100%;
+
+    input {
+      height: 30px;
+      width: 50%;
+    }
+    label {
+      margin-left: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  //   &__group {
+  //   }
+}

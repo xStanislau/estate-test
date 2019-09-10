@@ -1,12 +1,13 @@
 import React from "react";
 import { Field } from "react-final-form";
+import "./Checkbox.scss";
 
-const Checkbox = ({ id, lableClassName, label, ...rest }) => {
+const Checkbox = ({ id, className, label, ...rest }) => {
   return (
-    <label htmlFor="house" className={lableClassName}>
-      {label}
+    <label htmlFor={id} className={className}>
       <Field id={id} type="checkbox" {...rest} />
       <span className="checkmark"></span>
+      {label}
     </label>
   );
 };

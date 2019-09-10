@@ -56,39 +56,45 @@ class Sale extends Component {
           </div>
 
           <PhotoGallery item={item} className="img-gallery" />
-          <div className="sale__content content-wrapper">
-            <div className="sale__short-info">
-              <CardPrice className="sale__price" saleOffer={saleOffer} />
-              <ul className="sale__short-info-list">
-                <li className="sale__short-info-item">
-                  <strong className="sale__short-info-number">
-                    {bedrooms || noContent}
-                  </strong>
-                  <span className="sale__short-info-text">
-                    {specificationTypes.bedrooms}
-                  </span>
-                </li>
-                <li className="sale__short-info-item">
-                  <strong className="sale__short-info-number">
-                    {landArea || noContent}
-                  </strong>
-                  <span className="sale__short-info-text">соток</span>
-                </li>
-                <li className="sale__short-info-item">
-                  <strong className="sale__short-info-number">
-                    {area || noContent}
-                  </strong>
-                  <span className="sale__short-info-text">
-                    {specificationTypes["area"]}
-                  </span>
-                </li>
-              </ul>
+          <div className="sale__content  content-wrapper">
+            <div className="sale__content-inner">
+              <div className="sale__short-info">
+                <CardPrice className="sale__price" saleOffer={saleOffer} />
+                <ul className="sale__short-info-list">
+                  <li className="sale__short-info-item">
+                    <strong className="sale__short-info-number">
+                      {bedrooms || noContent}
+                    </strong>
+                    <span className="sale__short-info-text">
+                      {specificationTypes.bedrooms}
+                    </span>
+                  </li>
+                  <li className="sale__short-info-item">
+                    <strong className="sale__short-info-number">
+                      {landArea || noContent}
+                    </strong>
+                    <span className="sale__short-info-text">соток</span>
+                  </li>
+                  <li className="sale__short-info-item">
+                    <strong className="sale__short-info-number">
+                      {area || noContent}
+                    </strong>
+                    <span className="sale__short-info-text">
+                      {specificationTypes["area"]}
+                    </span>
+                  </li>
+                </ul>
+              </div>
+              <div className="sale__info">
+                <h3 className="h3 sale__info-title">Коммуникации</h3>
+                {communication && (
+                  <Communication communication={communication} />
+                )}
+              </div>
             </div>
-            <div className="sale__info">
-              <h3 className="h3 sale__info-title">Коммуникации</h3>
-              {communication && <Communication communication={communication} />}
-            </div>
-            <Button onClick={goBack(history)}>Назад</Button>
+            <Button onClick={goBack(history)} variant="outline-dark">
+              Назад
+            </Button>
           </div>
         </main>
       </>

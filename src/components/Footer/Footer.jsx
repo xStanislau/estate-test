@@ -12,7 +12,7 @@ const Footer = () => {
         <NavLink className="logo" link="/" text="Logo" />
         <NavMenu className="menu">
           <NavLink className="link" link="/about" text="О компании" />
-          <NavLink className="link" link="contacts" text="Контакты" />
+          <NavLink className="link" link="/contacts" text="Контакты" />
           <NavLink className="link" link="/about" text="FAQ" />
         </NavMenu>
         <div className="contacts">
