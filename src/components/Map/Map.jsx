@@ -1,25 +1,15 @@
-import { Map as GoogleMap, GoogleApiWrapper, Marker } from "google-maps-react";
-
+import "./Map.scss";
 import React from "react";
 
 const Map = props => {
-  const mapStyles = {
-    maxWidth: "1600px",
-    height: "height: 100%"
-  };
-
   return (
-    <GoogleMap
-      google={props.google}
-      zoom={10}
-      style={mapStyles}
-      initialCenter={{ lat: 53.886583, lng: 27.536833 }}
-    >
-      <Marker position={{ lat: 53.886583, lng: 27.536833 }} />
-    </GoogleMap>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d9406.196410113967!2d27.5368331!3d53.8864436!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x177ca6edea6a922d!2sEffectiveSoft!5e0!3m2!1sen!2sby!4v1568103025868!5m2!1sen!2sby"
+      className="map"
+      frameborder="0"
+      style={{ border: "0" }}
+    ></iframe>
   );
 };
 
-export default GoogleApiWrapper({
-  apiKey: "AIzaSyAt9mDktcQUnIDHmphZepDm2uRDMBSWp3k"
-})(Map);
+export default Map;

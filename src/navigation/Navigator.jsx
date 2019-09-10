@@ -25,7 +25,7 @@ export default () => {
           path="/contacts"
           component={() => {
             return (
-              <div className="main-container position-relative h-100">
+              <div className="main-container position-relative h-100 mb-0">
                 <Map className="map" />;
               </div>
             );
