@@ -55,18 +55,19 @@ export default {
         value: "0.."
       }
     ],
-    filter: [
-      {
-        type: "filter",
-        property: "kind",
-        value: "house"
-      },
-      {
-        type: "filter",
-        property: "saleOffer.price",
-        value: "0.."
+
+    filters: {
+      area: "specification.area",
+      landArea: "landDetails.area",
+      price: "saleOffer.price",
+
+      kind: {
+        house: "house",
+        land: "land",
+        townhouse: "townhouse",
+        flat: "flat"
       }
-    ],
+    },
 
     pagination: { type: "pagination", property: "offset", value: 0 }
   }
