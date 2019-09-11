@@ -11,6 +11,7 @@ import Loader from "../../components/Loader/Loader";
 import Button from "../../components/Button/Button";
 import "./SalePage.scss";
 import { goBack } from "../../utils/goBack";
+import Badge from "../../components/Badge/Badge";
 
 class Sale extends Component {
   componentDidMount() {
@@ -36,30 +37,44 @@ class Sale extends Component {
       communication,
       landDetails: { area: landArea },
       saleOffer,
-      location: { localityName, mkadDistance }
+      location: { localityName, mkadDistance },
+      badge
     } = item;
-
+    debugger;
     const noContent = "-";
 
     return (
       <>
         {!isLoaded && <Loader />}
         <main className="sale main-container">
-          <div className="sale__content content-wrapper">
-            <h1 className="h1 my-5">
+          <div className="sale__content content-wrapper-small content-wrapper d-flex justify-content-start align-items-center">
+            <h1 className="h1 my-4 mr-4">
               <span>{`${propertyKind[kind] || noContent}, `}</span>
               <span>
                 {area} м<sup>2</sup>
               </span>
               <span>{`, в Посёлке ${localityName}, ${mkadDistance} `}</span>
             </h1>
+            {badge && (
+              <Badge
+                variant="danger"
+                className="badge_small"
+                style={{ backgroundColor: badge.color }}
+              >
+                {badge.title}
+              </Badge>
+            )}
           </div>
 
           <PhotoGallery item={item} className="img-gallery" />
-          <div className="sale__content  content-wrapper">
-            <div className="sale__content-inner">
+          <div className="sale__content content-wrapper-small content-wrapper">
+            <div className="sale__content-inner pt-4 pb-5">
               <div className="sale__short-info">
-                <CardPrice className="sale__price" saleOffer={saleOffer} />
+                <CardPrice
+                  className="sale__price h3 mb-3"
+                  saleOffer={saleOffer}
+                  tag="h1"
+                />
                 <ul className="sale__short-info-list">
                   <li className="sale__short-info-item">
                     <strong className="sale__short-info-number">
@@ -86,7 +101,7 @@ class Sale extends Component {
                 </ul>
               </div>
               <div className="sale__info">
-                <h3 className="h3 sale__info-title">Коммуникации</h3>
+                <h3 className="h3 mb-3">Коммуникации</h3>
                 {communication && (
                   <Communication communication={communication} />
                 )}

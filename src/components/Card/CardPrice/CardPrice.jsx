@@ -1,7 +1,7 @@
 import React from "react";
 
 const CardPrice = props => {
-  const { className, pathname } = props;
+  const { className, pathname, tag: Tag = "div" } = props;
   let offer = pathname === "/rent" ? props.rentOffer : props.saleOffer;
 
   const { price, currency } = offer || { price: "", currency: "" };
@@ -14,7 +14,7 @@ const CardPrice = props => {
     formatedPrice += " / месяц";
   }
 
-  return <div className={className}>{`${currency} ${formatedPrice}`}</div>;
+  return <Tag className={className}>{`${currency} ${formatedPrice}`}</Tag>;
 };
 
 CardPrice.defaultProps = {

@@ -1,9 +1,17 @@
+$small-content-max-width: 800px;
+$normal-content-width: 1170px;
+
 .fixed {
   position: fixed;
 }
 
 .content-wrapper {
-  max-width: 1170px;
+  max-width: $normal-content-width;
+  margin: 0 auto;
+}
+
+.content-wrapper-small {
+  max-width: $small-content-max-width;
   margin: 0 auto;
 }
 

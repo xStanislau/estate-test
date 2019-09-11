@@ -61,6 +61,35 @@ header {
     color: white;
   }
 
+  .call-back {
+    margin-left: 15px;
+    padding: 8px 20px;
+    background-color: #1dc659;
+    border-radius: 20px;
+    border: none;
+    color: white;
+
+    &:hover {
+      background-color: darken(#1dc659, 10%);
+      box-shadow: none;
+      outline: none;
+      border: none;
+    }
+  }
+
+  .call-back.btn.btn-primary {
+    &:active {
+      background-color: darken(#1dc659, 15%);
+      box-shadow: none;
+      outline: none;
+      border: none;
+    }
+
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+
   @media (max-width: 992px) {
     .navbar-collapse {
       background: white;
