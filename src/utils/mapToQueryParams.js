@@ -9,24 +9,24 @@ export const mapToQueryParams = values => {
   const queryParams = [];
   for (const key in filters) {
     if (filters.hasOwnProperty(key)) {
-      if (values.range[key]) {
+      if (values.range && values.range[key]) {
         const { start, end } = values.range[key];
-        queryParams.push(mapRangeToQueryParams(start, end, key));
+        queryParams.push(mapRangeToQueryParams(start, end, filters[key]));
       }
-
-      if (values.kind) {
-        let currentKinds = [];
-        Object.keys(values.kind).forEach(property => {
-          currentKinds.push(property);
-        });
-
-        queryParams.push({
-          type: "filter",
-          property: "kind",
-          value: currentKinds.join()
-        });
-      }
-      return queryParams;
     }
   }
+
+  if (values.kind) {
+    let currentKinds = [];
+    Object.keys(values.kind).forEach(property => {
+      currentKinds.push(property);
+    });
+
+    queryParams.push({
+      type: "filter",
+      property: "kind",
+      value: currentKinds.join()
+    });
+  }
+  return queryParams;
 };

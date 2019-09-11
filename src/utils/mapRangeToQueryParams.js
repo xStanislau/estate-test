@@ -2,6 +2,7 @@ export const mapRangeToQueryParams = (start, end, property) => {
   if (!end && !start) {
     return "";
   }
+
   const type = "filter";
   let value = "";
   let divider = "..";
