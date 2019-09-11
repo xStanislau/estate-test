@@ -65,9 +65,11 @@ export const withFixed = Component =>
     };
 
     resizeHandler = () => {
-      if (window.innerWidth > 991) {
-        this.toggleMenu(false);
-      }
+      const { isOpen } = this.state;
+      if (isOpen)
+        if (window.innerWidth > 991) {
+          this.toggleMenu(false);
+        }
     };
 
     render() {

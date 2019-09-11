@@ -5,6 +5,9 @@ $normal-content-width: 1170px;
   position: fixed;
 }
 
+.round {
+  border-radius: 20px;
+}
 .content-wrapper {
   max-width: $normal-content-width;
   margin: 0 auto;

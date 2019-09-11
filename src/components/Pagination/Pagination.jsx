@@ -10,9 +10,8 @@ const Pagination = ({ total: totalItems, fetch, pathname }) => {
   let offsetFromEnd = totalPages - 2;
   const offSetFromCurrentRight = 1;
   let offSetFromCurrentLeft = 2 + currentPageIndex;
-  let offsetStartIndex;
-
-  if (currentPageIndex > 2) {
+  let offsetStartIndex = 0;
+  if (currentPageIndex >= 2) {
     offsetStartIndex = currentPageIndex - offSetFromCurrentRight;
   }
 
@@ -24,7 +23,7 @@ const Pagination = ({ total: totalItems, fetch, pathname }) => {
     }
   }
 
-  const Items = new Array(totalPages).fill(0).map((page, index) => {
+  const Items = new Array(totalPages).fill(0).map((page, index, arr) => {
     return (
       <BsPagination.Item
         key={index}

@@ -55,11 +55,6 @@ export default function reducer(state = initialState, action) {
 export const fetch = options => async dispatch => {
   dispatch(fetchStart());
   try {
-    // const options = {
-    //   type: "pagination",
-    //   property: "offset",
-    //   value: offset
-    // };
     const response = await getData(options);
 
     dispatch(fetchSuccesseded(response));

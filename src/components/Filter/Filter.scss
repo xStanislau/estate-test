@@ -1,12 +1,14 @@
 .filter {
   min-height: 100%;
-  position: fixed;
+  position: absolute;
   top: 0;
   bottom: 0;
   max-width: 300px;
   width: 100%;
   background-color: white;
-  z-index: 3;
+  z-index: 10;
+  overflow: auto;
+  animation: slide 0.41s;
 
   &__submit-btn {
     background-color: #ff4c4e;
@@ -22,6 +24,7 @@
       border: none;
     }
   }
+
   &__submit-btn.btn.btn-primary {
     &:active {
       background-color: #ff4c4e;
@@ -55,6 +58,35 @@
     }
   }
 
-  //   &__group {
-  //   }
+  &__background {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+    background-color: rgba(0, 0, 0, 0.2);
+    animation: fade 0.6s;
+    transition: 0.25s;
+  }
+
+  @keyframes slide {
+    0% {
+      left: -500px;
+    }
+
+    100% {
+      left: 0;
+    }
+  }
+
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+
+    100% {
+      opacity: 1;
+    }
+  }
 }

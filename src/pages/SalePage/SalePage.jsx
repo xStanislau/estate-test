@@ -40,7 +40,6 @@ class Sale extends Component {
       location: { localityName, mkadDistance },
       badge
     } = item;
-    debugger;
     const noContent = "-";
 
     return (
