@@ -1,6 +1,6 @@
-import { getData } from "../../api/sales/sales";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
+const GET_FILTER = "app/filter/GET_Filter";
 
 // action creators
 export const toggleFilter = isOpen => ({
@@ -8,8 +8,14 @@ export const toggleFilter = isOpen => ({
   payload: isOpen
 });
 
+export const getCurrentFilters = filters => ({
+  type: GET_FILTER,
+  payload: filters
+});
+
 const initialState = {
-  isOpen: false
+  isOpen: false,
+  currentFilters: []
 };
 
 //reducer
@@ -19,6 +25,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isOpen: !state.isOpen
+      };
+
+    case GET_FILTER:
+      return {
+        ...state,
+        currentFilters: action.payload
       };
 
     default:

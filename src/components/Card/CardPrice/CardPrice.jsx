@@ -5,6 +5,7 @@ const CardPrice = props => {
   let offer = pathname === "/rent" ? props.rentOffer : props.saleOffer;
 
   const { price, currency } = offer || { price: "", currency: "" };
+
   let formatedPrice = Number(price).toLocaleString({
     style: "currency",
     currency: currency

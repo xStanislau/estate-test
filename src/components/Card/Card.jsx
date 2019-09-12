@@ -1,10 +1,7 @@
 import React from "react";
 import "./Card.scss";
 import propertyKind from "../../config/propertyKind";
-import {
-  LazyLoadComponent,
-  trackWindowScroll
-} from "react-lazy-load-image-component";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
 import Badge from "../Badge/Badge";
 import CardPrice from "./CardPrice/CardPrice";
 import CardImg from "./CardImg/CardImg";
@@ -24,7 +21,7 @@ const Card = ({
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
   return (
-    <LazyLoadComponent scrollPosition={scrollPosition}>
+    <LazyLoadComponent>
       <div className="card">
         <Link to={`/sales/${id}`}>
           <div className="card__img-wraper">
@@ -73,4 +70,4 @@ Card.defaultProps = {
   landArea: ""
 };
 
-export default trackWindowScroll(Card);
+export default Card;

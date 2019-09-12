@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import { fetch } from "../../redux/reducers/sales";
-import { toggleFilter } from "../../redux/reducers/filter";
-// import constants from "../../constants";
+import { toggleFilter, getCurrentFilters } from "../../redux/reducers/filter";
+import constants from "../../constants";
 import { connect } from "react-redux";
 import Checkbox from "../Checkbox/Checkbox";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
@@ -11,13 +11,35 @@ import "./Filter.scss";
 
 class Filter extends Component {
   onSubmit = values => {
-    const queryParams = mapToQueryParams(values);
+    let queryParams = mapToQueryParams(values);
 
-    const { fetch } = this.props;
+    const { fetch, getCurrentFilters, pathname } = this.props;
+
+    const { queryOptions } = constants;
+
+    queryParams = [
+      ...queryOptions[pathname.slice(1, pathname.length)],
+      ...queryParams
+    ];
 
     if (queryParams && queryParams.length > 0) {
       fetch(queryParams);
+      getCurrentFilters(queryParams);
     }
+  };
+
+  onClickSubmit = handleSubmit => {
+    let toggleFilter = this.toggleFilter(false);
+
+    return () => {
+      handleSubmit();
+      toggleFilter();
+    };
+  };
+
+  toggleFilter = isOpen => () => {
+    const { toggleFilter } = this.props;
+    toggleFilter(isOpen);
   };
 
   componentDidMount() {
@@ -37,7 +59,14 @@ class Filter extends Component {
           onSubmit={this.onSubmit}
           className={`filter`}
           render={({ handleSubmit, submitting, className }) => (
-            <form className={className} onSubmit={handleSubmit}>
+            <form className={className}>
+              <Button
+                className="close-btn"
+                variant="danger"
+                onClick={this.toggleFilter(false)}
+              >
+                <span>&times;</span>
+              </Button>
               <div className="filter__inner">
                 <h4 className="h5 mb-3">Тип Объекта</h4>
                 <div className="filter__group mb-4">
@@ -80,12 +109,14 @@ class Filter extends Component {
                     type="text"
                     component="input"
                     id="landAreaStart"
+                    placeholder="от"
                   />
                   <Field
                     name="range.landArea.end"
                     type="text"
                     component="input"
                     id="landAreaEnd"
+                    placeholder="до"
                   />
                   <label htmlFor="landAreaStart">сот.</label>
                 </div>
@@ -97,12 +128,14 @@ class Filter extends Component {
                     type="text"
                     component="input"
                     id="areaStart"
+                    placeholder="от"
                   />
                   <Field
                     name="range.area.end"
                     type="text"
                     component="input"
                     id="areaEnd"
+                    placeholder="до"
                   />
                   <label htmlFor="areaStart">
                     м<sup>2</sup>
@@ -112,10 +145,7 @@ class Filter extends Component {
                   <Button
                     type="submit"
                     className="filter__submit-btn"
-                    onClick={() => {
-                      handleSubmit();
-                      this.props.toggleFilter(false);
-                    }}
+                    onClick={this.onClickSubmit(handleSubmit)}
                     disabled={submitting}
                   >
                     Показать
@@ -127,9 +157,7 @@ class Filter extends Component {
         />
         <div
           className="filter__background"
-          onClick={() => {
-            this.props.toggleFilter(false);
-          }}
+          onClick={this.toggleFilter(false)}
         ></div>
       </>
     );
@@ -138,5 +166,5 @@ class Filter extends Component {
 
 export default connect(
   null,
-  { fetch, toggleFilter }
+  { fetch, toggleFilter, getCurrentFilters }
 )(Filter);

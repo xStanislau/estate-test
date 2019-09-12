@@ -12,6 +12,7 @@ import Button from "../../components/Button/Button";
 import "./SalePage.scss";
 import { goBack } from "../../utils/goBack";
 import Badge from "../../components/Badge/Badge";
+import Size from "./Size/Size";
 
 class Sale extends Component {
   componentDidMount() {
@@ -42,6 +43,10 @@ class Sale extends Component {
     } = item;
     const noContent = "-";
 
+    const formatDistance = (mkadDistance, units) => {
+      return `${mkadDistance} ${units}`;
+    };
+
     return (
       <>
         {!isLoaded && <Loader />}
@@ -49,10 +54,11 @@ class Sale extends Component {
           <div className="sale__content content-wrapper-small content-wrapper d-flex justify-content-start align-items-center">
             <h1 className="h1 my-4 mr-4">
               <span>{`${propertyKind[kind] || noContent}, `}</span>
-              <span>
-                {area} м<sup>2</sup>
-              </span>
-              <span>{`, в Посёлке ${localityName}, ${mkadDistance} `}</span>
+              <Size kind={propertyKind[kind]} area={area} landArea={landArea} />
+              <span>{`, в Посёлке ${localityName}, ${formatDistance(
+                mkadDistance,
+                "км."
+              )}`}</span>
             </h1>
             {badge && (
               <Badge
