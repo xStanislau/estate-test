@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import { fetch } from "../../redux/reducers/sales";
-import { toggleFilter, getCurrentFilters } from "../../redux/reducers/filter";
+import {
+  toggleFilter,
+  getCurrentFilters,
+  getFilterFormValues
+} from "../../redux/reducers/filter";
 import constants from "../../constants";
 import { connect } from "react-redux";
 import Checkbox from "../Checkbox/Checkbox";
@@ -13,7 +17,12 @@ class Filter extends Component {
   onSubmit = values => {
     let queryParams = mapToQueryParams(values);
 
-    const { fetch, getCurrentFilters, pathname } = this.props;
+    const {
+      fetch,
+      getCurrentFilters,
+      getFilterFormValues,
+      pathname
+    } = this.props;
 
     const { queryOptions } = constants;
 
@@ -25,6 +34,7 @@ class Filter extends Component {
     if (queryParams && queryParams.length > 0) {
       fetch(queryParams);
       getCurrentFilters(queryParams);
+      getFilterFormValues(values);
     }
   };
 
@@ -53,11 +63,14 @@ class Filter extends Component {
   }
 
   render() {
+    const { values } = this.props;
+
     return (
       <>
         <Form
           onSubmit={this.onSubmit}
           className={`filter`}
+          initialValues={values && values}
           render={({ handleSubmit, submitting, className }) => (
             <form className={className}>
               <Button
@@ -164,7 +177,13 @@ class Filter extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    values: state.filter.values
+  };
+};
+
 export default connect(
-  null,
-  { fetch, toggleFilter, getCurrentFilters }
+  mapStateToProps,
+  { fetch, toggleFilter, getCurrentFilters, getFilterFormValues }
 )(Filter);

@@ -7,6 +7,8 @@ import CardGrid from "../../components/CardGrid/CardGrid";
 import Filter from "../../components/Filter/Filter";
 import Button from "../../components/Button/Button";
 import constants from "../../constants/index";
+import FilterBar from "../../components/FilterBar/FilterBar";
+import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 
 const Rent = ({
   items,
@@ -34,15 +36,19 @@ const Rent = ({
       {filterIsOpen && <Filter pathname={pathname} />}
       <main className="main-container">
         <div className="content-wrapper px-3 mt-4 mb-4 ">
-          <Button
-            className="my-4 round "
-            variant="danger"
-            onClick={() => {
-              toggleFilter(true);
-            }}
-          >
-            Открыть фильтр
-          </Button>
+          <FilterBar>
+            <Button
+              className="my-4 round "
+              variant="danger"
+              onClick={() => {
+                toggleFilter(true);
+              }}
+            >
+              Открыть фильтр
+            </Button>
+            <FilterBadgeGroup></FilterBadgeGroup>
+          </FilterBar>
+
           <h1 className="h1 page-title">Аренда недвижимости</h1>
         </div>
         <CardGrid pathname={pathname} isLoaded={isLoaded} items={items} />

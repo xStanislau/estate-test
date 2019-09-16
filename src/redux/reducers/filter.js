@@ -1,6 +1,10 @@
+import { isObject } from "util";
+import constants from "../../constants/index";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
-const GET_FILTER = "app/filter/GET_Filter";
+const GET_FILTER = "app/filter/GET_FILTER";
+const GET_FILTER_FORM_VALUES = "app/filter/GET_FILTER_FORM_VALUES";
+const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
 
 // action creators
 export const toggleFilter = isOpen => ({
@@ -11,6 +15,16 @@ export const toggleFilter = isOpen => ({
 export const getCurrentFilters = filters => ({
   type: GET_FILTER,
   payload: filters
+});
+
+export const getFilterFormValues = values => ({
+  type: GET_FILTER_FORM_VALUES,
+  payload: values
+});
+
+export const deleteFilterParametr = values => ({
+  type: DELETE_FILTER_PARAMETR,
+  payload: values
 });
 
 const initialState = {
@@ -31,6 +45,55 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         currentFilters: action.payload
+      };
+
+    case GET_FILTER_FORM_VALUES:
+      return {
+        ...state,
+        values: action.payload
+      };
+
+    case DELETE_FILTER_PARAMETR:
+      const { values, currentFilters } = state;
+
+      debugger;
+      const { key: prop, value } = action.payload;
+      const {
+        queryOptions: { filters }
+      } = constants;
+
+      const mappedArray = currentFilters.map((element, index, arr) => {
+        if (prop === "kind") {
+          if (element.property === prop) {
+            const arrayOfKinds = element.value.split(",");
+            const indexToDelete = arrayOfKinds.indexOf(value);
+            element.value = arrayOfKinds.splice(indexToDelete, 1).join(",");
+            // return element;
+          }
+        } else if (filters[value] === element.property) {
+          arr.splice(index, 1);
+        }
+      });
+
+      let newFilters = mappedArray.filter(element => {
+        return element;
+      });
+
+      debugger;
+      if (values[prop] && isObject(values[prop])) {
+        for (const key in values[prop]) {
+          if (values[prop].hasOwnProperty(key)) {
+            if (key === value) {
+              delete values[prop][key];
+            }
+          }
+        }
+      }
+      const newValues = { ...values };
+      return {
+        ...state,
+        values: newValues,
+        currentFilters: newFilters
       };
 
     default:

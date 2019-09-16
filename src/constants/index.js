@@ -17,7 +17,14 @@ export default {
     baseUrl: "https://api.jqestate.ru",
     baseImgUrl: "https://images.jqestate.ru"
   },
-
+  units: {
+    area: {
+      name: "м2"
+    },
+    landArea: {
+      name: "сот."
+    }
+  },
   queryOptions: {
     rent: [
       {
@@ -59,7 +66,7 @@ export default {
     filters: {
       area: "specification.area",
       landArea: "landDetails.area",
-      price: "saleOffer.price",
+      // price: "saleOffer.price",
 
       kind: {
         house: "house",

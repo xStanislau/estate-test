@@ -23,7 +23,7 @@ export const withToggle = Component =>
     };
 
     render() {
-      const { isOpen, isFixed } = this.state;
+      const { isOpend } = this.state;
       const { toggleMenu, setRef } = this;
 
       const body = document.querySelector("body");
@@ -35,7 +35,6 @@ export const withToggle = Component =>
       }
 
       const extendedProps = {
-        isFixed,
         isOpen,
         toggleMenu,
         setRef,
