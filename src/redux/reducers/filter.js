@@ -3,6 +3,7 @@ import constants from "../../constants/index";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
 const GET_FILTER = "app/filter/GET_FILTER";
+const RESET_FILTER = "app/filter/RESET_FILTER";
 const GET_FILTER_FORM_VALUES = "app/filter/GET_FILTER_FORM_VALUES";
 const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
 
@@ -10,6 +11,10 @@ const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
 export const toggleFilter = isOpen => ({
   type: TOGGLE_FILTER,
   payload: isOpen
+});
+
+export const resetFilter = () => ({
+  type: RESET_FILTER
 });
 
 export const getCurrentFilters = filters => ({
@@ -51,6 +56,13 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         values: action.payload
+      };
+
+    case RESET_FILTER:
+      return {
+        ...state,
+        currentFilters: {},
+        values: []
       };
 
     case DELETE_FILTER_PARAMETR:

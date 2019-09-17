@@ -32,7 +32,8 @@ const Pagination = ({ total: totalItems, fetch, pathname, filterParams }) => {
             queryOptions: { pagination },
             queryOptions
           } = constants;
-          const currentItemsOffset = index * 32;
+
+          const currentItemsOffset = index * itemPerPage;
 
           let queryParams = [
             { ...pagination, value: currentItemsOffset },

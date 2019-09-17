@@ -7,6 +7,8 @@ import CardGrid from "../../components/CardGrid/CardGrid";
 import Filter from "../../components/Filter/Filter";
 import Button from "../../components/Button/Button";
 import constants from "../../constants";
+import FilterBar from "../../components/FilterBar/FilterBar";
+import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 
 const Sales = ({
   items,
@@ -27,22 +29,25 @@ const Sales = ({
     }
 
     fetch(queryParams);
-  }, [fetch, pathname]);
+  }, [fetch, pathname, filterParams]);
   return (
     <>
       {filterIsOpen && <Filter pathname={pathname} />}
       <main className="main-container">
         <div className="content-wrapper px-3 mt-4 mb-4 ">
-          <Button
-            className="my-4 round "
-            variant="danger"
-            onClick={() => {
-              toggleFilter(true);
-            }}
-          >
-            Открыть фильтр
-          </Button>
-          <h1 className="h1 page-title">Посёлкиь</h1>
+          <FilterBar>
+            <Button
+              className="round "
+              variant="danger"
+              onClick={() => {
+                toggleFilter(true);
+              }}
+            >
+              Открыть фильтр
+            </Button>
+            <FilterBadgeGroup />
+          </FilterBar>
+          <h1 className="h1 page-title">Посёлки</h1>
         </div>
         <>
           <CardGrid items={items} isLoaded={isLoaded} />

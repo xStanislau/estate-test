@@ -1,0 +1,25 @@
+.filter-bar {
+  // background-color: rgba(255, 255, 255, 0.5);
+  width: 100%;
+  z-index: 5;
+  .btn {
+    margin-bottom: 10px;
+  }
+  .btn {
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+
+.filter-bar.fixed {
+  top: 81px;
+  left: 0;
+  padding-right: 35px;
+  padding-left: 35px;
+  background-color: #fff;
+}
+
+.placeholder {
+  height: 100px;
+}

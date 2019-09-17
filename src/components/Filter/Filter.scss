@@ -1,13 +1,13 @@
 .filter {
   min-height: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   top: 0;
   bottom: 0;
   max-width: 300px;
   width: 100%;
   background-color: white;
-  z-index: 10;
+  z-index: 11;
   overflow: auto;
   animation: slide 0.41s;
 
@@ -59,6 +59,7 @@
 
     input {
       height: 30px;
+      padding-left: 10px;
       width: 50%;
       border: 1px solid #e8e8e8;
       &:first-child {
@@ -72,12 +73,12 @@
   }
 
   &__background {
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 5;
+    z-index: 10;
     background-color: rgba(0, 0, 0, 0.2);
     animation: fade 0.6s;
   }

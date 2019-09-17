@@ -22,14 +22,12 @@ const Rent = ({
 }) => {
   useEffect(() => {
     const { queryOptions } = constants;
-
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
-
     fetch(queryParams);
-  }, [fetch, pathname]);
+  }, [fetch, pathname, filterParams]);
 
   return (
     <>
@@ -38,7 +36,7 @@ const Rent = ({
         <div className="content-wrapper px-3 mt-4 mb-4 ">
           <FilterBar>
             <Button
-              className="my-4 round "
+              className="round "
               variant="danger"
               onClick={() => {
                 toggleFilter(true);
@@ -46,7 +44,7 @@ const Rent = ({
             >
               Открыть фильтр
             </Button>
-            <FilterBadgeGroup></FilterBadgeGroup>
+            <FilterBadgeGroup />
           </FilterBar>
 
           <h1 className="h1 page-title">Аренда недвижимости</h1>

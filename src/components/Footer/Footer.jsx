@@ -8,7 +8,7 @@ import "./Footer.scss";
 const Footer = () => {
   return (
     <footer>
-      <div className="inner">
+      <div className="inner px-35">
         <NavLink className="logo" link="/" text="Logo" />
         <NavMenu className="menu">
           <NavLink className="link" link="/about" text="О компании" />

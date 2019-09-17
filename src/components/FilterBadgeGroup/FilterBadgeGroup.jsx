@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import constants from "../../constants/";
 import propertyKind from "../../config/propertyKind";
-import { deleteFilterParametr } from "../../redux/reducers/filter";
+import { deleteFilterParametr, resetFilter } from "../../redux/reducers/filter";
 import { connect } from "react-redux";
-import Button from "../Button/Button";
+import FilterBadge from "../FilterBadge/FilterBadge";
+import "./FilterBadgeGroup.scss";
 
 class FilterBadgeGroup extends Component {
   deleteParametr = (key, value) => () => {
@@ -11,10 +12,15 @@ class FilterBadgeGroup extends Component {
     deleteFilterParametr({ key, value });
   };
 
+  resetFilter = () => {
+    const { resetFilter } = this.props;
+    resetFilter();
+  };
+
   render() {
     const { values } = this.props;
+    const { resetFilter } = this;
     let valuesKeys = [];
-
     if (values) {
       valuesKeys = Object.keys(values);
     }
@@ -23,28 +29,25 @@ class FilterBadgeGroup extends Component {
       const { units } = constants;
 
       let filterKinds = [];
-      if (values[value] && value == "kind") {
+      if (values[value] && value === "kind") {
         const propertyKinds = Object.keys(values[value]);
         filterKinds = propertyKinds.map(kind => {
           return (
-            <Button key={kind}>
-              {propertyKind[kind]}
-
-              <span
-                className="close"
-                onClick={this.deleteParametr("kind", kind)}
-              >
-                &times;
-              </span>
-            </Button>
+            <FilterBadge
+              key={kind}
+              text={propertyKind[kind]}
+              className="round filter-badge"
+              variant="light"
+              onClick={this.deleteParametr("kind", kind)}
+              withCloseIcon
+            />
           );
         });
       }
 
       let filterRange = [];
-      if (values[value] && value == "range") {
+      if (values[value] && value === "range") {
         let range = values[value];
-
         for (const key in range) {
           let text;
           if (range.hasOwnProperty(key)) {
@@ -57,28 +60,38 @@ class FilterBadgeGroup extends Component {
             } else {
               text = `до ${currentRange.end} ${units[key].name}`;
             }
-
-            const element = (
-              <Button key={key}>
-                {text}
-                <span
-                  className="close"
-                  onClick={this.deleteParametr("range", key)}
-                >
-                  &times;
-                </span>
-              </Button>
+            filterRange.push(
+              <FilterBadge
+                key={key}
+                text={text}
+                className="round filter-badge"
+                variant="light"
+                close={this.deleteParametr("range", key)}
+                withCloseIcon
+              />
             );
-
-            filterRange.push(element);
           }
         }
       }
       return [...filterKinds, ...filterRange];
     });
 
+    let lastBadge;
+    if (Badges.length > 0) {
+      lastBadge = (
+        <FilterBadge
+          key="Сбросить все"
+          text="Сбросить все"
+          className="round filter-badge"
+          variant="light"
+          onClick={resetFilter}
+        />
+      );
+    }
+
     const [first = [], second = []] = Badges;
-    return <>{values && [...first, ...second]}</>;
+
+    return <>{values && [...first, ...second, lastBadge]}</>;
   }
 }
 
@@ -90,5 +103,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { deleteFilterParametr }
+  { deleteFilterParametr, resetFilter }
 )(FilterBadgeGroup);
