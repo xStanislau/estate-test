@@ -56,7 +56,6 @@ export default function reducer(state = initialState, action) {
     case DELETE_FILTER_PARAMETR:
       const { values, currentFilters } = state;
 
-      debugger;
       const { key: prop, value } = action.payload;
       const {
         queryOptions: { filters }
@@ -79,7 +78,6 @@ export default function reducer(state = initialState, action) {
         return element;
       });
 
-      debugger;
       if (values[prop] && isObject(values[prop])) {
         for (const key in values[prop]) {
           if (values[prop].hasOwnProperty(key)) {

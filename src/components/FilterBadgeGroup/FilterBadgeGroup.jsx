@@ -12,7 +12,6 @@ class FilterBadgeGroup extends Component {
   };
 
   render() {
-    debugger;
     const { values } = this.props;
     let valuesKeys = [];
 
