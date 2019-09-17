@@ -51,7 +51,7 @@ class Sale extends Component {
       <>
         {!isLoaded && <Loader />}
         <main className="sale main-container">
-          <div className="sale__content content-wrapper-small content-wrapper d-flex justify-content-start align-items-center">
+          <div className="sale__content content-wrapper-small content-wrapper d-flex justify-content-start align-items-center px-35">
             <h1 className="h1 my-4 mr-4">
               <span>{`${propertyKind[kind] || noContent}, `}</span>
               <Size kind={propertyKind[kind]} area={area} landArea={landArea} />
@@ -72,7 +72,7 @@ class Sale extends Component {
           </div>
 
           <PhotoGallery item={item} className="img-gallery" />
-          <div className="sale__content content-wrapper-small content-wrapper">
+          <div className="sale__content content-wrapper-small content-wrapper px-35">
             <div className="sale__content-inner pt-4 pb-5">
               <div className="sale__short-info">
                 <CardPrice
@@ -148,8 +148,6 @@ const mapStateToProps = state => {
   let item;
   if (items) {
     item = items.filter(element => {
-      if (element.id === state.sale.id) {
-      }
       return element.id.toString() === state.sale.id;
     })[0];
   } else {
