@@ -1,8 +1,4 @@
 .sale {
-  .img-gallery {
-    margin-bottom: 20px;
-  }
-
   &__content-inner {
     display: flex;
   }
@@ -52,7 +48,7 @@
     color: #7c7c7c;
   }
 
-  @media (max-width: 576px) {
+  @media (max-width: 768px) {
     &__content-inner {
       display: flex;
       flex-direction: column;

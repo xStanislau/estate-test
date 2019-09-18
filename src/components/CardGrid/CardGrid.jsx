@@ -5,9 +5,9 @@ import Card from "../Card/Card";
 import "./CardGrid.scss";
 import Loader from "../Loader/Loader";
 
-const CardGrid = ({ items, className, isLoaded, ...rest }) => {
+const CardGrid = ({ items, className = "", isLoaded, ...rest }) => {
   return (
-    <Container fluid className={`${className || ""} grid`}>
+    <Container fluid className={`${className} grid`}>
       {isLoaded ? (
         <Row className="grid__row">
           {items &&

@@ -1,5 +1,6 @@
 import { isObject } from "util";
 import constants from "../../constants/index";
+import { isEmpty } from "../../utils/isEmpty";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
 const GET_FILTER = "app/filter/GET_FILTER";
@@ -34,7 +35,8 @@ export const deleteFilterParametr = values => ({
 
 const initialState = {
   isOpen: false,
-  currentFilters: []
+  currentFilters: [],
+  values: {}
 };
 
 //reducer
@@ -66,31 +68,14 @@ export default function reducer(state = initialState, action) {
       };
 
     case DELETE_FILTER_PARAMETR:
-      const { values, currentFilters } = state;
+      const { values } = state;
 
       const { key: prop, value } = action.payload;
-      const {
-        queryOptions: { filters }
-      } = constants;
-
-      const mappedArray = currentFilters.map((element, index, arr) => {
-        if (prop === "kind") {
-          if (element.property === prop) {
-            const arrayOfKinds = element.value.split(",");
-            const indexToDelete = arrayOfKinds.indexOf(value);
-            element.value = arrayOfKinds.splice(indexToDelete, 1).join(",");
-            // return element;
-          }
-        } else if (filters[value] === element.property) {
-          arr.splice(index, 1);
-        }
-      });
-
-      let newFilters = mappedArray.filter(element => {
-        return element;
-      });
-
-      if (values[prop] && isObject(values[prop])) {
+      const totalValues = Object.keys(values[prop]).length;
+      debugger;
+      if (totalValues === 1) {
+        delete values[prop];
+      } else if (values[prop] && isObject(values[prop])) {
         for (const key in values[prop]) {
           if (values[prop].hasOwnProperty(key)) {
             if (key === value) {
@@ -102,8 +87,7 @@ export default function reducer(state = initialState, action) {
       const newValues = { ...values };
       return {
         ...state,
-        values: newValues,
-        currentFilters: newFilters
+        values: newValues
       };
 
     default:

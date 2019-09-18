@@ -53,7 +53,7 @@ class PhotoGallery extends Component {
         });
 
     return (
-      <dlv className={className}>
+      <div className={className}>
         <ImageGalleryPreview className="img-gallery-preview">
           <PhotoBadge text="Фото" number={photos && photos.length} />
           <PreviewImgList
@@ -69,7 +69,7 @@ class PhotoGallery extends Component {
           onClose={this.toggleGallery}
           activePhotoIndex={currentPhotoId}
         />
-      </dlv>
+      </div>
     );
   }
 }

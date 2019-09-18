@@ -13,6 +13,11 @@ header {
     min-width: 320px;
     padding: 20px 35px;
     margin: 0 auto;
+
+    .navbar-brand,
+    .navbar-toggler {
+      z-index: 2;
+    }
   }
 
   .nav-link {
@@ -101,7 +106,6 @@ header {
       left: 0px;
       bottom: 0px;
       right: 0px;
-      z-index: -1;
       animation-name: fadeInTop;
       animation-timing-function: ease-in-out;
       animation-duration: 0.43s;
@@ -123,6 +127,7 @@ header {
     .nav-link {
       margin-right: 0;
       margin-bottom: 15px;
+
       :last-child {
         margin-right: 0;
       }
@@ -151,6 +156,14 @@ header {
 .header.fixed {
   .inner {
     z-index: -1;
+  }
+}
+@media (max-width: 768px) {
+  header {
+    .inner {
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
   }
 }
 

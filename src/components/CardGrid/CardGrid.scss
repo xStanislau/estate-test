@@ -50,6 +50,7 @@ $border-style: 1px solid #ebebeb;
       margin-left: 0;
       margin-right: 0;
     }
+
     &__item {
       &:nth-child(2n) {
         border-right: $border-style;

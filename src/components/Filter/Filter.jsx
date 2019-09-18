@@ -17,12 +17,7 @@ class Filter extends Component {
   onSubmit = values => {
     let queryParams = mapToQueryParams(values);
 
-    const {
-      fetch,
-      getCurrentFilters,
-      getFilterFormValues,
-      pathname
-    } = this.props;
+    const { getCurrentFilters, getFilterFormValues, pathname } = this.props;
 
     const { queryOptions } = constants;
 
@@ -32,7 +27,6 @@ class Filter extends Component {
     ];
 
     if (queryParams && queryParams.length > 0) {
-      fetch(queryParams);
       getCurrentFilters(queryParams);
       getFilterFormValues(values);
     }
@@ -64,7 +58,7 @@ class Filter extends Component {
 
   render() {
     const { values } = this.props;
-
+    debugger;
     return (
       <>
         <Form
@@ -156,7 +150,6 @@ class Filter extends Component {
                 </div>
                 <div className="buttons">
                   <Button
-                    type="submit"
                     className="filter__submit-btn"
                     onClick={this.onClickSubmit(handleSubmit)}
                     disabled={submitting}

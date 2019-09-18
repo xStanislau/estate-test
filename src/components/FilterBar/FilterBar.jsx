@@ -24,9 +24,10 @@ class FilterBar extends Component {
   onScroll = () => {
     const { ref, toggleFixed } = this;
     const { isFixed } = this.state;
-    if (ref && ref.current.offsetTop <= window.pageYOffset && !isFixed) {
+    const { offsetTop } = ref.current;
+    if (1 < window.pageYOffset) {
       toggleFixed(true);
-    } else if (ref.current.offsetTop > window.pageYOffset && isFixed) {
+    } else if (offsetTop > window.pageYOffset && isFixed) {
       toggleFixed(false);
     }
   };
@@ -40,14 +41,19 @@ class FilterBar extends Component {
   render() {
     const { children } = this.props;
     const { isFixed } = this.state;
-
     const fixed = isFixed ? "fixed" : "";
+
     return (
       <>
-        <div className={`filter-bar py-4 ${fixed}`} ref={this.ref}>
-          {children}
+        {/* {isFixed && (
+          <div
+            className="placeholder"
+            style={{ paddingTop: this.ref.current.clientHeight - 24 }}
+          ></div>
+        )} */}
+        <div className={`filter-bar ${fixed}`} ref={this.ref}>
+          <div className="filter-bar__inner">{children}</div>
         </div>
-        {isFixed && <div className="placeholder"></div>}
       </>
     );
   }

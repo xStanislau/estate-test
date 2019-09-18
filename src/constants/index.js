@@ -13,6 +13,7 @@ export default {
   },
 
   warning: "Нет объектов",
+
   api: {
     baseUrl: "https://api.jqestate.ru",
     baseImgUrl: "https://images.jqestate.ru"
@@ -66,7 +67,6 @@ export default {
     filters: {
       area: "specification.area",
       landArea: "landDetails.area",
-      // price: "saleOffer.price",
 
       kind: {
         house: "house",

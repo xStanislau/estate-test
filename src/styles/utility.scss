@@ -32,6 +32,12 @@ $normal-content-width: 1170px;
   flex: 1 0 auto;
 }
 
-.fixed + .main-container {
+.fixed ~ .main-container {
   padding-top: 81px;
+}
+
+@media (max-width: 786px) {
+  .fixed ~ .main-container {
+    padding-top: 55px;
+  }
 }

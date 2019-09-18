@@ -1,10 +1,13 @@
 .filter-bar {
-  // background-color: rgba(255, 255, 255, 0.5);
+  top: 0;
   width: 100%;
-  z-index: 5;
+  z-index: 2;
+  padding: 24px 0;
+
   .btn {
     margin-bottom: 10px;
   }
+
   .btn {
     &:first-child {
       margin-right: 10px;
@@ -13,13 +16,39 @@
 }
 
 .filter-bar.fixed {
-  top: 81px;
+  // top: 80px;
   left: 0;
-  padding-right: 35px;
-  padding-left: 35px;
+  right: 0;
+  width: 100%;
+  padding-top: 120px;
   background-color: #fff;
+  border-bottom: 1px solid #ebebeb;
+
+  .filter-bar__inner {
+    padding: 0 16px;
+    max-width: 1170px;
+    margin: 0 auto;
+  }
 }
 
-.placeholder {
-  height: 100px;
+.content-wrapper {
+  .filter-bar.fixed + .page-title {
+    padding-top: 96px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-bar {
+    padding: 0px 0;
+  }
+
+  .filter-bar.fixed {
+    padding-top: 79px;
+  }
+
+  .content-wrapper {
+    .filter-bar.fixed + .page-title {
+      padding-top: 48px;
+    }
+  }
 }

@@ -9,6 +9,7 @@ import Button from "../../components/Button/Button";
 import constants from "../../constants/index";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
+import { mapToQueryParams } from "../../utils/mapToQueryParams";
 
 const Rent = ({
   items,
@@ -18,8 +19,9 @@ const Rent = ({
   location: { pathname },
   toggleFilter,
   filterIsOpen,
-  filterParams
+  values
 }) => {
+  let filterParams = mapToQueryParams(values);
   useEffect(() => {
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
@@ -27,7 +29,7 @@ const Rent = ({
       queryParams = [...queryParams, ...filterParams];
     }
     fetch(queryParams);
-  }, [fetch, pathname, filterParams]);
+  }, [fetch, pathname, values]);
 
   return (
     <>
@@ -71,7 +73,7 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
-    filterParams: state.filter.currentFilters
+    values: state.filter.values
   };
 };
 
