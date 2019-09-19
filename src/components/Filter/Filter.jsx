@@ -16,10 +16,9 @@ import "./Filter.scss";
 class Filter extends Component {
   onSubmit = values => {
     let queryParams = mapToQueryParams(values);
-
     const { getCurrentFilters, getFilterFormValues, pathname } = this.props;
-
     const { queryOptions } = constants;
+    const { closeFilter } = this;
 
     queryParams = [
       ...queryOptions[pathname.slice(1, pathname.length)],
@@ -30,20 +29,12 @@ class Filter extends Component {
       getCurrentFilters(queryParams);
       getFilterFormValues(values);
     }
+    closeFilter();
   };
 
-  onClickSubmit = handleSubmit => {
-    let toggleFilter = this.toggleFilter(false);
-
-    return () => {
-      handleSubmit();
-      toggleFilter();
-    };
-  };
-
-  toggleFilter = isOpen => () => {
+  closeFilter = () => {
     const { toggleFilter } = this.props;
-    toggleFilter(isOpen);
+    toggleFilter();
   };
 
   componentDidMount() {
@@ -58,7 +49,6 @@ class Filter extends Component {
 
   render() {
     const { values } = this.props;
-    debugger;
     return (
       <>
         <Form
@@ -66,11 +56,11 @@ class Filter extends Component {
           className={`filter`}
           initialValues={values && values}
           render={({ handleSubmit, submitting, className }) => (
-            <form className={className}>
+            <form className={className} onSubmit={handleSubmit}>
               <Button
                 className="close-btn"
                 variant="danger"
-                onClick={this.toggleFilter(false)}
+                onClick={this.closeFilter}
               >
                 <span>&times;</span>
               </Button>
@@ -150,8 +140,8 @@ class Filter extends Component {
                 </div>
                 <div className="buttons">
                   <Button
+                    type="submit"
                     className="filter__submit-btn"
-                    onClick={this.onClickSubmit(handleSubmit)}
                     disabled={submitting}
                   >
                     Показать
@@ -161,10 +151,7 @@ class Filter extends Component {
             </form>
           )}
         />
-        <div
-          className="filter__background"
-          onClick={this.toggleFilter(false)}
-        ></div>
+        <div className="filter__background" onClick={this.closeFilter}></div>
       </>
     );
   }
