@@ -1,6 +1,4 @@
 import { isObject } from "util";
-import constants from "../../constants/index";
-import { isEmpty } from "../../utils/isEmpty";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
 const GET_FILTER = "app/filter/GET_FILTER";
@@ -72,7 +70,6 @@ export default function reducer(state = initialState, action) {
 
       const { key: prop, value } = action.payload;
       const totalValues = Object.keys(values[prop]).length;
-      debugger;
       if (totalValues === 1) {
         delete values[prop];
       } else if (values[prop] && isObject(values[prop])) {

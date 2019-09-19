@@ -1,11 +1,11 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
 import HeaderMenu from "../HeaderMenu/HeaderMenu";
-import "./Header.scss";
 import constants from "../../constants/";
 import Button from "../Button/Button";
 import withFixed from "../withFixed/withFixed";
-import CloseIcon from "../Icons/CloseIcon";
+import Burger from "../Icons/Burger";
+import "./Header.scss";
 
 const Header = props => {
   const { isOpen, toggleMenu, setRef } = props;
@@ -23,7 +23,7 @@ const Header = props => {
             toggleMenu(!isOpen);
           }}
         >
-          <CloseIcon isOpen={isOpen} />
+          <Burger isOpen={isOpen} />
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav" timeout={0}>
           <HeaderMenu items={menu.items} />
