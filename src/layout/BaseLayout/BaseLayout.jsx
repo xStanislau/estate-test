@@ -5,7 +5,7 @@ import Footer from "../../components/Footer/Footer";
 const BaseLayout = ({ children }) => {
   return (
     <>
-      <Header offsetTop={81} />
+      <Header />
       {children}
       <Footer />
     </>

@@ -8,30 +8,27 @@ import Loader from "../Loader/Loader";
 const CardGrid = ({ items, className = "", isLoaded, ...rest }) => {
   return (
     <Container fluid className={`${className} grid`}>
-      {isLoaded ? (
-        <Row className="grid__row">
-          {items &&
-            items.map(item => {
-              let {
-                images,
-                kind,
-                location: { localityName }
-              } = item;
+      {!isLoaded && <Loader />}
+      <Row className="grid__row">
+        {items &&
+          items.map(item => {
+            let {
+              images,
+              kind,
+              location: { localityName }
+            } = item;
 
-              if ((!images.length && !kind) || !localityName) {
-                return null;
-              }
+            if ((!images.length && !kind) || !localityName) {
+              return null;
+            }
 
-              return (
-                <GridItem key={item.id} className="grid__item">
-                  <Card {...item} {...rest} />
-                </GridItem>
-              );
-            })}
-        </Row>
-      ) : (
-        <Loader />
-      )}
+            return (
+              <GridItem key={item.id} className="grid__item">
+                <Card {...item} {...rest} />
+              </GridItem>
+            );
+          })}
+      </Row>
     </Container>
   );
 };

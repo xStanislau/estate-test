@@ -11,9 +11,7 @@ export default {
     phoneNumber: "+7(495)432-45-45",
     buttonText: "Обратный звонок"
   },
-
   warning: "Нет объектов",
-
   api: {
     baseUrl: "https://api.jqestate.ru",
     baseImgUrl: "https://images.jqestate.ru"
@@ -63,11 +61,9 @@ export default {
         value: "0.."
       }
     ],
-
     filters: {
       area: "specification.area",
       landArea: "landDetails.area",
-
       kind: {
         house: "house",
         land: "land",
@@ -75,7 +71,6 @@ export default {
         flat: "flat"
       }
     },
-
     pagination: { type: "pagination", property: "offset", value: 0 }
   }
 };

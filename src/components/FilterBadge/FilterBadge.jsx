@@ -1,14 +1,7 @@
 import React from "react";
 import Button from "../Button/Button";
 
-const FilterBadge = ({
-  className,
-  text,
-  onClick,
-  close,
-  withCloseIcon,
-  ...rest
-}) => {
+const FilterBadge = ({ className, text, onClick, close, withCloseIcon }) => {
   return (
     <Button className={className} onClick={onClick} variant="light">
       {text}
