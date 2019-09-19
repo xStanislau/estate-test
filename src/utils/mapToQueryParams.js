@@ -5,21 +5,23 @@ export const mapToQueryParams = values => {
   const {
     queryOptions: { filters }
   } = constants;
-
+  const { range, kind } = values;
   const queryParams = [];
   for (const key in filters) {
     if (filters.hasOwnProperty(key)) {
-      if (values.range && values.range[key]) {
-        const { start, end } = values.range[key];
+      if (range && range[key]) {
+        const { start, end } = range[key];
         queryParams.push(mapRangeToQueryParams(start, end, filters[key]));
       }
     }
   }
 
-  if (values.kind) {
+  if (kind) {
     let currentKinds = [];
-    Object.keys(values.kind).forEach(property => {
-      currentKinds.push(property);
+    Object.keys(kind).forEach(property => {
+      if (kind[property]) {
+        currentKinds.push(property);
+      }
     });
 
     queryParams.push({
