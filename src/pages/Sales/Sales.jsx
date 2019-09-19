@@ -21,6 +21,10 @@ const Sales = ({
   filterIsOpen,
   values
 }) => {
+  const openFilter = () => {
+    toggleFilter();
+  };
+
   let filterParams = mapToQueryParams(values);
   useEffect(() => {
     const { queryOptions } = constants;
@@ -36,13 +40,7 @@ const Sales = ({
       <main className="main-container">
         <div className="content-wrapper px-3 mt-4 mb-4 ">
           <FilterBar>
-            <Button
-              className="round "
-              variant="danger"
-              onClick={() => {
-                toggleFilter(true);
-              }}
-            >
+            <Button className="round " variant="danger" onClick={openFilter}>
               Открыть фильтр
             </Button>
             <FilterBadgeGroup />

@@ -21,6 +21,10 @@ const Rent = ({
   filterIsOpen,
   values
 }) => {
+  const openFilter = () => {
+    toggleFilter();
+  };
+
   let filterParams = mapToQueryParams(values);
   useEffect(() => {
     const { queryOptions } = constants;
@@ -37,21 +41,15 @@ const Rent = ({
       <main className="main-container">
         <div className="content-wrapper px-3 mt-4 mb-4 ">
           <FilterBar>
-            <Button
-              className="round "
-              variant="danger"
-              onClick={() => {
-                toggleFilter(true);
-              }}
-            >
+            <Button className="round " variant="danger" onClick={openFilter}>
               Открыть фильтр
             </Button>
             <FilterBadgeGroup />
           </FilterBar>
-
           <h1 className="h1 page-title">Аренда недвижимости</h1>
         </div>
         <CardGrid pathname={pathname} isLoaded={isLoaded} items={items} />
+
         <Pagination
           {...pagination}
           fetch={fetch}
