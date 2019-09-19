@@ -1,5 +1,5 @@
 import React from "react";
-import "./CloseIcon.scss";
+import "./Burger.scss";
 
 const CloseIcon = ({ className, isOpen }) => {
   const open = isOpen ? "open" : "";
