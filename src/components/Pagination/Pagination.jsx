@@ -2,7 +2,13 @@ import React, { useState } from "react";
 import { Pagination as BsPagination } from "react-bootstrap";
 import constants from "../../constants/";
 
-const Pagination = ({ total: totalItems, fetch, pathname, filterParams }) => {
+const Pagination = ({
+  total: totalItems,
+  fetch,
+  pathname,
+  path,
+  filterParams
+}) => {
   const itemPerPage = 32;
   let [currentPageIndex, setstate] = useState(0);
   const totalPages = totalItems && Math.ceil(totalItems / itemPerPage);
@@ -43,8 +49,8 @@ const Pagination = ({ total: totalItems, fetch, pathname, filterParams }) => {
           if (filterParams && filterParams.length > 0) {
             queryParams = [...queryParams, ...filterParams];
           }
-
-          fetch(queryParams);
+          debugger;
+          fetch(path, queryParams);
           setstate(index);
         }}
         active={currentPageIndex === index}
@@ -61,7 +67,7 @@ const Pagination = ({ total: totalItems, fetch, pathname, filterParams }) => {
     <BsPagination className="pagination d-flex justify-content-center">
       <BsPagination.First
         onClick={() => {
-          fetch();
+          fetch(path);
           setstate(0);
         }}
       />
@@ -72,7 +78,7 @@ const Pagination = ({ total: totalItems, fetch, pathname, filterParams }) => {
       ]}
       <BsPagination.Last
         onClick={() => {
-          fetch(lastPageOffset);
+          fetch();
           setstate(lastPageIndex);
         }}
       />

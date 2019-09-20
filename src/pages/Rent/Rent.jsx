@@ -10,6 +10,7 @@ import constants from "../../constants/index";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
+import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 
 const Rent = ({
   items,
@@ -32,7 +33,7 @@ const Rent = ({
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
-    fetch(queryParams);
+    fetch("/v1/properties/country", queryParams);
   }, [fetch, pathname, values]);
 
   return (
@@ -48,11 +49,18 @@ const Rent = ({
           </FilterBar>
           <h1 className="h1 page-title">Аренда недвижимости</h1>
         </div>
-        <CardGrid pathname={pathname} isLoaded={isLoaded} items={items} />
+        <CardGrid isLoaded={isLoaded}>
+          <SaleGridItems
+            pathname={pathname}
+            isLoaded={isLoaded}
+            items={items}
+          />
+        </CardGrid>
 
         <Pagination
           {...pagination}
           fetch={fetch}
+          path="/v1/properties/country"
           pathname={pathname}
           filterParams={filterParams}
         />

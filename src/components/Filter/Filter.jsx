@@ -2,11 +2,7 @@ import React, { Component } from "react";
 import { Form, Field } from "react-final-form";
 import Button from "../Button/Button";
 import { fetch } from "../../redux/reducers/sales";
-import {
-  toggleFilter,
-  getCurrentFilters,
-  getFilterFormValues
-} from "../../redux/reducers/filter";
+import { toggleFilter, getFilterFormValues } from "../../redux/reducers/filter";
 import constants from "../../constants";
 import { connect } from "react-redux";
 import Checkbox from "../Checkbox/Checkbox";
@@ -16,7 +12,7 @@ import "./Filter.scss";
 class Filter extends Component {
   onSubmit = values => {
     let queryParams = mapToQueryParams(values);
-    const { getCurrentFilters, getFilterFormValues, pathname } = this.props;
+    const { getFilterFormValues, pathname } = this.props;
     const { queryOptions } = constants;
     const { closeFilter } = this;
 
@@ -26,7 +22,6 @@ class Filter extends Component {
     ];
 
     if (queryParams && queryParams.length > 0) {
-      getCurrentFilters(queryParams);
       getFilterFormValues(values);
     }
     closeFilter();
@@ -165,5 +160,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetch, toggleFilter, getCurrentFilters, getFilterFormValues }
+  { fetch, toggleFilter, getFilterFormValues }
 )(Filter);

@@ -52,10 +52,10 @@ export default function reducer(state = initialState, action) {
 }
 
 // async action
-export const fetch = options => async dispatch => {
+export const fetch = (path, options) => async dispatch => {
   dispatch(fetchStart());
   try {
-    const response = await getData(options);
+    const response = await getData(path, options);
 
     dispatch(fetchSuccesseded(response));
   } catch (error) {

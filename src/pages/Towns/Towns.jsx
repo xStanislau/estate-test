@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { fetch } from "../../redux/reducers/sales";
 import { toggleFilter } from "../../redux/reducers/filter";
 import Pagination from "../../components/Pagination/Pagination";
+import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import Filter from "../../components/Filter/Filter";
 import Button from "../../components/Button/Button";
@@ -32,7 +33,7 @@ const Sales = ({
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
-    fetch(queryParams);
+    fetch("/v1/places/settlements/items", queryParams);
   }, [fetch, pathname, values]);
   return (
     <>
@@ -48,10 +49,13 @@ const Sales = ({
           <h1 className="h1 page-title">Посёлки</h1>
         </div>
         <>
-          <CardGrid items={items} isLoaded={isLoaded} />
+          <CardGrid isLoaded={isLoaded} className="towns-grid">
+            <TownsGridItems items={items} isLoaded={isLoaded} />
+          </CardGrid>
           <Pagination
             {...pagination}
             fetch={fetch}
+            path="/v1/places/settlements/items"
             filterParams={filterParams}
             pathname={pathname}
           />

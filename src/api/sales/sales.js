@@ -2,13 +2,15 @@ import constants from "../../constants/index";
 import { buildQueryString } from "../../utils/buildQueryString";
 
 export const getData = async (
+  path,
   options = [
     { type: "pagination", property: "offset", value: 0 },
     { type: "filter", property: "kind", value: "house" }
   ]
 ) => {
   try {
-    const path = "/v1/properties/country";
+    debugger;
+    // const path = "/v1/properties/country";
     const querryString = buildQueryString(options);
     const { api } = constants;
     const url = `${api.baseUrl}${path}${querryString}`;

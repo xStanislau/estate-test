@@ -17,7 +17,7 @@ const Card = ({
   scrollPosition,
   ...rest
 }) => {
-  const regionName = localityName || "";
+  // const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
   return (
@@ -38,7 +38,7 @@ const Card = ({
           </div>
         </Link>
         <Link to={`/sales/${id}`}>
-          <p className="card__house-description">{`${propertyType} ${regionName}, ${distance} ID ${id ||
+          <p className="card__house-description">{`${propertyType} ${localityName}, ${distance} ID ${id ||
             ""}`}</p>
         </Link>
 
@@ -65,6 +65,7 @@ const Card = ({
 };
 
 Card.defaultProps = {
+  location: { localityName: "", mkadDistance: "" },
   price: "",
   area: "",
   landArea: ""

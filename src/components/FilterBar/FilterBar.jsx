@@ -45,11 +45,9 @@ class FilterBar extends Component {
     const fixed = isFixed ? "fixed" : "";
 
     return (
-      <>
-        <div className={`filter-bar ${fixed}`} ref={this.ref}>
-          <div className="filter-bar__inner">{children}</div>
-        </div>
-      </>
+      <div className={`filter-bar ${fixed}`} ref={this.ref}>
+        <div className="filter-bar__inner">{children}</div>
+      </div>
     );
   }
 }

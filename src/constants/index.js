@@ -51,14 +51,9 @@ export default {
     ],
     towns: [
       {
-        type: "filterNot",
-        property: "saleOffer.isDisabled",
-        value: "true"
-      },
-      {
         type: "filter",
-        property: "saleOffer.price",
-        value: "0.."
+        property: "statistics.totalProperties",
+        value: "1.."
       }
     ],
     filters: {

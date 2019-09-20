@@ -10,10 +10,15 @@ const CardImg = ({ children, className, ...rest }) => {
     const { PREFIXES, URL } = imgConfig;
     const imgSrc = `${URL}/${imgId}-jqestate-${PREFIXES[1024]}`;
     imgStyle.backgroundImage = `url(${imgSrc})`;
-    imgStyle.backgroundRepeat = "no-repeat";
+  } else if (rest.cover) {
+    const { cover } = rest;
+    const { PREFIXES, URL } = imgConfig;
+    const imgSrcSmall = `${URL}/${cover}-thumbnail-${PREFIXES[512]}`;
+    imgStyle.backgroundImage = `url(${imgSrcSmall})`;
   } else {
     imgStyle.backgroundColor = "#aaa";
   }
+  imgStyle.backgroundRepeat = "no-repeat";
 
   return (
     <div className={className} style={imgStyle}>

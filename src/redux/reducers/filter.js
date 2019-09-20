@@ -1,7 +1,6 @@
 import { isObject } from "util";
 // actions
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
-const GET_FILTER = "app/filter/GET_FILTER";
 const RESET_FILTER = "app/filter/RESET_FILTER";
 const GET_FILTER_FORM_VALUES = "app/filter/GET_FILTER_FORM_VALUES";
 const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
@@ -14,11 +13,6 @@ export const toggleFilter = isOpen => ({
 
 export const resetFilter = () => ({
   type: RESET_FILTER
-});
-
-export const getCurrentFilters = filters => ({
-  type: GET_FILTER,
-  payload: filters
 });
 
 export const getFilterFormValues = values => ({
@@ -46,12 +40,6 @@ export default function reducer(state = initialState, action) {
         isOpen: !state.isOpen
       };
 
-    case GET_FILTER:
-      return {
-        ...state,
-        currentFilters: action.payload
-      };
-
     case GET_FILTER_FORM_VALUES:
       return {
         ...state,
@@ -61,7 +49,6 @@ export default function reducer(state = initialState, action) {
     case RESET_FILTER:
       return {
         ...state,
-        currentFilters: {},
         values: []
       };
 

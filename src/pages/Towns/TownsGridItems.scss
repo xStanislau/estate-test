@@ -1,0 +1,43 @@
+$border-style: none;
+.grid.towns-grid {
+  &__item {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-height: 332px;
+    border: $border-style;
+    border-top: none;
+
+    &:last-child {
+      border-right: $border-style;
+    }
+
+    &:nth-child(1) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(2) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(3) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(4) {
+      border-top: $border-style;
+    }
+
+    &:nth-child(2n) {
+      border-left: none;
+      border-right: none;
+    }
+
+    &:nth-child(4n) {
+      border-right: $border-style;
+    }
+
+    &:last-child {
+      border-right: $border-style;
+    }
+  }
+}
