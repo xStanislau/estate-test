@@ -5,12 +5,13 @@ import { Link } from "react-router-dom";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
 import NavLink from "../../components/NavLink/NavLink";
 import propertyKind from "../../config/propertyKind";
+import "./TownsCard.scss";
 
 const TownsCard = ({ cover, id, mkadDistance, name, routeName, stats }) => {
   return (
     <LazyLoadComponent>
       <div className="card">
-        <Link to={`/sales/${id}`}>
+        <Link to={`/sales/${id}`} className="card__top-link">
           <div className="card__img-wraper">
             <CardImg className="card__img" cover={cover} small>
               <h3 className="h3">{name}</h3>

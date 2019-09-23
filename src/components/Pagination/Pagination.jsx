@@ -49,7 +49,6 @@ const Pagination = ({
           if (filterParams && filterParams.length > 0) {
             queryParams = [...queryParams, ...filterParams];
           }
-          debugger;
           fetch(path, queryParams);
           setstate(index);
         }}

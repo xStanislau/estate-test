@@ -4,7 +4,6 @@ import TownsCard from "./TownsCard";
 import "./TownsGridItems.scss";
 
 const TownsGridItems = ({ items, className = "", isLoaded, ...rest }) => {
-  debugger;
   return (
     <>
       {items &&
@@ -15,7 +14,15 @@ const TownsGridItems = ({ items, className = "", isLoaded, ...rest }) => {
           }
 
           return (
-            <GridItem key={item.id} className="grid__item">
+            <GridItem
+              key={item.id}
+              className="grid__item"
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={4}
+            >
               <TownsCard {...item} {...rest} />
             </GridItem>
           );

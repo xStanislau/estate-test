@@ -3,7 +3,7 @@ import { Col } from "react-bootstrap";
 
 const GridItem = ({ className, children, ...rest }) => {
   return (
-    <Col xs={12} sm={12} md={6} lg={6} xl={3} className={className} {...rest}>
+    <Col className={className} {...rest}>
       {children}
     </Col>
   );

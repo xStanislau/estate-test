@@ -1,43 +1,53 @@
-$border-style: none;
-.grid.towns-grid {
-  &__item {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    min-height: 332px;
-    border: $border-style;
-    border-top: none;
+.towns-grid {
+  .card {
+    border: 1px solid #e3e3e3;
 
-    &:last-child {
-      border-right: $border-style;
+    &__img {
+      padding: 35px 15px 0 15px;
+      height: auto;
+      width: 100%;
+      min-height: 120px;
+      height: inherit;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 1;
+      }
+      span,
+      h3 {
+        z-index: 5;
+      }
+      .h3 {
+        font-size: 20px;
+      }
+
+      span {
+        font-size: 14px;
+      }
     }
 
-    &:nth-child(1) {
-      border-top: $border-style;
+    &__top-link {
+      color: white;
     }
 
-    &:nth-child(2) {
-      border-top: $border-style;
+    &__img-wraper {
+      margin-bottom: 0;
     }
-
-    &:nth-child(3) {
-      border-top: $border-style;
-    }
-
-    &:nth-child(4) {
-      border-top: $border-style;
-    }
-
-    &:nth-child(2n) {
-      border-left: none;
-      border-right: none;
-    }
-
-    &:nth-child(4n) {
-      border-right: $border-style;
-    }
-
-    &:last-child {
-      border-right: $border-style;
+    .list-group-item {
+      a {
+        display: flex;
+        justify-content: space-between;
+      }
     }
   }
 }
