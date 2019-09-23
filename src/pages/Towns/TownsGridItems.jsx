@@ -1,6 +1,6 @@
 import React from "react";
 import GridItem from "../../components/CardGrid/GridItem/GridItem";
-import TownsCard from "./TownsCard";
+import TownsCard from "./TownsCard/TownsCard";
 import "./TownsGridItems.scss";
 
 const TownsGridItems = ({ items, className = "", isLoaded, ...rest }) => {

@@ -6,10 +6,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import Filter from "../../components/Filter/Filter";
-import Button from "../../components/Button/Button";
 import constants from "../../constants";
-import FilterBar from "../../components/FilterBar/FilterBar";
-import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 
 const Sales = ({
@@ -38,28 +35,17 @@ const Sales = ({
   return (
     <>
       {filterIsOpen && <Filter pathname={pathname} />}
-      <main className="main-container">
-        <div className="content-wrapper px-3 mt-4 mb-4 ">
-          <FilterBar>
-            <Button className="round " variant="danger" onClick={openFilter}>
-              Открыть фильтр
-            </Button>
-            <FilterBadgeGroup />
-          </FilterBar>
-          <h1 className="h1 page-title">Посёлки</h1>
-        </div>
-        <>
-          <CardGrid isLoaded={isLoaded} className="towns-grid">
-            <TownsGridItems items={items} isLoaded={isLoaded} />
-          </CardGrid>
-          <Pagination
-            {...pagination}
-            fetch={fetch}
-            path="/v1/places/settlements/items"
-            filterParams={filterParams}
-            pathname={pathname}
-          />
-        </>
+      <main className="main-container mt-5">
+        <CardGrid isLoaded={isLoaded} className="towns-grid">
+          <TownsGridItems items={items} isLoaded={isLoaded} />
+        </CardGrid>
+        <Pagination
+          {...pagination}
+          fetch={fetch}
+          path="/v1/places/settlements/items"
+          filterParams={filterParams}
+          pathname={pathname}
+        />
       </main>
     </>
   );

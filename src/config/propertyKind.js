@@ -6,5 +6,11 @@ export default {
   land: "Участок",
   office: "Офис",
   warehouse: "Склад",
-  townhouse: "Таунхаус"
+  townhouse: "Таунхаус",
+  plural: {
+    house: "Дома",
+    land: "Участки",
+    townhouse: "Таунхаусы",
+    flat: "Квартиры"
+  }
 };
