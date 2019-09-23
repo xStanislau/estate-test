@@ -4,6 +4,7 @@ import { getData } from "../../api/sales/sales";
 const LOAD_DATA = "app/sales/LOAD_DATA";
 const LOAD_DATA_SUCCEEDED = "app/sales/LOAD_DATA_SUCCEEDED";
 const LOAD_DATA_FAILED = "app/sales/LOAD_DATA_FAILED";
+const REFRESH = "app/sales/REFRESH";
 
 // action creators
 export const fetchStart = () => ({
@@ -18,6 +19,10 @@ export const fetchSuccesseded = data => ({
 export const fetchFailed = error => ({
   type: LOAD_DATA_FAILED,
   payload: error
+});
+
+export const refresh = () => ({
+  type: REFRESH
 });
 
 const initialState = {
@@ -45,7 +50,12 @@ export default function reducer(state = initialState, action) {
         isLoaded: true,
         data: action.payload
       };
-
+    case REFRESH:
+      return {
+        ...state,
+        isLoaded: false,
+        data: []
+      };
     default:
       return state;
   }

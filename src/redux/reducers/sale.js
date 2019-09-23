@@ -21,7 +21,6 @@ export const loadSaleDataFailed = error => ({
 });
 
 // action creators
-
 export const loadSaleId = id => ({
   type: LOAD_SALE_ID,
   payload: id
@@ -31,8 +30,8 @@ const initialState = {
   isLoaded: false,
   data: {}
 };
-//reducer
 
+//reducer
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_SALE_ID:

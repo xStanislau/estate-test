@@ -1,43 +1,49 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetch } from "../../redux/reducers/sales";
+import { fetch, refresh } from "../../redux/reducers/sales";
 import { toggleFilter } from "../../redux/reducers/filter";
 import Pagination from "../../components/Pagination/Pagination";
 import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
-import Filter from "../../components/Filter/Filter";
 import constants from "../../constants";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 
-const Sales = ({
-  items,
-  pagination,
-  fetch,
-  isLoaded,
-  location: { pathname },
-  toggleFilter,
-  filterIsOpen,
-  values
-}) => {
-  const openFilter = () => {
-    toggleFilter();
-  };
+class Towns extends Component {
+  componentDidMount() {
+    const {
+      fetch,
+      filterParams,
+      location: { pathname }
+    } = this.props;
 
-  let filterParams = mapToQueryParams(values);
-  useEffect(() => {
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
+    debugger;
     fetch("/v1/places/settlements/items", queryParams);
-  }, [fetch, pathname, values]);
-  return (
-    <>
-      {filterIsOpen && <Filter pathname={pathname} />}
+  }
+
+  componentWillUnmount() {
+    const { refresh } = this.props;
+
+    refresh();
+  }
+
+  render() {
+    const {
+      items,
+      pagination,
+      fetch,
+      isLoaded,
+      location: { pathname },
+      filterParams
+    } = this.props;
+    return (
       <main className="main-container mt-5">
         <CardGrid isLoaded={isLoaded} className="towns-grid">
-          <TownsGridItems items={items} isLoaded={isLoaded} />
+          {isLoaded && <TownsGridItems items={items} isLoaded={isLoaded} />}
         </CardGrid>
         <Pagination
           {...pagination}
@@ -47,11 +53,11 @@ const Sales = ({
           pathname={pathname}
         />
       </main>
-    </>
-  );
-};
+    );
+  }
+}
 
-Sales.defaultProps = {
+Towns.defaultProps = {
   items: []
 };
 
@@ -61,11 +67,11 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
-    values: state.filter.values
+    filterParams: mapToQueryParams(state.filter.values)
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetch, toggleFilter }
-)(Sales);
+  { fetch, toggleFilter, refresh }
+)(Towns);

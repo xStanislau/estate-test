@@ -27,7 +27,6 @@ export const deleteFilterParametr = values => ({
 
 const initialState = {
   isOpen: false,
-  currentFilters: [],
   values: {}
 };
 

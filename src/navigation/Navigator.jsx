@@ -18,7 +18,7 @@ export default () => {
         <Route path="/sales/:id" component={SalePage} />
         <Route exact path="/rent" component={Rent} />
         <Route path="/rent/:id" component={SalePage} />
-        <Route exact path="/towns/" component={Towns} />
+        <Route exact path="/towns" component={Towns} />
         <Route path="/towns/:id" component={SalePage} />
         <Route path="/about" component={About} />
         <Route

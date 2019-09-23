@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetch } from "../../redux/reducers/sales";
 import { toggleFilter } from "../../redux/reducers/filter";
@@ -6,68 +6,82 @@ import Pagination from "../../components/Pagination/Pagination";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import Filter from "../../components/Filter/Filter";
 import Button from "../../components/Button/Button";
-import constants from "../../constants";
+import constants from "../../constants/index";
 import FilterBar from "../../components/FilterBar/FilterBar";
 import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 
-const Sales = ({
-  items,
-  pagination,
-  fetch,
-  isLoaded,
-  location: { pathname },
-  toggleFilter,
-  filterIsOpen,
-  values
-}) => {
-  const openFilter = () => {
-    toggleFilter();
-  };
+class Sales extends Component {
+  componentDidMount() {
+    const {
+      fetch,
+      filterParams,
+      location: { pathname }
+    } = this.props;
 
-  let filterParams = mapToQueryParams(values);
-  useEffect(() => {
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
     fetch("/v1/properties/country", queryParams);
-  }, [fetch, pathname, values]);
-  return (
-    <>
-      {filterIsOpen && <Filter pathname={pathname} />}
-      <main className="main-container">
-        <div className="content-wrapper px-3 mt-4 mb-4 ">
-          <FilterBar>
-            <Button className="round " variant="danger" onClick={openFilter}>
-              Открыть фильтр
-            </Button>
-            <FilterBadgeGroup />
-          </FilterBar>
-          <h1 className="h1 page-title">Элитная недвижимость</h1>
-        </div>
-        <>
+  }
+
+  openFilter = () => {
+    const { toggleFilter } = this.props;
+    toggleFilter();
+  };
+
+  render() {
+    const {
+      items,
+      pagination,
+      fetch,
+      isLoaded,
+      location: { pathname },
+      filterIsOpen,
+      filterParams
+    } = this.props;
+
+    return (
+      <>
+        {filterIsOpen && <Filter pathname={pathname} />}
+        <main className="main-container">
+          <div className="content-wrapper px-3 mt-4 mb-4 ">
+            <FilterBar>
+              <Button
+                className="round "
+                variant="danger"
+                onClick={this.openFilter}
+              >
+                Открыть фильтр
+              </Button>
+              <FilterBadgeGroup />
+            </FilterBar>
+            <h1 className="h1 page-title">Аренда недвижимости</h1>
+          </div>
           <CardGrid isLoaded={isLoaded}>
-            <SaleGridItems
-              pathname={pathname}
-              isLoaded={isLoaded}
-              items={items}
-            />
+            {isLoaded && (
+              <SaleGridItems
+                pathname={pathname}
+                isLoaded={isLoaded}
+                items={items}
+              />
+            )}
           </CardGrid>
           <Pagination
             {...pagination}
             fetch={fetch}
             path="/v1/properties/country"
-            filterParams={filterParams}
             pathname={pathname}
+            filterParams={filterParams}
           />
-        </>
-      </main>
-    </>
-  );
-};
+        </main>
+      </>
+    );
+  }
+}
 
 Sales.defaultProps = {
   items: []
@@ -79,8 +93,7 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
-    filterParams: state.filter.currentFilters,
-    values: state.filter.values
+    filterParams: mapToQueryParams(state.filter.values)
   };
 };
 

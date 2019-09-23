@@ -16,16 +16,17 @@ class Rent extends Component {
   componentDidMount() {
     const {
       fetch,
-      values,
+      filterParams,
       location: { pathname }
     } = this.props;
 
-    let filterParams = mapToQueryParams(values);
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
+
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
+    debugger;
     fetch("/v1/properties/country", queryParams);
   }
 
@@ -33,6 +34,7 @@ class Rent extends Component {
     const { toggleFilter } = this.props;
     toggleFilter();
   };
+
   render() {
     const {
       items,
@@ -41,11 +43,8 @@ class Rent extends Component {
       isLoaded,
       location: { pathname },
       filterIsOpen,
-      values
+      filterParams
     } = this.props;
-    debugger;
-
-    let filterParams = mapToQueryParams(values);
 
     return (
       <>
@@ -87,64 +86,6 @@ class Rent extends Component {
   }
 }
 
-// const Rent = ({
-//   items,
-//   pagination,
-//   fetch,
-//   isLoaded,
-//   location: { pathname },
-//   toggleFilter,
-//   filterIsOpen,
-//   values
-// }) => {
-//   const openFilter = () => {
-//     toggleFilter();
-//   };
-
-//   // useEffect(() => {
-//   //   debugger;
-//   //   const { queryOptions } = constants;
-//   //   let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
-//   //   if (filterParams && filterParams.length > 0) {
-//   //     queryParams = [...queryParams, ...filterParams];
-//   //   }
-//   //   fetch("/v1/properties/country", queryParams);
-//   // }, [fetch, pathname, values]);
-//   return (
-//     <>
-//       {filterIsOpen && <Filter pathname={pathname} />}
-//       <main className="main-container">
-//         <div className="content-wrapper px-3 mt-4 mb-4 ">
-//           <FilterBar>
-//             <Button className="round " variant="danger" onClick={openFilter}>
-//               Открыть фильтр
-//             </Button>
-//             <FilterBadgeGroup />
-//           </FilterBar>
-//           <h1 className="h1 page-title">Аренда недвижимости</h1>
-//         </div>
-//         <CardGrid isLoaded={isLoaded}>
-//           {isLoaded && (
-//             <SaleGridItems
-//               pathname={pathname}
-//               isLoaded={isLoaded}
-//               items={items}
-//             />
-//           )}
-//         </CardGrid>
-
-//         <Pagination
-//           {...pagination}
-//           fetch={fetch}
-//           path="/v1/properties/country"
-//           pathname={pathname}
-//           filterParams={filterParams}
-//         />
-//       </main>
-//     </>
-//   );
-// };
-
 Rent.defaultProps = {
   items: []
 };
@@ -155,7 +96,7 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
-    values: state.filter.values
+    filterParams: mapToQueryParams(state.filter.values)
   };
 };
 

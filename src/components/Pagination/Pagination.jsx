@@ -17,6 +17,7 @@ const Pagination = ({
   const offSetFromCurrentRight = 1;
   let offSetFromCurrentLeft = 2 + currentPageIndex;
   let offsetStartIndex = 0;
+
   if (currentPageIndex >= 2) {
     offsetStartIndex = currentPageIndex - offSetFromCurrentRight;
   }
@@ -78,7 +79,7 @@ const Pagination = ({
       <BsPagination.Last
         onClick={() => {
           fetch();
-          setstate(lastPageIndex);
+          setstate(lastPageOffset);
         }}
       />
     </BsPagination>

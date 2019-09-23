@@ -4,7 +4,6 @@ import Card from "../../Card/Card";
 
 const SaleGridItems = ({ items, isLoaded, ...rest }) => {
   debugger;
-
   return (
     <>
       {items &&
@@ -20,7 +19,15 @@ const SaleGridItems = ({ items, isLoaded, ...rest }) => {
           }
 
           return (
-            <GridItem key={item.id} className="grid__item">
+            <GridItem
+              key={item.id}
+              className="grid__item"
+              xs={12}
+              sm={12}
+              md={6}
+              lg={6}
+              xl={3}
+            >
               <Card {...item} {...rest} />
             </GridItem>
           );
