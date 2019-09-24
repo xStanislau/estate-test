@@ -5,9 +5,10 @@ import propertyKind from "../../../../config/propertyKind";
 
 const TownsPropertyList = ({ stats }) => {
   let list = [];
-  let sale = stats.sale;
+  let sale = stats.sale || stats.rent;
   let { plural } = propertyKind;
-
+  if (!sale) {
+  }
   for (const key in plural) {
     if (plural.hasOwnProperty(key)) {
       const element = plural[key];

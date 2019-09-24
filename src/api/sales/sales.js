@@ -9,7 +9,6 @@ export const getData = async (
   ]
 ) => {
   try {
-    // const path = "/v1/properties/country";
     const querryString = buildQueryString(options);
     const { api } = constants;
     const url = `${api.baseUrl}${path}${querryString}`;

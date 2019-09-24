@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { fetch } from "../../redux/reducers/sales";
 import { toggleFilter } from "../../redux/reducers/filter";
@@ -26,7 +26,7 @@ class Rent extends Component {
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
-    debugger;
+
     fetch("/v1/properties/country", queryParams);
   }
 

@@ -3,7 +3,6 @@ import GridItem from "../../CardGrid/GridItem/GridItem";
 import Card from "../../Card/Card";
 
 const SaleGridItems = ({ items, isLoaded, ...rest }) => {
-  debugger;
   return (
     <>
       {items &&
