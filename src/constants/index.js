@@ -24,6 +24,7 @@ export default {
       name: "сот."
     }
   },
+  // queryOptions это моки для чего?
   queryOptions: {
     rent: [
       {

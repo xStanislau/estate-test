@@ -24,6 +24,7 @@ class FilterBadgeGroup extends Component {
     let Badges = [];
     if (!isEmpty(values)) {
       const valuesKeys = Object.keys(values);
+
       Badges = valuesKeys.map(value => {
         const { units } = constants;
         let filterKinds = [];
@@ -74,6 +75,9 @@ class FilterBadgeGroup extends Component {
 
         return [...filterKinds, ...filterRange];
       });
+
+      // что-то ты перемудрил с Badges. нужно переписать и разбить, я так понимаю на части
+      // не читабельно совсем
     }
 
     let lastBadge;

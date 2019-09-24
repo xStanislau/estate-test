@@ -9,9 +9,13 @@ import Checkbox from "../Checkbox/Checkbox";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import "./Filter.scss";
 
+// лучше тогда назвать FilterMenu или FilterSidebar
+// т.к. не понятно дальше, что к чему относится FilterBadge к Filter или к FilterBar
+
 class Filter extends Component {
   onSubmit = values => {
     let queryParams = mapToQueryParams(values);
+
     const { getFilterFormValues, pathname } = this.props;
     const { queryOptions } = constants;
     const { closeFilter } = this;
@@ -20,7 +24,6 @@ class Filter extends Component {
       ...queryOptions[pathname.slice(1, pathname.length)],
       ...queryParams
     ];
-
     if (queryParams && queryParams.length > 0) {
       getFilterFormValues(values);
     }
@@ -41,6 +44,21 @@ class Filter extends Component {
     const body = document.querySelector("body");
     body.classList.remove("overflow-hidden");
   }
+
+  /*
+  componentDidMount() {
+    const body = document.querySelector("body");
+    body.classList.add("overflow-hidden");
+  }
+
+  componentWillUnmount() {
+    const body = document.querySelector("body");
+    body.classList.remove("overflow-hidden");
+  }
+
+   Почему так, а не через toggleFilter 
+   И тогда можно использовать Stateless Component
+  */
 
   render() {
     const { values } = this.props;
@@ -70,6 +88,12 @@ class Filter extends Component {
                     component="input"
                     type="checkbox"
                   />
+                  {/* Зачем className="checkbox" component="input" type="checkbox" 
+                    <Checkbox
+                      kind="house"
+                      label="Дом"
+                    />
+                  ??? */}
                   <Checkbox
                     id="land"
                     className="checkbox"
@@ -94,6 +118,12 @@ class Filter extends Component {
                     component="input"
                   />
                 </div>
+
+                {/* 
+                  <h4 className="h5 mb-3"> + <div className="filter__range mb-4"> можно объеденить вместе в отдельные компоненты и передавать в пропсах только заголовок. 
+                  будет три секции, которые удобнее переставлять местами и модифицировать 
+                */}
+
                 <h4 className="h5 mb-3">Площадь участка</h4>
                 <div className="filter__range mb-4">
                   <Field

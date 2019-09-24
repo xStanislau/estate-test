@@ -3,7 +3,13 @@ import { isObject } from "util";
 const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
 const RESET_FILTER = "app/filter/RESET_FILTER";
 const GET_FILTER_FORM_VALUES = "app/filter/GET_FILTER_FORM_VALUES";
+// а почему app/filter/... ???
 const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
+
+const initialState = {
+  isOpen: false,
+  values: {}
+};
 
 // action creators
 export const toggleFilter = isOpen => ({
@@ -24,11 +30,6 @@ export const deleteFilterParametr = values => ({
   type: DELETE_FILTER_PARAMETR,
   payload: values
 });
-
-const initialState = {
-  isOpen: false,
-  values: {}
-};
 
 //reducer
 export default function reducer(state = initialState, action) {

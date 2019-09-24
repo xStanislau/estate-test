@@ -22,9 +22,13 @@ class Sales extends Component {
 
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
+    // [...queryOptions[pathname.slice(1, pathname.length)]] == constants.queryOptions[pathname.slice(1)]
+
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
+      console.log("queryParams === ", queryParams);
     }
+
     fetch("/v1/properties/country", queryParams);
   }
 

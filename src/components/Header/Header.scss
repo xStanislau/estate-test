@@ -82,6 +82,8 @@ header {
     }
   }
 
+  // почему стили для кнопок тут, а не в компоненте?
+
   .call-back.btn.btn-primary {
     &:active {
       background-color: darken(#1dc659, 15%);

@@ -2,6 +2,11 @@ import React from "react";
 import GridItem from "../../CardGrid/GridItem/GridItem";
 import Card from "../../Card/Card";
 
+// а компонент TownsGridItems
+// и зачем давать значение TownsGridItems компоненту, который может использоваться и в других местах
+// аналогично для SaleGridItems
+// можно назвать Grid3Cols
+
 const SaleGridItems = ({ items, className = "", isLoaded, ...rest }) => {
   return (
     <>

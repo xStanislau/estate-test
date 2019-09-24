@@ -9,4 +9,6 @@ const GridItem = ({ className, children, ...rest }) => {
   );
 };
 
+// зачем этот компонент?
+
 export default GridItem;

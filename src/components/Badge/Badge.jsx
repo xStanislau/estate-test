@@ -10,4 +10,8 @@ const Badge = ({ className, children, ...rest }) => {
   );
 };
 
+// proptypes
+// и чем ты расширил этот компонент ???
+// https://react-bootstrap.github.io/components/badge/ есть параметр "variant". почему не расширять через него?
+
 export default Badge;

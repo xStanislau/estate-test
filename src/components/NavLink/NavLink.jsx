@@ -13,4 +13,6 @@ const NavLink = ({ className, activeClassName, link, text }) => {
   );
 };
 
+// зачем этот компонент ???
+
 export default NavLink;

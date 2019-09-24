@@ -5,4 +5,6 @@ const NavMenu = ({ children, className }) => {
   return <Nav className={className}>{children}</Nav>;
 };
 
+// зачем этот компонент ??
+
 export default NavMenu;

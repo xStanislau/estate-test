@@ -60,6 +60,8 @@ const Pagination = ({
     );
   });
 
+  // вынеси Items в отдельный компонент
+
   let lastPageIndex = Items.length - 1;
   let lastPageOffset = lastPageIndex * 32;
 

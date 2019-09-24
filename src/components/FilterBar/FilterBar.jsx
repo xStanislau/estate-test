@@ -53,3 +53,5 @@ class FilterBar extends Component {
 }
 
 export default FilterBar;
+
+// забросить в эту папку FilterBadgeGroup и FilterBadge

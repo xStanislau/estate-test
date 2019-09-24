@@ -21,6 +21,7 @@ const Header = props => {
           aria-controls="basic-navbar-nav"
           onClick={() => {
             toggleMenu(!isOpen);
+            // toggleMenu(!isOpen); почему не через redux
           }}
         >
           <Burger isOpen={isOpen} />

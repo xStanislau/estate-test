@@ -14,4 +14,6 @@ const FilterBadge = ({ className, text, onClick, close, withCloseIcon }) => {
   );
 };
 
+// почему не https://react-bootstrap.netlify.com/components/badge/ ???
+
 export default FilterBadge;
