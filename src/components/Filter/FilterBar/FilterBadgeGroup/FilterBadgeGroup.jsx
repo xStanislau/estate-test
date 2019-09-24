@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import constants from "../../constants/";
-import propertyKind from "../../config/propertyKind";
-import { deleteFilterParametr, resetFilter } from "../../redux/reducers/filter";
+import constants from "../../../../constants";
+import propertyKind from "../../../../config/propertyKind";
+import {
+  deleteFilterParametr,
+  resetFilter
+} from "../../../../redux/reducers/filter";
 import { connect } from "react-redux";
 import FilterBadge from "../FilterBadge/FilterBadge";
 import "./FilterBadgeGroup.scss";
-import { isEmpty } from "../../utils/isEmpty";
+import { isEmpty } from "../../../../utils/isEmpty";
 
 class FilterBadgeGroup extends Component {
   deleteParametr = (key, value) => () => {

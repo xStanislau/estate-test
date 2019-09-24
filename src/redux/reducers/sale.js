@@ -1,9 +1,12 @@
 import { getData } from "../../api/sales/sales";
+
 // actions
-const LOAD_SALE_DATA = "app/sale/LOAD_DATA";
-const LOAD_SALE_ID = "app/sale/LOAD_DATA";
-const LOAD_SALE_DATA_SUCCEEDED = "app/sale/LOAD_DATA_SUCCEEDED";
-const LOAD_SALE_DATA_FAILED = "app/sale/LOAD_DATA_FAILED";
+const LOAD_SALE_DATA = "estate-test/redux/reducers/sale/LOAD_DATA";
+const LOAD_SALE_ID = "estate-test/redux/reducers/sale/LOAD_DATA";
+const LOAD_SALE_DATA_SUCCEEDED =
+  "estate-test/redux/reducers/sale/LOAD_DATA_SUCCEEDED";
+const LOAD_SALE_DATA_FAILED =
+  "estate-test/redux/reducers/sale/LOAD_DATA_FAILED";
 
 // action creators
 export const loadSaleData = () => ({

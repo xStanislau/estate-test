@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Form, Field } from "react-final-form";
-import Button from "../Button/Button";
-import { fetch } from "../../redux/reducers/sales";
-import { toggleFilter, getFilterFormValues } from "../../redux/reducers/filter";
-import constants from "../../constants";
+import Button from "../../Button/Button";
+import { fetch } from "../../../redux/reducers/sales";
+import { toggleFilter, getFilterFormValues } from "../../../redux/reducers/filter";
+import constants from "../../../constants";
 import { connect } from "react-redux";
-import Checkbox from "../Checkbox/Checkbox";
-import { mapToQueryParams } from "../../utils/mapToQueryParams";
-import "./Filter.scss";
+import Checkbox from "../../Checkbox/Checkbox";
+import { mapToQueryParams } from "../../../utils/mapToQueryParams";
+import "./FilterSidebar.scss";
 
 class Filter extends Component {
   onSubmit = values => {
@@ -64,31 +64,24 @@ class Filter extends Component {
                 <div className="filter__group mb-4">
                   <Checkbox
                     id="house"
-                    className="checkbox"
                     name="kind.house"
                     label="Дом"
                     component="input"
-                    type="checkbox"
                   />
                   <Checkbox
                     id="land"
-                    className="checkbox"
                     name="kind.land"
                     label="Участок"
                     component="input"
-                    type="checkbox"
                   />
                   <Checkbox
                     id="townhouse"
-                    className="checkbox"
                     name="kind.townhouse"
                     label="Таунхаус"
                     component="input"
-                    type="checkbox"
                   />
                   <Checkbox
                     id="flat"
-                    className="checkbox"
                     name="kind.flat"
                     label="Квартира"
                     component="input"

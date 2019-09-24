@@ -1,10 +1,10 @@
 import React from "react";
 import "./Burger.scss";
 
-const CloseIcon = ({ className, isOpen }) => {
+const Burger = ({ className, isOpen }) => {
   const open = isOpen ? "open" : "";
   return (
-    <div className={`${className || ""} ${open} closeIcon`}>
+    <div className={`${className || ""} ${open} burger`}>
       <div className="line-1"></div>
       <div className="line-2"></div>
       <div className="line-3"></div>
@@ -12,4 +12,4 @@ const CloseIcon = ({ className, isOpen }) => {
   );
 };
 
-export default CloseIcon;
+export default Burger;

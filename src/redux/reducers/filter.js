@@ -1,9 +1,11 @@
 import { isObject } from "util";
 // actions
-const TOGGLE_FILTER = "app/filter/TOGGLE_FILTER";
-const RESET_FILTER = "app/filter/RESET_FILTER";
-const GET_FILTER_FORM_VALUES = "app/filter/GET_FILTER_FORM_VALUES";
-const DELETE_FILTER_PARAMETR = "app/filter/DELETE_FILTER_PARAMETR";
+const TOGGLE_FILTER = "estate-test/redux/reducers/filter/TOGGLE_FILTER";
+const RESET_FILTER = "estate-test/redux/reducers/filter/RESET_FILTER";
+const GET_FILTER_FORM_VALUES =
+  "estate-test/redux/reducers/filter/GET_FILTER_FORM_VALUES";
+const DELETE_FILTER_PARAMETR =
+  "estate-test/redux/reducers/filter/DELETE_FILTER_PARAMETR";
 
 // action creators
 export const toggleFilter = isOpen => ({

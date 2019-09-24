@@ -1,9 +1,10 @@
 import { getData } from "../../api/sales/sales";
 
 // actions
-const LOAD_DATA = "app/sales/LOAD_DATA";
-const LOAD_DATA_SUCCEEDED = "app/sales/LOAD_DATA_SUCCEEDED";
-const LOAD_DATA_FAILED = "app/sales/LOAD_DATA_FAILED";
+const LOAD_DATA = "estate-test/redux/reducers/sales/LOAD_DATA";
+const LOAD_DATA_SUCCEEDED =
+  "estate-test/redux/reducers/sales/LOAD_DATA_SUCCEEDED";
+const LOAD_DATA_FAILED = "estate-test/redux/reducers/sales/LOAD_DATA_FAILED";
 
 // action creators
 export const fetchStart = () => ({

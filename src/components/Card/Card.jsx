@@ -17,7 +17,6 @@ const Card = ({
   scrollPosition,
   ...rest
 }) => {
-  // const regionName = localityName || "";
   const distance = `${mkadDistance} км,` || "";
   const propertyType = `${propertyKind[kind]}, в Посёлке`;
   return (
@@ -26,13 +25,15 @@ const Card = ({
         <Link to={`/sales/${id}`}>
           <div className="card__img-wraper">
             {rest.badge && (
-              <Badge
-                className="card__badge"
-                variant="danger"
-                style={{ backgroundColor: rest.badge.color }}
-              >
-                {rest.badge.title}
-              </Badge>
+              <div className="card__badge">
+                <Badge
+                  // className="card__badge"
+                  variant="danger"
+                  style={{ backgroundColor: rest.badge.color }}
+                >
+                  {rest.badge.title}
+                </Badge>
+              </div>
             )}
             <CardImg className="card__img" image={image}></CardImg>
           </div>

@@ -4,11 +4,11 @@ import { fetch } from "../../redux/reducers/sales";
 import { toggleFilter } from "../../redux/reducers/filter";
 import Pagination from "../../components/Pagination/Pagination";
 import CardGrid from "../../components/CardGrid/CardGrid";
-import Filter from "../../components/Filter/Filter";
+import FilterSidebar from "../../components/Filter/FilterSideBar/FilterSidebar";
+import FilterBar from "../../components/Filter/FilterBar/FilterBar";
+import FilterBadgeGroup from "../../components/Filter/FilterBar/FilterBadgeGroup/FilterBadgeGroup";
 import Button from "../../components/Button/Button";
 import constants from "../../constants/index";
-import FilterBar from "../../components/FilterBar/FilterBar";
-import FilterBadgeGroup from "../../components/FilterBadgeGroup/FilterBadgeGroup";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 
@@ -22,11 +22,9 @@ class Rent extends Component {
 
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
-
     if (filterParams && filterParams.length > 0) {
       queryParams = [...queryParams, ...filterParams];
     }
-
     fetch("/v1/properties/country", queryParams);
   }
 
@@ -48,7 +46,7 @@ class Rent extends Component {
 
     return (
       <>
-        {filterIsOpen && <Filter pathname={pathname} />}
+        {filterIsOpen && <FilterSidebar pathname={pathname} />}
         <main className="main-container">
           <div className="content-wrapper px-3 mt-4 mb-4 ">
             <FilterBar>
@@ -72,7 +70,6 @@ class Rent extends Component {
               />
             )}
           </CardGrid>
-
           <Pagination
             {...pagination}
             fetch={fetch}

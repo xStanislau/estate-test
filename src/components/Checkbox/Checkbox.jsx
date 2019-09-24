@@ -4,7 +4,7 @@ import "./Checkbox.scss";
 
 const Checkbox = ({ id, className, label, ...rest }) => {
   return (
-    <label htmlFor={id} className={className}>
+    <label htmlFor={id} className="checkbox">
       <Field id={id} type="checkbox" {...rest} />
       <span className="checkmark"></span>
       {label}

@@ -4,7 +4,7 @@ import HeaderMenu from "../HeaderMenu/HeaderMenu";
 import constants from "../../constants/";
 import Button from "../Button/Button";
 import withFixed from "../withFixed/withFixed";
-import Burger from "../Icons/Burger";
+import Burger from "../Burger/Burger";
 import "./Header.scss";
 
 const Header = props => {

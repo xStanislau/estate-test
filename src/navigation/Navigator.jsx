@@ -7,7 +7,6 @@ import Rent from "./../pages/Rent/Rent";
 import About from "./../pages/About/About";
 import Towns from "./../pages/Towns/Towns";
 import Map from "../components/Map/Map";
-import Filter from "../components/Filter/Filter";
 
 export default () => {
   return (
@@ -31,7 +30,6 @@ export default () => {
             );
           }}
         />
-        <Route exact path="/filter" component={Filter} />
         <Route component={() => <h1>Page not found</h1>} />
       </Switch>
     </BaseLayout>
