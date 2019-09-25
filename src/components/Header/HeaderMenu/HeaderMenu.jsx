@@ -1,25 +1,24 @@
 import React from "react";
-import NavLink from "../NavLink/NavLink";
-import NavMenu from "../NavMenu/NavMenu";
+import { NavLink } from "react-router-dom";
+import { Nav } from "react-bootstrap";
 
 const HeaderMenu = ({ items }) => {
   return (
-    <NavMenu className="mr-auto header-menu">
+    <Nav className="mr-auto header-menu">
       {items.map(item => {
         const { link, text } = item;
         return (
           <NavLink
             className="nav-link"
-            link={link}
+            to={link}
             activeClassName="active"
             key={text}
-            text={text}
           >
             {text}
           </NavLink>
         );
       })}
-    </NavMenu>
+    </Nav>
   );
 };
 

@@ -27,7 +27,6 @@ const Card = ({
             {rest.badge && (
               <div className="card__badge">
                 <Badge
-                  // className="card__badge"
                   variant="danger"
                   style={{ backgroundColor: rest.badge.color }}
                 >

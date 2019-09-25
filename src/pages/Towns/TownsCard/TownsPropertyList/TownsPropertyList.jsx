@@ -1,14 +1,13 @@
 import React from "react";
 import { ListGroup, ListGroupItem } from "react-bootstrap";
-import NavLink from "../../../../components/NavLink/NavLink";
+import { NavLink } from "react-router-dom";
 import propertyKind from "../../../../config/propertyKind";
 
 const TownsPropertyList = ({ stats }) => {
   let list = [];
   let sale = stats.sale || stats.rent;
   let { plural } = propertyKind;
-  if (!sale) {
-  }
+
   for (const key in plural) {
     if (plural.hasOwnProperty(key)) {
       const element = plural[key];
@@ -34,14 +33,11 @@ const TownsPropertyList = ({ stats }) => {
             <NavLink
               className={`towns__property-item ${active}`}
               activeClassName={active}
-              link="#"
-              text={
-                <>
-                  <span>{kind}</span>
-                  <span>{number}</span>
-                </>
-              }
-            />
+              to="#"
+            >
+              <span>{kind}</span>
+              <span>{number}</span>
+            </NavLink>
           </ListGroupItem>
         );
       })}

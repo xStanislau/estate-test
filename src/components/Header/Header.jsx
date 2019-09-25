@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
-import HeaderMenu from "../HeaderMenu/HeaderMenu";
+import HeaderMenu from "./HeaderMenu/HeaderMenu";
 import constants from "../../constants/";
 import Button from "../Button/Button";
 import withFixed from "../withFixed/withFixed";
