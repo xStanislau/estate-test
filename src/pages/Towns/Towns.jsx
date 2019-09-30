@@ -5,7 +5,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import constants from "../../constants";
-// import { mapToQueryParams } from "../../utils/mapToQueryParams";
 
 class Towns extends Component {
   componentDidMount() {

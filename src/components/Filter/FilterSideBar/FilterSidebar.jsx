@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import { Form, Field } from "react-final-form";
+import { Form } from "react-final-form";
 import Button from "../../Button/Button";
 import { fetch } from "../../../redux/reducers/sales";
-import { toggleFilter, getFilterFormValues } from "../../../redux/reducers/filter";
+import {
+  toggleFilter,
+  getFilterFormValues
+} from "../../../redux/reducers/filter";
 import constants from "../../../constants";
 import { connect } from "react-redux";
-import Checkbox from "../../Checkbox/Checkbox";
 import { mapToQueryParams } from "../../../utils/mapToQueryParams";
+import PropertyTypes from "./PropertyTypes/PropertyTypes";
 import "./FilterSidebar.scss";
+import LandArea from "./LandArea/LandArea";
+import HouseArea from "./HouseArea/HouseArea";
 
 class Filter extends Component {
   onSubmit = values => {
@@ -60,72 +65,9 @@ class Filter extends Component {
                 <span>&times;</span>
               </Button>
               <div className="filter__inner">
-                <h4 className="h5 mb-3">Тип Объекта</h4>
-                <div className="filter__group mb-4">
-                  <Checkbox
-                    id="house"
-                    name="kind.house"
-                    label="Дом"
-                    component="input"
-                  />
-                  <Checkbox
-                    id="land"
-                    name="kind.land"
-                    label="Участок"
-                    component="input"
-                  />
-                  <Checkbox
-                    id="townhouse"
-                    name="kind.townhouse"
-                    label="Таунхаус"
-                    component="input"
-                  />
-                  <Checkbox
-                    id="flat"
-                    name="kind.flat"
-                    label="Квартира"
-                    component="input"
-                  />
-                </div>
-                <h4 className="h5 mb-3">Площадь участка</h4>
-                <div className="filter__range mb-4">
-                  <Field
-                    name="range.landArea.start"
-                    type="text"
-                    component="input"
-                    id="landAreaStart"
-                    placeholder="от"
-                  />
-                  <Field
-                    name="range.landArea.end"
-                    type="text"
-                    component="input"
-                    id="landAreaEnd"
-                    placeholder="до"
-                  />
-                  <label htmlFor="landAreaStart">сот.</label>
-                </div>
-
-                <h4 className="h5 mb-3">Площадь Дома</h4>
-                <div className="filter__range mb-4">
-                  <Field
-                    name="range.area.start"
-                    type="text"
-                    component="input"
-                    id="areaStart"
-                    placeholder="от"
-                  />
-                  <Field
-                    name="range.area.end"
-                    type="text"
-                    component="input"
-                    id="areaEnd"
-                    placeholder="до"
-                  />
-                  <label htmlFor="areaStart">
-                    м<sup>2</sup>
-                  </label>
-                </div>
+                <PropertyTypes title="Тип Объекта" />
+                <LandArea title="Площадь участка" />
+                <HouseArea title="Полщадь дома" />
                 <div className="buttons">
                   <Button
                     type="submit"
