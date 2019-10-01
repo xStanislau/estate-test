@@ -7,6 +7,7 @@ import Rent from "./../pages/Rent/Rent";
 import About from "./../pages/About/About";
 import Towns from "./../pages/Towns/Towns";
 import Map from "../components/Map/Map";
+import NotFound from "../pages/NotFound/NotFound";
 
 export default () => {
   return (
@@ -30,7 +31,7 @@ export default () => {
             );
           }}
         />
-        <Route component={() => <h1>Page not found</h1>} />
+        <Route component={NotFound} />
       </Switch>
     </BaseLayout>
   );
