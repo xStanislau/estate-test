@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import constants from "../../../../constants";
-import propertyKind from "../../../../config/propertyKind";
 import {
   deleteFilterParametr,
   resetFilter,
@@ -10,7 +8,6 @@ import {
 import { connect } from "react-redux";
 import FilterBadge from "../FilterBadge/FilterBadge";
 import "./FilterBadgeGroup.scss";
-import { isEmpty } from "../../../../utils/isEmpty";
 
 class FilterBadgeGroup extends Component {
   deleteParametr = (key, value) => () => {
@@ -26,15 +23,22 @@ class FilterBadgeGroup extends Component {
   render() {
     const { resetFilter, deleteParametr } = this;
     const { values } = this.props;
-    return values.map((filter, index) => {
-      let { text, type, key } = filter;
+
+    if (values.length > 0) {
+      values.push({ text: "Сбросить всё" });
+    }
+
+    return values.map((filter, index, filters) => {
+      let { text, type = "", key = "" } = filter;
       let withCloseIcon = true;
       let handleClick;
+      let closeHandler = deleteParametr(type, key);
 
-      if (index === 9) {
-        text = "Сбросить всё";
+      const isLastFilter = index === filters.length - 1;
+      if (isLastFilter) {
         withCloseIcon = false;
         handleClick = resetFilter;
+        closeHandler = null;
       }
 
       return (
@@ -44,7 +48,7 @@ class FilterBadgeGroup extends Component {
           className="round filter-badge"
           variant="light"
           onClick={handleClick}
-          close={deleteParametr(type, key)}
+          close={closeHandler}
           withCloseIcon={withCloseIcon}
         />
       );
