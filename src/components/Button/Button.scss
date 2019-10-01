@@ -1,0 +1,44 @@
+.btn-main {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  color: white;
+
+  &_green {
+    background-color: #1dc659;
+
+    &:hover {
+      background-color: darken(#1dc659, 10%);
+      color: darken(white, 10%);
+    }
+
+    &:active {
+      background-color: darken(#1dc659, 25%);
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+
+  &_pink {
+    background-color: #ff4c4e;
+    border-color: #ff4c4e;
+    color: white;
+
+    &:hover {
+      background-color: darken(#ff4c4e, 10%);
+      color: darken(white, 10%);
+    }
+
+    &:active {
+      background-color: darken(#ff4c4e, 25%);
+    }
+
+    &:focus {
+      box-shadow: none;
+      outline: none;
+    }
+  }
+}

@@ -1,9 +1,10 @@
 import React from "react";
 import { Button as BsButton } from "react-bootstrap";
+import "./Button.scss";
 
-const Button = ({ className, children, ...rest }) => {
+const Button = ({ children, variant, ...rest }) => {
   return (
-    <BsButton className={className} {...rest}>
+    <BsButton variant={variant} {...rest}>
       {children}
     </BsButton>
   );

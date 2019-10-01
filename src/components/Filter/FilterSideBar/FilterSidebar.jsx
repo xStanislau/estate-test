@@ -29,6 +29,7 @@ class Filter extends Component {
     if (queryParams && queryParams.length > 0) {
       getFilterFormValues(values);
     }
+
     closeFilter();
   };
 
@@ -59,7 +60,7 @@ class Filter extends Component {
             <form className={className} onSubmit={handleSubmit}>
               <Button
                 className="close-btn"
-                variant="danger"
+                variant="main_pink"
                 onClick={this.closeFilter}
               >
                 <span>&times;</span>
@@ -71,6 +72,7 @@ class Filter extends Component {
                 <div className="buttons">
                   <Button
                     type="submit"
+                    variant="main_pink"
                     className="filter__submit-btn"
                     disabled={submitting}
                   >

@@ -31,7 +31,9 @@ const Header = props => {
             <a href={`tel:${phoneNumber}`} className="phone-number">
               {phoneNumber}
             </a>
-            <Button className="call-back btn">{buttonText}</Button>
+            <Button variant="main btn-main_green" className="call-back btn">
+              {buttonText}
+            </Button>
           </div>
         </Navbar.Collapse>
       </Navbar>

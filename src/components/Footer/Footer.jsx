@@ -14,7 +14,7 @@ const Footer = () => {
           <a href={`tel:+7(495)432-45-45`} className="phone-number">
             +7(495)432-45-45
           </a>
-          <Button className="call-back btn btn-danger">Обратный звонок</Button>
+          <Button variant="main btn-main_pink">Обратный звонок</Button>
         </div>
       </div>
     </footer>

@@ -24,6 +24,13 @@ export default {
       name: "сот."
     }
   },
+
+  /* 
+  из этих констатнт собираются параметры запроса в зависимости от текущего урла, 
+  по схеме - type[property]=value
+  пример: "/rent" -> "?filterNot[rentOffer.isDisabled]=true&filter[rentOffer.price]=0.." 
+  */
+
   queryOptions: {
     rent: [
       {

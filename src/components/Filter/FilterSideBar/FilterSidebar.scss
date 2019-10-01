@@ -23,36 +23,6 @@
     top: 5px;
   }
 
-  &__submit-btn,
-  .close-btn {
-    background-color: #ff4c4e;
-    border-color: #ff4c4e;
-    box-shadow: none;
-    outline: none;
-    border: none;
-
-    &:hover {
-      background-color: #ff4c4e;
-      box-shadow: none;
-      outline: none;
-      border: none;
-    }
-  }
-
-  &__submit-btn.btn.btn-primary,
-  .close-btn.btn.btn-danger {
-    &:active {
-      background-color: #ff4c4e;
-      box-shadow: none;
-      outline: none;
-      border: none;
-    }
-
-    &:focus {
-      box-shadow: none !important;
-    }
-  }
-
   &__range {
     display: flex;
     width: 100%;

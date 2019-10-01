@@ -7,7 +7,7 @@ const FooterMenu = () => {
       <NavLink className="link" to="/about">
         О компании
       </NavLink>
-      "
+
       <NavLink className="link" to="/contacts">
         Контакты
       </NavLink>
