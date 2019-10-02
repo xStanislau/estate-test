@@ -31,9 +31,10 @@ class FilterBadgeGroup extends Component {
     return values.map((filter, index, filters) => {
       let { text, type = "", key = "" } = filter;
       let withCloseIcon = true;
-      let handleClick;
+
       let closeHandler = deleteParametr(type, key);
 
+      let handleClick;
       const isLastFilter = index === filters.length - 1;
       if (isLastFilter) {
         withCloseIcon = false;

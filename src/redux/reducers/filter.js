@@ -46,41 +46,35 @@ export default function reducer(state = initialState, action) {
       };
 
     case GET_FILTER_FORM_VALUES: {
-      let values = action.payload;
-      let { kind } = values;
-      if (kind) {
-        Object.keys(kind).forEach(kindName => {
-          if (!kind[kindName]) {
-            delete kind[kindName];
-          }
-        });
-      }
-
       return {
         ...state,
-        values: { ...values, kind }
+        values: action.payload
       };
     }
 
     case RESET_FILTER:
       return {
         ...state,
-        values: []
+        values: {}
       };
 
     case DELETE_FILTER_PARAMETR:
       const { values } = state;
-
       const { key: prop, value } = action.payload;
-      const totalValues = Object.keys(values[prop]).length;
+      let totalValues;
+      if (prop === "kind") {
+        values[prop].splice(value, 1);
+      } else if (prop === "range") {
+        totalValues = Object.keys(values[prop]).length;
+      }
+
       if (totalValues === 1) {
         delete values[prop];
       } else if (values[prop] && isObject(values[prop])) {
         for (const key in values[prop]) {
-          if (values[prop].hasOwnProperty(key)) {
-            if (key === value) {
-              delete values[prop][key];
-            }
+          if (key === value) {
+            delete values[prop][key];
+            values[prop] = { ...values[prop] };
           }
         }
       }
@@ -98,11 +92,13 @@ export default function reducer(state = initialState, action) {
 //selectors
 export const getKindsLabels = propertyKind => state => {
   const kind = state.filter.values.kind || [];
-  return Object.keys(kind).map(key => ({
-    text: propertyKind[key],
-    type: "kind",
-    key: key
-  }));
+  return kind.map((key, index) => {
+    return {
+      text: propertyKind[key],
+      type: "kind",
+      key: index
+    };
+  });
 };
 
 export const getRangesLabelWithUnits = units => state => {
@@ -117,7 +113,6 @@ export const getRangesLabelWithUnits = units => state => {
       } else if (element.start && element.end) {
         text = `${element.start} - ${element.end} ${units[key].name}`;
       } else {
-        debugger;
         text = `до ${element.end} ${units[key].name}`;
       }
     }

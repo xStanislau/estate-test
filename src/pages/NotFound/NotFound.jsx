@@ -1,6 +1,6 @@
 import React from "react";
 import "./NotFound.scss";
-import Button from "../../components/Button/Button";
+
 const NotFound = () => {
   return (
     <main className="main-container content-wrapper">

@@ -1,5 +1,10 @@
 import { getData } from "../../api/sales/sales";
 
+const initialState = {
+  isLoaded: false,
+  data: []
+};
+
 // actions
 const LOAD_DATA = "estate-test/redux/reducers/sales/LOAD_DATA";
 const LOAD_DATA_SUCCEEDED =
@@ -20,11 +25,6 @@ export const fetchFailed = error => ({
   type: LOAD_DATA_FAILED,
   payload: error
 });
-
-const initialState = {
-  isLoaded: false,
-  data: []
-};
 
 //reducer
 export default function reducer(state = initialState, action) {

@@ -17,17 +17,10 @@ export const mapToQueryParams = values => {
   }
 
   if (kind) {
-    let currentKinds = [];
-    Object.keys(kind).forEach(property => {
-      if (kind[property]) {
-        currentKinds.push(property);
-      }
-    });
-
     queryParams.push({
       type: "filter",
       property: "kind",
-      value: currentKinds.join()
+      value: kind.join()
     });
   }
   return queryParams;
