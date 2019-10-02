@@ -2,9 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
-const HeaderMenu = ({ items }) => {
+const HeaderMenu = ({ items, onClick }) => {
   return (
-    <Nav className="mr-auto header-menu">
+    <Nav className="mr-auto header-menu" onClick={onClick}>
       {items.map(item => {
         const { link, text } = item;
         return (

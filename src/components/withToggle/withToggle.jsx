@@ -23,7 +23,7 @@ export const withToggle = Component =>
     };
 
     render() {
-      const { isOpend } = this.state;
+      const { isOpen } = this.state;
       const { toggleMenu, setRef } = this;
 
       const body = document.querySelector("body");

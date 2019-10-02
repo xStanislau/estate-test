@@ -15,18 +15,23 @@ const Header = props => {
 
   return (
     <header className="fixed" ref={setRef}>
-      <Navbar className="inner" expand="lg">
+      <Navbar className="inner" expand="lg" expanded={isOpen}>
         <Navbar.Brand href="/sales">Logo</Navbar.Brand>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={() => {
-            toggleMenu(!isOpen);
+            toggleMenu();
           }}
         >
           <Burger isOpen={isOpen} />
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav" timeout={0}>
-          <HeaderMenu items={menu.items} />
+          <HeaderMenu
+            items={menu.items}
+            onClick={() => {
+              toggleMenu();
+            }}
+          />
           <div className="contacts">
             <a href={`tel:${phoneNumber}`} className="phone-number">
               {phoneNumber}

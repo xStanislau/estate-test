@@ -20,12 +20,8 @@ export const withFixed = Component =>
       window.removeEventListener("scroll", onScroll);
     }
 
-    toggleMenu = value => {
-      if (value !== undefined) {
-        this.setState({
-          isOpen: value
-        });
-      } else {
+    toggleMenu = () => {
+      if (window.innerWidth < 992) {
         this.setState(state => {
           return { isOpen: !state.isOpen };
         });
@@ -66,10 +62,11 @@ export const withFixed = Component =>
 
     resizeHandler = () => {
       const { isOpen } = this.state;
-      if (isOpen)
+      if (isOpen) {
         if (window.innerWidth > 991) {
-          this.toggleMenu(false);
+          this.toggleMenu();
         }
+      }
     };
 
     render() {
