@@ -50,7 +50,7 @@ class Sales extends Component {
       <>
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">
-          <div className="content-wrapper px-3 mt-4 mb-4 ">
+          <div className="content-wrapper px-3  mb-4 ">
             <FilterBar>
               <Button
                 className="round "

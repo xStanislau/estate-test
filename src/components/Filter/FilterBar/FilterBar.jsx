@@ -12,21 +12,29 @@ class FilterBar extends Component {
   };
 
   componentDidMount() {
-    const { onScroll, ref } = this;
+    const { onScroll, resizeHandler, ref } = this;
     window.addEventListener("scroll", onScroll);
+    window.addEventListener("resize", resizeHandler);
     this.setState({ offsetTop: ref.current.offsetTop });
   }
 
   componentWillUnmount() {
-    const { onScroll } = this;
+    const { onScroll, resizeHandler } = this;
+    window.removeEventListener("resize", resizeHandler);
     window.removeEventListener("scroll", onScroll);
   }
+
+  resizeHandler = () => {
+    const { ref } = this;
+    debugger;
+    this.setState({ offsetTop: ref.current.offsetTop });
+  };
 
   onScroll = () => {
     const { toggleFixed } = this;
     const { offsetTop } = this.state;
 
-    if (offsetTop - 105 < window.pageYOffset) {
+    if (offsetTop < window.pageYOffset) {
       toggleFixed(true);
     } else if (offsetTop > window.pageYOffset) {
       toggleFixed(false);
@@ -41,11 +49,15 @@ class FilterBar extends Component {
 
   render() {
     const { children } = this.props;
-    const { isFixed } = this.state;
+    const { isFixed, offsetTop } = this.state;
     const fixed = isFixed ? "fixed" : "";
+    if (fixed) {
+      debugger;
+    }
+    const style = fixed ? { top: offsetTop } : {};
 
     return (
-      <div className={`filter-bar ${fixed}`} ref={this.ref}>
+      <div className={`filter-bar ${fixed}`} style={style} ref={this.ref}>
         <div className="filter-bar__inner">{children}</div>
       </div>
     );

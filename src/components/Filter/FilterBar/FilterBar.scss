@@ -19,9 +19,9 @@
   left: 0;
   right: 0;
   width: 100%;
-  padding-top: 129px;
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
+  transition: all 0.4s;
 
   .filter-bar__inner {
     padding: 0 16px;
@@ -38,11 +38,8 @@
 
 @media (max-width: 768px) {
   .filter-bar {
-    padding: 0px 0;
-  }
-
-  .filter-bar.fixed {
-    padding-top: 79px;
+    padding-top: 10px;
+    padding-bottom: 0;
   }
 
   .content-wrapper {
