@@ -30,6 +30,8 @@ class Rent extends Component {
 
   openFilter = () => {
     const { toggleFilter } = this.props;
+    const body = document.querySelector("body");
+    body.classList.add("overflow-hidden");
     toggleFilter();
   };
 
@@ -46,7 +48,7 @@ class Rent extends Component {
 
     return (
       <>
-        {filterIsOpen && <FilterSidebar pathname={pathname} />}
+        <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">
           <div className="content-wrapper px-3 mt-4 mb-4 ">
             <FilterBar>
