@@ -8,13 +8,13 @@ import Burger from "../Burger/Burger";
 import "./Header.scss";
 
 const Header = props => {
-  const { isOpen, toggleMenu, setRef } = props;
+  const { isOpen, toggleMenu, setRef, isFixed } = props;
   const {
     header: { menu, phoneNumber, buttonText }
   } = constants;
-
+  const fixed = isFixed ? "fixed" : "";
   return (
-    <header className="fixed" ref={setRef}>
+    <header className={`${fixed}`} ref={setRef}>
       <Navbar className="inner" expand="lg" expanded={isOpen}>
         <Navbar.Brand href="/sales">Logo</Navbar.Brand>
         <Navbar.Toggle

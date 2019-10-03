@@ -15,7 +15,11 @@ class FilterBar extends Component {
     const { onScroll, resizeHandler, ref } = this;
     window.addEventListener("scroll", onScroll);
     window.addEventListener("resize", resizeHandler);
-    this.setState({ offsetTop: ref.current.offsetTop });
+    if (window.innerWidth > 768) {
+      this.setState({ offsetTop: ref.current.offsetTop - 26 });
+    } else {
+      this.setState({ offsetTop: ref.current.offsetTop });
+    }
   }
 
   componentWillUnmount() {
@@ -25,18 +29,19 @@ class FilterBar extends Component {
   }
 
   resizeHandler = () => {
-    const { ref } = this;
-    debugger;
-    this.setState({ offsetTop: ref.current.offsetTop });
+    if (window.innerWidth > 768) {
+      this.setState({ offsetTop: 60 });
+    } else {
+      this.setState({ offsetTop: 55 });
+    }
   };
 
   onScroll = () => {
     const { toggleFixed } = this;
-    const { offsetTop } = this.state;
 
-    if (offsetTop < window.pageYOffset) {
+    if (1 <= window.scrollY) {
       toggleFixed(true);
-    } else if (offsetTop > window.pageYOffset) {
+    } else if (81 > window.scrollY) {
       toggleFixed(false);
     }
   };
@@ -51,9 +56,6 @@ class FilterBar extends Component {
     const { children } = this.props;
     const { isFixed, offsetTop } = this.state;
     const fixed = isFixed ? "fixed" : "";
-    if (fixed) {
-      debugger;
-    }
     const style = fixed ? { top: offsetTop } : {};
 
     return (

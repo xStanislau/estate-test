@@ -93,6 +93,7 @@ Sales.defaultProps = {
 };
 
 Sales.propTypes = {
+  pathnmae: PropTypes.string,
   pagination: PropTypes.shape({
     total: PropTypes.number,
     limit: PropTypes.number,
@@ -103,7 +104,7 @@ Sales.propTypes = {
   toggleFilter: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      badge: PropertyTypes.string,
+      badge: PropertyTypes.object,
       category: PropTypes.string,
       clientLeadId: PropTypes.number,
       communication: PropTypes.shape({

@@ -2,7 +2,7 @@
   top: 0;
   width: 100%;
   z-index: 2;
-  padding: 24px 0;
+  padding: 24px 0px 14px 0;
 
   .btn {
     margin-bottom: 10px;
@@ -21,7 +21,8 @@
   width: 100%;
   background-color: #fff;
   border-bottom: 1px solid #ebebeb;
-  transition: all 0.4s;
+  padding: 14px 0px 4px 0;
+  transition: padding 0.44s;
 
   .filter-bar__inner {
     padding: 0 16px;
@@ -36,9 +37,9 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 776px) {
   .filter-bar {
-    padding-top: 10px;
+    padding: 14px 0px 4px 0;
     padding-bottom: 0;
   }
 

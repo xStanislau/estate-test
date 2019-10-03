@@ -52,8 +52,8 @@ export const withFixed = Component =>
     onScroll = () => {
       const { ref } = this.state;
       const { toggleFixed } = this;
-
-      if (ref && ref.offsetTop < window.pageYOffset) {
+      const fixed = ref.offsetTop;
+      if (ref && fixed < window.pageYOffset) {
         toggleFixed(true);
       } else {
         toggleFixed(false);
