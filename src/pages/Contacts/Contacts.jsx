@@ -1,0 +1,21 @@
+import React from "react";
+import Map from "../../components/Map/Map";
+import "./Contacts.scss";
+
+const Contacts = () => {
+  return (
+    <main className="main-container mt-4 mb-4 px-35 contacts">
+      <h1 className="mb-3 h1">Cotacts</h1>
+      <h2 className="mb-2 h2">Belarus Development Center</h2>
+      <ul className="mb-4">
+        <li>EffectiveSoft Ltd.</li>
+        <li>Moskovskaya St. 22/18, Minsk 220007, Belarus</li>
+      </ul>
+      <div className="contacts__map ">
+        <Map className="map " />
+      </div>
+    </main>
+  );
+};
+
+export default Contacts;

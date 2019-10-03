@@ -6,8 +6,8 @@ import BaseLayout from "../layout/BaseLayout/BaseLayout";
 import Rent from "./../pages/Rent/Rent";
 import About from "./../pages/About/About";
 import Towns from "./../pages/Towns/Towns";
-import Map from "../components/Map/Map";
 import NotFound from "../pages/NotFound/NotFound";
+import Contacts from "../pages/Contacts/Contacts";
 
 export default () => {
   return (
@@ -21,16 +21,7 @@ export default () => {
         <Route exact path="/towns" component={Towns} />
         <Route path="/towns/:id" component={SalePage} />
         <Route path="/about" component={About} />
-        <Route
-          path="/contacts"
-          component={() => {
-            return (
-              <div className="main-container position-relative h-100 mb-0">
-                <Map className="map" />;
-              </div>
-            );
-          }}
-        />
+        <Route path="/contacts" component={Contacts} />
         <Route component={NotFound} />
       </Switch>
     </BaseLayout>

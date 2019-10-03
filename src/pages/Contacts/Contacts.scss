@@ -1,0 +1,26 @@
+.main-container.contacts {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 800px;
+}
+
+.contacts {
+  &__map {
+    height: 0;
+    overflow: hidden;
+    padding-bottom: 60%; /* desired aspect ratio */
+    position: relative;
+  }
+
+  @media (max-width: 755px) {
+    &__map {
+      min-height: 440px;
+    }
+  }
+
+  @media (max-width: 556px) {
+    &__map {
+      min-height: 340px;
+    }
+  }
+}
