@@ -11,6 +11,8 @@ import FilterBar from "../../components/Filter/FilterBar/FilterBar";
 import FilterBadgeGroup from "../../components/Filter/FilterBar/FilterBadgeGroup/FilterBadgeGroup";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
+import PropTypes from "prop-types";
+import PropertyTypes from "../../components/Filter/FilterSideBar/PropertyTypes/PropertyTypes";
 
 class Sales extends Component {
   componentDidMount() {
@@ -86,7 +88,53 @@ class Sales extends Component {
 }
 
 Sales.defaultProps = {
-  items: []
+  items: [],
+  pagination: {}
+};
+
+Sales.propTypes = {
+  pagination: PropTypes.shape({
+    total: PropTypes.number,
+    limit: PropTypes.number,
+    offset: PropTypes.number
+  }).isRequired,
+  filterIsOpen: PropTypes.bool.isRequired,
+  fetch: PropTypes.func.isRequired,
+  toggleFilter: PropTypes.func.isRequired,
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      badge: PropertyTypes.string,
+      category: PropTypes.string,
+      clientLeadId: PropTypes.number,
+      communication: PropTypes.shape({
+        sewerageSupply: PropTypes.string,
+        gasSupply: PropTypes.string,
+        powerSupply: PropTypes.number,
+        waterSupply: PropTypes.string
+      }),
+      createdAt: PropTypes.string,
+      createdByUserId: PropTypes.number,
+      equipment: PropTypes.array,
+      id: PropTypes.number,
+      images: PropTypes.arrayOf(
+        PropTypes.shape({
+          comment: PropTypes.string,
+          height: PropTypes.number,
+          id: PropTypes.string,
+          isPublic: PropTypes.bool,
+          width: PropTypes.number
+        })
+      ),
+      kind: PropTypes.string,
+      landDetails: PropTypes.shape({
+        area: PropTypes.number,
+        landscapeKind: PropTypes.arrayOf(PropTypes.string),
+        landscaping: PropTypes.bool
+      }),
+      layoutImages: PropTypes.array,
+      linkedContactIds: PropTypes.arrayOf(PropTypes.number)
+    })
+  ).isRequired
 };
 
 const mapStateToProps = state => {
