@@ -1,18 +1,19 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
 import { loadSaleId, loadData } from "../../redux/reducers/sale";
 import CardPrice from "../../components/Card/CardPrice/CardPrice";
 import PhotoGallery from "../../components/PhotoGallery/PhotoGallery";
-import propertyKind from "../../config/propertyKind";
 import specificationTypes from "../../config/specification";
 import Communication from "../../pages/SalePage/Communications/Communications";
 import Loader from "../../components/Loader/Loader";
 import Button from "../../components/Button/Button";
-import "./SalePage.scss";
-import { goBack } from "../../utils/goBack";
 import Badge from "../../components/Badge/Badge";
 import Size from "./Size/Size";
+import { getBackLinkText } from "../../utils/getBackLinkText";
+import "./SalePage.scss";
+import { NavLink } from "react-router-dom";
+import PropertyKind from "./PropertyKind/PropertyKind";
+import Location from "./Location/Location";
 
 class Sale extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class Sale extends Component {
     } = this.props;
 
     if (!items) {
+      debugger;
       this.props.loadData(id);
     } else {
       this.props.loadSaleId(id);
@@ -31,21 +33,24 @@ class Sale extends Component {
   }
 
   render() {
-    const { item, isLoaded, history } = this.props;
+    const {
+      item,
+      isLoaded,
+      location: {
+        state: { from }
+      }
+    } = this.props;
+
     const {
       kind,
       specification: { area, bedrooms },
       communication,
       landDetails: { area: landArea },
       saleOffer,
-      location: { localityName, mkadDistance },
+      location,
       badge
     } = item;
     const noContent = "-";
-
-    const formatDistance = (mkadDistance, units) => {
-      return `${mkadDistance} ${units}`;
-    };
 
     return (
       <>
@@ -53,12 +58,9 @@ class Sale extends Component {
         <main className="sale main-container">
           <div className="sale__content content-wrapper-small content-wrapper d-flex justify-content-start align-items-center px-35">
             <h1 className="h1 my-4 mr-4">
-              <span>{`${propertyKind[kind] || noContent}, `}</span>
-              <Size kind={propertyKind[kind]} area={area} landArea={landArea} />
-              <span>{`, в Посёлке ${localityName}, ${formatDistance(
-                mkadDistance,
-                "км."
-              )}`}</span>
+              <PropertyKind kind={kind} />
+              <Size kind={kind} area={area} landArea={landArea} />
+              <Location location={location} />
             </h1>
             {badge && (
               <Badge
@@ -112,9 +114,9 @@ class Sale extends Component {
                 )}
               </div>
             </div>
-            <Button onClick={goBack(history)} variant="outline-dark">
-              Назад
-            </Button>
+            <NavLink to={from}>
+              <Button variant="outline-dark">{getBackLinkText(from)}</Button>
+            </NavLink>
           </div>
         </main>
       </>
@@ -161,9 +163,7 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    { loadSaleId, loadData }
-  )(Sale)
-);
+export default connect(
+  mapStateToProps,
+  { loadSaleId, loadData }
+)(Sale);

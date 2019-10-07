@@ -86,16 +86,15 @@ class Sales extends Component {
               />
             )}
           </CardGrid>
-          {isLoaded && (
-            <Pagination
-              {...pagination}
-              fetch={fetch}
-              path="/v1/properties/country"
-              pathname={pathname}
-              itemsPerPage={32}
-              filterParams={filterParams}
-            />
-          )}
+
+          <Pagination
+            {...pagination}
+            fetch={fetch}
+            path="/v1/properties/country"
+            pathname={pathname}
+            itemsPerPage={32}
+            filterParams={filterParams}
+          />
         </main>
       </>
     );

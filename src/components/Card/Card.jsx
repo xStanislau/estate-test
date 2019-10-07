@@ -22,7 +22,12 @@ const Card = ({
   return (
     <LazyLoadComponent>
       <div className="card">
-        <Link to={`/sales/${id}`}>
+        <Link
+          to={{
+            pathname: `${rest.pathname}/${id}`,
+            state: { from: rest.pathname }
+          }}
+        >
           <div className="card__img-wraper">
             {rest.badge && (
               <div className="card__badge">
