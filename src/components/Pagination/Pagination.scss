@@ -1,0 +1,12 @@
+.pagination {
+  animation: 1.2s fadeIn;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

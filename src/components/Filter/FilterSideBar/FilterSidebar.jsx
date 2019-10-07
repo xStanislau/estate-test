@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import { Form } from "react-final-form";
 import Button from "../../Button/Button";
-import { fetch } from "../../../redux/reducers/sales";
 import {
   toggleFilter,
   getFilterFormValues
 } from "../../../redux/reducers/filter";
-import constants from "../../../constants";
 import { connect } from "react-redux";
-import { mapToQueryParams } from "../../../utils/mapToQueryParams";
 import PropertyTypes from "./PropertyTypes/PropertyTypes";
 import "./FilterSidebar.scss";
 import LandArea from "./LandArea/LandArea";
@@ -16,21 +13,8 @@ import HouseArea from "./HouseArea/HouseArea";
 
 class FilterSidebar extends Component {
   onSubmit = values => {
-    let queryParams = mapToQueryParams(values);
-    const { getFilterFormValues, pathname } = this.props;
-    const { queryOptions } = constants;
-    const { closeFilter } = this;
-
-    queryParams = [
-      ...queryOptions[pathname.slice(1, pathname.length)],
-      ...queryParams
-    ];
-
-    if (queryParams && queryParams.length > 0) {
-      getFilterFormValues(values);
-    }
-
-    closeFilter();
+    this.props.getFilterFormValues(values);
+    this.closeFilter();
   };
 
   closeFilter = () => {
@@ -97,5 +81,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { fetch, toggleFilter, getFilterFormValues }
+  { toggleFilter, getFilterFormValues }
 )(FilterSidebar);

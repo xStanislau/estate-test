@@ -16,16 +16,29 @@ class Rent extends Component {
   componentDidMount() {
     const {
       fetch,
-      filterParams,
       location: { pathname }
     } = this.props;
-
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
-    if (filterParams && filterParams.length > 0) {
-      queryParams = [...queryParams, ...filterParams];
-    }
     fetch("/v1/properties/country", queryParams);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.filterFormValues !== prevProps.filterFormValues) {
+      const {
+        fetch,
+        filterParams,
+        location: { pathname }
+      } = this.props;
+      const { queryOptions } = constants;
+      let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
+
+      if (filterParams && filterParams.length > 0) {
+        queryParams = [...queryParams, ...filterParams];
+      }
+
+      fetch("/v1/properties/country", queryParams);
+    }
   }
 
   openFilter = () => {
@@ -72,11 +85,13 @@ class Rent extends Component {
               />
             )}
           </CardGrid>
+
           <Pagination
             {...pagination}
             fetch={fetch}
             path="/v1/properties/country"
             pathname={pathname}
+            itemsPerPage={32}
             filterParams={filterParams}
           />
         </main>
@@ -95,6 +110,7 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
+    filterFormValues: state.filter.values,
     filterParams: mapToQueryParams(state.filter.values)
   };
 };

@@ -5,29 +5,41 @@ import { toggleFilter } from "../../redux/reducers/filter";
 import Pagination from "../../components/Pagination/Pagination";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import FilterSidebar from "../../components/Filter/FilterSideBar/FilterSidebar";
-import Button from "../../components/Button/Button";
-import constants from "../../constants/index";
 import FilterBar from "../../components/Filter/FilterBar/FilterBar";
 import FilterBadgeGroup from "../../components/Filter/FilterBar/FilterBadgeGroup/FilterBadgeGroup";
+import Button from "../../components/Button/Button";
+import constants from "../../constants/index";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 import PropTypes from "prop-types";
-import PropertyTypes from "../../components/Filter/FilterSideBar/PropertyTypes/PropertyTypes";
 
 class Sales extends Component {
   componentDidMount() {
     const {
       fetch,
-      filterParams,
       location: { pathname }
     } = this.props;
-
     const { queryOptions } = constants;
     let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
-    if (filterParams && filterParams.length > 0) {
-      queryParams = [...queryParams, ...filterParams];
-    }
     fetch("/v1/properties/country", queryParams);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.filterFormValues !== prevProps.filterFormValues) {
+      const {
+        fetch,
+        filterParams,
+        location: { pathname }
+      } = this.props;
+      const { queryOptions } = constants;
+      let queryParams = [...queryOptions[pathname.slice(1, pathname.length)]];
+
+      if (filterParams && filterParams.length > 0) {
+        queryParams = [...queryParams, ...filterParams];
+      }
+
+      fetch("/v1/properties/country", queryParams);
+    }
   }
 
   openFilter = () => {
@@ -52,7 +64,7 @@ class Sales extends Component {
       <>
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">
-          <div className="content-wrapper px-3  mb-4 ">
+          <div className="content-wrapper px-3 mb-4 ">
             <FilterBar>
               <Button
                 className="round "
@@ -74,13 +86,16 @@ class Sales extends Component {
               />
             )}
           </CardGrid>
-          <Pagination
-            {...pagination}
-            fetch={fetch}
-            path="/v1/properties/country"
-            pathname={pathname}
-            filterParams={filterParams}
-          />
+          {isLoaded && (
+            <Pagination
+              {...pagination}
+              fetch={fetch}
+              path="/v1/properties/country"
+              pathname={pathname}
+              itemsPerPage={32}
+              filterParams={filterParams}
+            />
+          )}
         </main>
       </>
     );
@@ -104,7 +119,7 @@ Sales.propTypes = {
   toggleFilter: PropTypes.func.isRequired,
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      badge: PropertyTypes.object,
+      badge: PropTypes.object,
       category: PropTypes.string,
       clientLeadId: PropTypes.number,
       communication: PropTypes.shape({
@@ -144,6 +159,7 @@ const mapStateToProps = state => {
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
     filterIsOpen: state.filter.isOpen,
+    filterFormValues: state.filter.values,
     filterParams: mapToQueryParams(state.filter.values)
   };
 };

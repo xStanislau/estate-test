@@ -28,7 +28,7 @@ class Towns extends Component {
       location: { pathname }
     } = this.props;
     return (
-      <main className="main-container mt-5">
+      <main className="main-container">
         <CardGrid isLoaded={isLoaded} className="towns-grid">
           {isLoaded && <TownsGridItems items={items} isLoaded={isLoaded} />}
         </CardGrid>

@@ -105,6 +105,7 @@ export const getRangesLabelWithUnits = units => state => {
   const range = state.filter.values.range || {};
   let rangesWithUnits = [];
   let text;
+
   for (const key in range) {
     if (range.hasOwnProperty(key)) {
       const element = range[key];
