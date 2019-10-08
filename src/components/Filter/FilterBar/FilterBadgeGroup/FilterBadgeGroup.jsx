@@ -22,7 +22,7 @@ class FilterBadgeGroup extends Component {
 
   render() {
     const { resetFilter, deleteParametr } = this;
-    let { values, isMobile } = this.props;
+    let { values } = this.props;
 
     if (values.length > 0) {
       values = [...values, { text: "Сбросить всё" }];
@@ -59,7 +59,6 @@ class FilterBadgeGroup extends Component {
 }
 
 const mapStateToProps = state => {
-  const a = getActiveFilters(state);
   return {
     values: getActiveFilters(state)
   };
