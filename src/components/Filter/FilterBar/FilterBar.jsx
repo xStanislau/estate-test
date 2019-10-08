@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./FilterBar.scss";
+import { Button } from "react-bootstrap";
+import FilterBadgeGroup from "./FilterBadgeGroup/FilterBadgeGroup";
 
 class FilterBar extends Component {
   constructor(props) {
@@ -16,9 +18,9 @@ class FilterBar extends Component {
     window.addEventListener("scroll", onScroll);
     window.addEventListener("resize", resizeHandler);
     if (window.innerWidth > 768) {
-      this.setState({ offsetTop: ref.current.offsetTop - 26 });
+      this.setState({ offsetTop: ref.current.offsetTop - 26, isMobile: false });
     } else {
-      this.setState({ offsetTop: ref.current.offsetTop });
+      this.setState({ offsetTop: ref.current.offsetTop, isMobile: true });
     }
   }
 
@@ -30,9 +32,9 @@ class FilterBar extends Component {
 
   resizeHandler = () => {
     if (window.innerWidth > 768) {
-      this.setState({ offsetTop: 60 });
+      this.setState({ offsetTop: 60, isMobile: false });
     } else {
-      this.setState({ offsetTop: 55 });
+      this.setState({ offsetTop: 55, isMobile: true });
     }
   };
 
@@ -53,14 +55,19 @@ class FilterBar extends Component {
   };
 
   render() {
-    const { children } = this.props;
-    const { isFixed, offsetTop } = this.state;
+    const { onClick } = this.props;
+    const { isFixed, offsetTop, isMobile } = this.state;
     const fixed = isFixed ? "fixed" : "";
     const style = fixed ? { top: offsetTop } : {};
 
     return (
       <div className={`filter-bar ${fixed}`} style={style} ref={this.ref}>
-        <div className="filter-bar__inner">{children}</div>
+        <div className="filter-bar__inner">
+          <Button className="round " variant="danger" onClick={onClick}>
+            {isMobile ? "Открыть" : "Открыть фильтр"}
+          </Button>
+          {!isMobile && <FilterBadgeGroup />}
+        </div>
       </div>
     );
   }

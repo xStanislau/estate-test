@@ -35,7 +35,7 @@ class FilterSidebar extends Component {
           onSubmit={this.onSubmit}
           className="filter-sidebar__form"
           initialValues={values}
-          render={({ handleSubmit, submitting, className }) => {
+          render={({ handleSubmit, form, submitting, className, dirty }) => {
             return (
               <form className={className} onSubmit={handleSubmit}>
                 <Button
@@ -49,7 +49,7 @@ class FilterSidebar extends Component {
                   <PropertyTypes title="Тип Объекта" />
                   <LandArea title="Площадь участка" />
                   <HouseArea title="Полщадь дома" />
-                  <div className="buttons">
+                  <div className="filter-sidebar__buttons">
                     <Button
                       type="submit"
                       variant="main_pink"
@@ -57,6 +57,15 @@ class FilterSidebar extends Component {
                       disabled={submitting}
                     >
                       Показать
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="main_pink"
+                      className="filter-sidebar__submit-btn"
+                      disabled={!dirty}
+                      onClick={form.reset}
+                    >
+                      Очистить
                     </Button>
                   </div>
                 </div>

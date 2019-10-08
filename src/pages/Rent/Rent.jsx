@@ -6,8 +6,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import FilterSidebar from "../../components/Filter/FilterSideBar/FilterSidebar";
 import FilterBar from "../../components/Filter/FilterBar/FilterBar";
-import FilterBadgeGroup from "../../components/Filter/FilterBar/FilterBadgeGroup/FilterBadgeGroup";
-import Button from "../../components/Button/Button";
 import constants from "../../constants/index";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
@@ -64,16 +62,7 @@ class Rent extends Component {
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">
           <div className="content-wrapper px-3 mb-4 ">
-            <FilterBar>
-              <Button
-                className="round "
-                variant="danger"
-                onClick={this.openFilter}
-              >
-                Открыть фильтр
-              </Button>
-              <FilterBadgeGroup />
-            </FilterBar>
+            <FilterBar onClick={this.openFilter} />
             <h1 className="h1 page-title">Аренда недвижимости</h1>
           </div>
           <CardGrid isLoaded={isLoaded}>

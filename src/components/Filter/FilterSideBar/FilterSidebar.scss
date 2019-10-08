@@ -51,6 +51,15 @@
     }
   }
 
+  &__buttons {
+    display: flex;
+    justify-content: flex-start;
+  }
+  &__submit-btn {
+    &:first-child {
+      margin-right: 40px;
+    }
+  }
   &__background {
     position: fixed;
     left: -10000px;

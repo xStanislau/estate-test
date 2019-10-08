@@ -25,7 +25,6 @@ class Sale extends Component {
     } = this.props;
 
     if (!items) {
-      debugger;
       this.props.loadData(id);
     } else {
       this.props.loadSaleId(id);
