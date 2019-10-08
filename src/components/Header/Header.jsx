@@ -6,6 +6,7 @@ import Button from "../Button/Button";
 import withFixed from "../withFixed/withFixed";
 import Burger from "../Burger/Burger";
 import "./Header.scss";
+import Logo from "../Logo/Logo";
 
 const Header = props => {
   const { isOpen, toggleMenu, setRef, isFixed } = props;
@@ -16,7 +17,7 @@ const Header = props => {
   return (
     <header className={`${fixed}`} ref={setRef}>
       <Navbar className="inner" expand="lg" expanded={isOpen}>
-        <Navbar.Brand href="/sales">Logo</Navbar.Brand>
+        <Logo>Logo</Logo>
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={() => {
