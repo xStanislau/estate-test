@@ -13,8 +13,8 @@ import HouseArea from "./HouseArea/HouseArea";
 
 class FilterSidebar extends Component {
   onSubmit = values => {
-    this.props.getFilterFormValues(values);
     this.closeFilter();
+    this.props.getFilterFormValues(values);
   };
 
   closeFilter = () => {
@@ -25,6 +25,7 @@ class FilterSidebar extends Component {
   };
 
   render() {
+    debugger;
     let { values, isOpen } = this.props;
     if (values) {
       values = { ...values };
@@ -41,9 +42,7 @@ class FilterSidebar extends Component {
             submitting,
             className,
             submiting,
-            pristine,
-            dirty,
-            dirtySinceLastSubmit
+            pristine
           }) => {
             return (
               <form className={className} onSubmit={handleSubmit}>
