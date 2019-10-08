@@ -41,12 +41,15 @@ class Pagination extends Component {
     fetch(path, queryParams);
     this.setCurrentIndex(index);
   };
-
   render() {
-    const { total: totalItems } = this.props;
+    const { total: totalItems, itemsPerPage } = this.props;
     const { currentPageIndex } = this.state;
-    const itemPerPage = 32;
-    const totalPages = totalItems && Math.ceil(totalItems / itemPerPage);
+    const totalPages = totalItems && Math.ceil(totalItems / itemsPerPage);
+
+    if (currentPageIndex > totalPages) {
+      this.setCurrentIndex(0);
+    }
+
     const lastPageNumber = totalPages;
     let offsetFromEnd = totalPages - 1;
     const offSetFromCurrentRight = 1;

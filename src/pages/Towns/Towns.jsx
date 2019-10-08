@@ -35,6 +35,7 @@ class Towns extends Component {
         <Pagination
           {...pagination}
           fetch={fetch}
+          itemsPerPage={32}
           path="/v1/places/settlements/items"
           pathname={pathname}
         />

@@ -23,7 +23,6 @@ class Sale extends Component {
       },
       items
     } = this.props;
-
     if (!items) {
       this.props.loadData(id);
     } else {
@@ -50,7 +49,6 @@ class Sale extends Component {
       badge
     } = item;
     const noContent = "-";
-
     return (
       <>
         {!isLoaded && <Loader />}
@@ -59,7 +57,7 @@ class Sale extends Component {
             <h1 className="h1 my-4 mr-4">
               <PropertyKind kind={kind} />
               <Size kind={kind} area={area} landArea={landArea} />
-              <Location location={location} />
+              <Location {...location} />
             </h1>
             {badge && (
               <Badge

@@ -22,6 +22,12 @@ class FilterBar extends Component {
     } else {
       this.setState({ offsetTop: ref.current.offsetTop, isMobile: true });
     }
+
+    if (window.innerWidth > 992) {
+      this.setState({ isMobile: false });
+    } else {
+      this.setState({ isMobile: true });
+    }
   }
 
   componentWillUnmount() {
@@ -32,9 +38,15 @@ class FilterBar extends Component {
 
   resizeHandler = () => {
     if (window.innerWidth > 768) {
-      this.setState({ offsetTop: 60, isMobile: false });
+      this.setState({ offsetTop: 60 });
     } else {
-      this.setState({ offsetTop: 55, isMobile: true });
+      this.setState({ offsetTop: 55 });
+    }
+
+    if (window.innerWidth > 992) {
+      this.setState({ isMobile: false });
+    } else {
+      this.setState({ isMobile: true });
     }
   };
 

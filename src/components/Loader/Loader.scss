@@ -17,8 +17,9 @@
 
 .loader.visible {
   opacity: 1;
-  transition: all 0.2s;
+  transition: all 0.1s;
 }
+
 .loader.hidden {
   opacity: 0;
   z-index: -10;
