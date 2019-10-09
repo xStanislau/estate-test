@@ -44,16 +44,7 @@ class FilterSidebar extends Component {
           onSubmit={this.onSubmit}
           className="filter-sidebar__form"
           initialValues={values}
-          render={({
-            handleSubmit,
-            form,
-            submitting,
-            className,
-            submiting,
-            pristine,
-            values
-          }) => {
-            debugger;
+          render={({ handleSubmit, form, submitting, className, values }) => {
             return (
               <form className={className} onSubmit={handleSubmit}>
                 <Button

@@ -37,7 +37,7 @@
     width: 100%;
 
     input {
-      height: 30px;
+      height: 37px;
       padding-left: 10px;
       width: 50%;
       border: 1px solid #e8e8e8;
@@ -57,6 +57,7 @@
     display: flex;
     justify-content: flex-start;
   }
+
   &__submit-btn {
     &:first-child {
       margin-right: 40px;
@@ -73,10 +74,6 @@
 }
 
 .filter-sidebar.isOpen {
-  // top: 0;
-  // bottom: 0;
-  // right: 0;
-  // left: 0;
   opacity: 1;
   transition: all 0.45s;
 
@@ -92,7 +89,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    transition: all 5.55s;
+    transition: all 0.55s;
   }
 
   @media (max-width: 576px) {
