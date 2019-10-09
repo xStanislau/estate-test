@@ -25,7 +25,6 @@ class FilterSidebar extends Component {
   };
 
   render() {
-    debugger;
     let { values, isOpen } = this.props;
     if (values) {
       values = { ...values };

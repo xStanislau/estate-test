@@ -3,6 +3,11 @@
   animation-duration: 1.2s;
   border: none;
 
+  .card__img-link:hover + .card__house-description {
+    color: darken(#9fa0a4, 40%);
+    text-decoration: underline;
+  }
+
   &__img-wraper {
     overflow: hidden;
     display: flex;
@@ -72,9 +77,7 @@
     }
 
     &:hover {
-      text-decoration: none;
-      color: red;
-      color: #9fa0a4;
+      color: darken(#9fa0a4, 40%);
     }
   }
 

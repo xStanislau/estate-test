@@ -23,6 +23,7 @@ const Card = ({
     <LazyLoadComponent>
       <div className="card">
         <Link
+          className="card__img-link"
           to={{
             pathname: `${rest.pathname}/${id}`,
             state: { from: rest.pathname }
@@ -42,9 +43,14 @@ const Card = ({
             <CardImg className="card__img" image={image}></CardImg>
           </div>
         </Link>
-        <Link to={`/sales/${id}`}>
-          <p className="card__house-description">{`${propertyType} ${localityName}, ${distance} ID ${id ||
-            ""}`}</p>
+        <Link
+          className="card__house-description"
+          to={{
+            pathname: `${rest.pathname}/${id}`,
+            state: { from: rest.pathname }
+          }}
+        >
+          <p>{`${propertyType} ${localityName}, ${distance} ID ${id || ""}`}</p>
         </Link>
 
         <CardPrice className="card__house-price" {...rest} />

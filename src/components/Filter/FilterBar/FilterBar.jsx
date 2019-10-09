@@ -14,14 +14,9 @@ class FilterBar extends Component {
   };
 
   componentDidMount() {
-    const { onScroll, resizeHandler, ref } = this;
+    const { onScroll, resizeHandler } = this;
     window.addEventListener("scroll", onScroll);
     window.addEventListener("resize", resizeHandler);
-    if (window.innerWidth > 768) {
-      this.setState({ offsetTop: ref.current.offsetTop - 26, isMobile: false });
-    } else {
-      this.setState({ offsetTop: ref.current.offsetTop, isMobile: true });
-    }
 
     if (window.innerWidth > 992) {
       this.setState({ isMobile: false });
@@ -37,12 +32,6 @@ class FilterBar extends Component {
   }
 
   resizeHandler = () => {
-    if (window.innerWidth > 768) {
-      this.setState({ offsetTop: 60 });
-    } else {
-      this.setState({ offsetTop: 55 });
-    }
-
     if (window.innerWidth > 992) {
       this.setState({ isMobile: false });
     } else {
@@ -52,10 +41,9 @@ class FilterBar extends Component {
 
   onScroll = () => {
     const { toggleFixed } = this;
-
-    if (1 <= window.scrollY) {
+    if (10 <= window.scrollY) {
       toggleFixed(true);
-    } else if (81 > window.scrollY) {
+    } else if (70 > window.scrollY) {
       toggleFixed(false);
     }
   };
@@ -68,12 +56,11 @@ class FilterBar extends Component {
 
   render() {
     const { onClick } = this.props;
-    const { isFixed, offsetTop, isMobile } = this.state;
+    const { isFixed, isMobile } = this.state;
     const fixed = isFixed ? "fixed" : "";
-    const style = fixed ? { top: offsetTop } : {};
 
     return (
-      <div className={`filter-bar ${fixed}`} style={style} ref={this.ref}>
+      <div className={`filter-bar ${fixed}`} ref={this.ref}>
         <div className="filter-bar__inner">
           <Button className="round " variant="danger" onClick={onClick}>
             {isMobile ? "Открыть" : "Открыть фильтр"}

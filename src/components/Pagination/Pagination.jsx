@@ -11,7 +11,6 @@ class Pagination extends Component {
 
   componentDidMount = () => {
     const { setCurrentIndex } = this;
-
     setCurrentIndex(0);
   };
 
@@ -41,6 +40,7 @@ class Pagination extends Component {
     fetch(path, queryParams);
     this.setCurrentIndex(index);
   };
+
   render() {
     const { total: totalItems, itemsPerPage } = this.props;
     const { currentPageIndex } = this.state;
