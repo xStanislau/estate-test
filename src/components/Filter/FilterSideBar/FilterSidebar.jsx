@@ -3,7 +3,8 @@ import { Form } from "react-final-form";
 import Button from "../../Button/Button";
 import {
   toggleFilter,
-  getFilterFormValues
+  getFilterFormValues,
+  resetFilter
 } from "../../../redux/reducers/filter";
 import { connect } from "react-redux";
 import PropertyTypes from "./PropertyTypes/PropertyTypes";
@@ -24,11 +25,19 @@ class FilterSidebar extends Component {
     toggleFilter();
   };
 
+  resetFilter = form => () => {
+    const { resetFilter } = this.props;
+    resetFilter();
+    form.reset();
+  };
+
   render() {
     let { values, isOpen } = this.props;
+
     if (values) {
       values = { ...values };
     }
+
     return (
       <div className={`filter-sidebar ${isOpen ? "isOpen" : ""}`}>
         <Form
@@ -41,8 +50,10 @@ class FilterSidebar extends Component {
             submitting,
             className,
             submiting,
-            pristine
+            pristine,
+            values
           }) => {
+            debugger;
             return (
               <form className={className} onSubmit={handleSubmit}>
                 <Button
@@ -67,10 +78,10 @@ class FilterSidebar extends Component {
                     </Button>
                     <Button
                       type="button"
-                      variant="main_pink"
+                      variant="outline-dark"
                       className="filter-sidebar__submit-btn"
-                      disabled={submiting || pristine}
-                      onClick={form.reset}
+                      disabled={!Object.keys(values).length > 0 || submitting}
+                      onClick={this.resetFilter(form)}
                     >
                       Очистить
                     </Button>
@@ -97,5 +108,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { toggleFilter, getFilterFormValues }
+  { toggleFilter, getFilterFormValues, resetFilter }
 )(FilterSidebar);
