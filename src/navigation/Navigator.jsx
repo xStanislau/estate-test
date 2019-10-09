@@ -15,7 +15,7 @@ export default () => {
         <Redirect exact from="/" to="/sales" />
         <Route path="/sales" component={SalesRoute} />
         <Route path="/rent" component={RentRoute} />
-        <Route path="/towns" component={TownRouteRoute} />>
+        <Route path="/towns" component={TownRouteRoute} />
         <Route path="/about" component={About} />
         <Route path="/contacts" component={Contacts} />
         <Route component={NotFound} />
