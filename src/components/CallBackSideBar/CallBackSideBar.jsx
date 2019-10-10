@@ -1,37 +1,37 @@
 import React, { Component } from "react";
 import { Form } from "react-final-form";
-import CallBackForm from "./CallBackForm";
+import CallBackForm from "./CallBackForm/CallBackForm";
 import {
-  toggleFilter,
-  getFilterFormValues,
-  resetFilter
-} from "../../../redux/reducers/filter";
+  toggleCallbackSidebar,
+  getCallbackFormValues,
+  sendFormData
+} from "../../redux/reducers/callbackform";
+import "./CallBackSideBar.scss";
 import { connect } from "react-redux";
 
-export default class CallBackSideBar extends Component {
-  onSubmit = values => {
-    this.closeFilter();
-    this.props.getFilterFormValues(values);
+class CallBackSideBar extends Component {
+  onSubmit = async values => {
+    this.closeSidebar();
+    this.props.sendFormData(values);
   };
 
-  closeFilter = () => {
-    const { toggleFilter } = this.props;
+  closeSidebar = () => {
+    const { toggleCallbackSidebar } = this.props;
     const body = document.querySelector("body");
     body.classList.remove("overflow-hidden");
-    toggleFilter();
+    toggleCallbackSidebar();
   };
-   
 
   render() {
-    let { values, isOpen } = this.props;
-    
+    let { isOpen } = this.props;
+    const open = isOpen ? "isOpen" : "";
     return (
-      <div>
+      <div className={`callback__sidebar py-5 ${open}`}>
         <Form
-          close={this.close}
+          close={this.closeSidebar}
           onSubmit={this.onSubmit}
-          className="filter-sidebar__form"
-          render={CallBackForms}
+          className={`callback-form ${open}`}
+          component={CallBackForm}
         />
       </div>
     );
@@ -40,12 +40,12 @@ export default class CallBackSideBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    values: state.filter.values
+    values: state.callbackform.values,
+    isOpen: state.callbackform.isOpen
   };
 };
 
 export default connect(
   mapStateToProps,
-  { toggleFilter, getFilterFormValues, resetFilter }
-)(FilterSidebar);
-
+  { toggleCallbackSidebar, getCallbackFormValues, sendFormData }
+)(CallBackSideBar);

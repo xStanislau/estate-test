@@ -5,7 +5,7 @@ const PropertyTypes = ({ title }) => {
   return (
     <>
       <h4 className="h5 mb-3">{title}</h4>
-      <div className="filter-sidebar__group mb-4">
+      <div className="sidebar__group mb-4">
         <Checkbox
           id="house"
           name="kind"

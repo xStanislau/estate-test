@@ -37,63 +37,65 @@ class FilterSidebar extends Component {
     if (values) {
       values = { ...values };
     }
-
     return (
-      <div className={`filter-sidebar ${isOpen ? "isOpen" : ""}`}>
-        <Form
-          onSubmit={this.onSubmit}
-          className="filter-sidebar__form"
-          initialValues={values}
-          render={({ handleSubmit, form, submitting, className, values }) => {
-            return (
-              <form className={className} onSubmit={handleSubmit}>
-                <Button
-                  className="close-btn"
-                  variant="main_pink"
-                  onClick={this.closeFilter}
-                >
-                  <span>&times;</span>
-                </Button>
-                <div className="filter-sidebar__inner">
-                  <PropertyTypes title="Тип Объекта" />
-                  <LandArea title="Площадь участка" />
-                  <HouseArea title="Полщадь дома" />
-                  <div className="filter-sidebar__buttons">
-                    <Button
-                      type="submit"
-                      variant="main_pink"
-                      className="filter-sidebar__submit-btn"
-                      disabled={submitting}
-                    >
-                      Показать
-                    </Button>
-                    <Button
-                      type="button"
-                      variant="outline-dark"
-                      className="filter-sidebar__submit-btn"
-                      disabled={!Object.keys(values).length > 0 || submitting}
-                      onClick={this.resetFilter(form)}
-                    >
-                      Очистить
-                    </Button>
+      <>
+        <div className={`sidebar ${isOpen ? "isOpen" : ""}`}>
+          <Form
+            onSubmit={this.onSubmit}
+            className="sidebar__form"
+            initialValues={values}
+            render={({ handleSubmit, form, submitting, className, values }) => {
+              return (
+                <form className={className} onSubmit={handleSubmit}>
+                  <Button
+                    className="close-btn"
+                    variant="main_pink"
+                    onClick={this.closeFilter}
+                  >
+                    <span>&times;</span>
+                  </Button>
+                  <div className="sidebar__inner">
+                    <PropertyTypes title="Тип Объекта" />
+                    <LandArea title="Площадь участка" />
+                    <HouseArea title="Полщадь дома" />
+                    <div className="sidebar__buttons">
+                      <Button
+                        type="submit"
+                        variant="main_pink"
+                        className="sidebar__submit-btn"
+                        disabled={submitting}
+                      >
+                        Показать
+                      </Button>
+                      <Button
+                        type="button"
+                        variant="outline-dark"
+                        className="sidebar__submit-btn"
+                        disabled={!Object.keys(values).length > 0 || submitting}
+                        onClick={this.resetFilter(form)}
+                      >
+                        Очистить
+                      </Button>
+                    </div>
                   </div>
-                </div>
-              </form>
-            );
-          }}
-        />
+                </form>
+              );
+            }}
+          />
+        </div>
         <div
-          className={`filter-sidebar__background ${isOpen ? "isOpen" : ""}`}
+          className={`sidebar__background ${isOpen ? "isOpen" : ""}`}
           onClick={this.closeFilter}
         ></div>
-      </div>
+      </>
     );
   }
 }
 
 const mapStateToProps = state => {
   return {
-    values: state.filter.values
+    values: state.filter.values,
+    isOpen: state.filter.isOpen
   };
 };
 

@@ -1,21 +1,34 @@
-import { isObject } from "util";
-
+import { sendData } from "../../api/callback/sendCallBack";
+import { togglePopup } from "../reducers/popup";
 // actions
-const TOGGLE_CALLBACK_FORM =
-  "estate-test/redux/reducers/filter/TOGGLE_CALLBACK_FORM";
-const RESET_CALLBACK_FORM =
-  "estate-test/redux/reducers/filter/RESET_CALLBACK_FORM";
+const SEND_DATA = "estate-test/redux/reducers/callbackForm/SEND_DATA";
+const SEND_DATA_SUCCEEDED =
+  "estate-test/redux/reducers/callbackForm/SEND_DATA_SUCCEEDED";
+const SEND_DATA_FAILED =
+  "estate-test/redux/reducers/callbackForm/SEND_DATA_FAILED";
+const TOGGLE_CALLBACK_SIDEBAR =
+  "estate-test/redux/reducers/callbackForm/TOGGLE_CALLBACK_FORM";
 const GET_CALLBACK_FORM_VALUES =
-  "estate-test/redux/reducers/filter/GET_CALLBACK_FORM_FORM_VALUES";
+  "estate-test/redux/reducers/callbackForm/GET_CALLBACK_FORM_FORM_VALUES";
 
-// action creators
-export const toggleCallbackForm = isOpen => ({
-  type: TOGGLE_CALLBACK_FORM,
-  payload: isOpen
+export const sendStart = () => ({
+  type: SEND_DATA
 });
 
-export const resetCallback = () => ({
-  type: RESET_CALLBACK_FORM
+export const sendSuccesseded = data => ({
+  type: SEND_DATA_SUCCEEDED,
+  payload: data
+});
+
+export const sendFailed = error => ({
+  type: SEND_DATA_FAILED,
+  payload: error
+});
+
+// action creators
+export const toggleCallbackSidebar = isOpen => ({
+  type: TOGGLE_CALLBACK_SIDEBAR,
+  payload: isOpen
 });
 
 export const getCallbackFormValues = values => ({
@@ -31,37 +44,50 @@ const initialState = {
 //reducer
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case TOGGLE_CALLBACK_FORM:
+    case SEND_DATA:
+      return {
+        ...state,
+        isLoaded: false
+      };
+    case SEND_DATA_FAILED:
+      return {
+        ...state,
+        isLoaded: true,
+        error: action.payload
+      };
+    case SEND_DATA_SUCCEEDED:
+      return {
+        ...state,
+        isLoaded: true,
+        data: action.payload
+      };
+
+    case TOGGLE_CALLBACK_SIDEBAR:
       return {
         ...state,
         isOpen: !state.isOpen
       };
 
-    case GET_FILTER_FORM_VALUES: {
+    case GET_CALLBACK_FORM_VALUES: {
       return {
         ...state,
         values: action.payload
       };
     }
 
-    case RESET_FILTER:
-      return {
-        ...state,
-        values: {}
-      };
-
     default:
       return state;
   }
 }
 
-export const fetch = (path, options) => async dispatch => {
-  dispatch(fetchStart());
+export const sendFormData = data => async dispatch => {
+  dispatch(sendStart());
   try {
-    const response = await getData(path, options);
-
-    dispatch(fetchSuccesseded(response));
+    const response = await sendData(data);
+    dispatch(sendSuccesseded(response));
+    dispatch(togglePopup({ message: response.data, type: "success" }));
   } catch (error) {
-    dispatch(fetchFailed(error));
+    dispatch(sendFailed(error));
+    dispatch(togglePopup({ message: error.error, type: "error" }));
   }
 };

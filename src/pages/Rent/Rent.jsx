@@ -5,10 +5,12 @@ import { toggleFilter } from "../../redux/reducers/filter";
 import Pagination from "../../components/Pagination/Pagination";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import FilterSidebar from "../../components/Filter/FilterSideBar/FilterSidebar";
+import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 import FilterBar from "../../components/Filter/FilterBar/FilterBar";
 import constants from "../../constants/index";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
+import Popup from "../../components/Popup/Popup";
 
 class Rent extends Component {
   componentDidMount() {
@@ -53,13 +55,14 @@ class Rent extends Component {
       fetch,
       isLoaded,
       location: { pathname },
-      filterIsOpen,
       filterParams
     } = this.props;
 
     return (
       <>
-        <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
+        <Popup />
+        <CallBackSideBar />
+        <FilterSidebar pathname={pathname} />
         <main className="main-container">
           <div className="content-wrapper px-3 mb-4 ">
             <FilterBar onClick={this.openFilter} />
@@ -98,7 +101,6 @@ const mapStateToProps = state => {
     items: state.sales.data.items,
     pagination: state.sales.data.pagination,
     isLoaded: state.sales.isLoaded,
-    filterIsOpen: state.filter.isOpen,
     filterFormValues: state.filter.values,
     filterParams: mapToQueryParams(state.filter.values)
   };

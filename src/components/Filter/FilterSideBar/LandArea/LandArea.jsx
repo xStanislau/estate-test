@@ -5,7 +5,7 @@ const LandArea = ({ title }) => {
   return (
     <>
       <h4 className="h5 mb-3">Площадь участка</h4>
-      <div className="filter-sidebar__range mb-4">
+      <div className="sidebar__range mb-4">
         <Field
           name="range.landArea.start"
           type="text"

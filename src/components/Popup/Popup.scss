@@ -1,0 +1,32 @@
+.popup {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  color: black;
+  z-index: 1000;
+  transform: translate(-50%, -50%);
+
+  .popup__message {
+    margin-right: 15px;
+    margin-bottom: 0;
+  }
+}
+
+.popup.error {
+  background: rgb(196, 31, 31);
+  .popup__message {
+    color: white;
+  }
+}
+
+.popup.success {
+  background: rgb(14, 119, 14);
+  .popup__message {
+    color: white;
+  }
+}

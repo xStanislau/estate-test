@@ -23,6 +23,7 @@ export const withFixed = Component =>
     toggleMenu = () => {
       if (window.innerWidth < 992) {
         this.setState(state => {
+          console.log(state);
           return { isOpen: !state.isOpen };
         });
       }

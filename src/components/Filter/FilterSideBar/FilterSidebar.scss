@@ -1,29 +1,30 @@
-.filter-sidebar {
+.sidebar {
   min-height: 100%;
   display: flex;
   position: fixed;
   z-index: 101;
   overflow: auto;
   opacity: 0;
-  transition: all 0.22s;
-
-  &__form {
-    position: fixed;
-    max-width: 300px;
-    width: 100%;
-    z-index: 11;
-    opacity: 0;
-    background-color: white;
-    top: 0;
-    bottom: 0;
-    transform: translateX(-300px);
-    transition: all 0.44s;
-  }
+  height: 100%;
+  transform: translateX(-560px);
+  background-color: white;
+  overflow-y: auto;
+  transition: all 0.62s;
 
   &__inner {
     display: flex;
     flex-direction: column;
-    padding: 40px 20px;
+    padding: 50px 20px;
+  }
+
+  &__form {
+    max-width: 300px;
+    width: 100%;
+    z-index: 11;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    transition: all 0.44s;
   }
 
   .close-btn {
@@ -71,29 +72,29 @@
     background-color: rgba(0, 0, 0, 0.2);
     transition: all 0.45s;
   }
-}
-
-.filter-sidebar.isOpen {
-  opacity: 1;
-  transition: all 0.45s;
-
-  .filter-sidebar__form {
-    transform: translateX(0);
-    opacity: 1;
-    transition: all 0.37s;
-  }
-
-  .filter-sidebar__background {
-    opacity: 1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: all 0.55s;
-  }
 
   @media (max-width: 576px) {
-    .filter-sidebar__form {
+    width: 100%;
+  }
+}
+
+.sidebar__background.isOpen {
+  opacity: 1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.55s;
+}
+
+.sidebar.isOpen {
+  opacity: 1;
+  transform: translateX(0);
+  transition: all 0.45s;
+
+  @media (max-width: 576px) {
+    width: 100%;
+    .sidebar__form {
       max-width: unset;
     }
   }
