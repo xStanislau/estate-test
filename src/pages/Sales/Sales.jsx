@@ -10,6 +10,9 @@ import constants from "../../constants/index";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 import PropTypes from "prop-types";
+import { hideScrollOnBody } from "../../utils/scroll";
+import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
+import Popup from "../../components/Popup/Popup";
 
 class Sales extends Component {
   componentDidMount() {
@@ -42,9 +45,8 @@ class Sales extends Component {
 
   openFilter = () => {
     const { toggleFilter } = this.props;
-    const body = document.querySelector("body");
-    body.classList.add("overflow-hidden");
     toggleFilter();
+    hideScrollOnBody();
   };
 
   render() {
@@ -60,6 +62,8 @@ class Sales extends Component {
 
     return (
       <>
+        <Popup />
+        <CallBackSideBar />
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">
           <div className="content-wrapper px-3 mb-4 ">

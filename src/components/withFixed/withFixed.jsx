@@ -1,4 +1,5 @@
 import React from "react";
+import { hideScrollOnBody, showScrollOnBody } from "../../utils/scroll";
 
 export const withFixed = Component =>
   class extends React.Component {
@@ -23,7 +24,6 @@ export const withFixed = Component =>
     toggleMenu = () => {
       if (window.innerWidth < 992) {
         this.setState(state => {
-          console.log(state);
           return { isOpen: !state.isOpen };
         });
       }
@@ -74,12 +74,10 @@ export const withFixed = Component =>
       const { isOpen, isFixed } = this.state;
       const { toggleMenu, setRef } = this;
 
-      const body = document.querySelector("body");
-
       if (isOpen) {
-        body.classList.add("overflow-hidden");
+        hideScrollOnBody();
       } else {
-        body.classList.remove("overflow-hidden");
+        showScrollOnBody();
       }
 
       const extendedProps = {

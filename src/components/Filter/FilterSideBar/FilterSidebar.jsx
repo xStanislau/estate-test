@@ -11,6 +11,7 @@ import PropertyTypes from "./PropertyTypes/PropertyTypes";
 import "./FilterSidebar.scss";
 import LandArea from "./LandArea/LandArea";
 import HouseArea from "./HouseArea/HouseArea";
+import { showScrollOnBody } from "../../../utils/scroll";
 
 class FilterSidebar extends Component {
   onSubmit = values => {
@@ -20,9 +21,8 @@ class FilterSidebar extends Component {
 
   closeFilter = () => {
     const { toggleFilter } = this.props;
-    const body = document.querySelector("body");
-    body.classList.remove("overflow-hidden");
     toggleFilter();
+    showScrollOnBody();
   };
 
   resetFilter = form => () => {

@@ -12,11 +12,11 @@ import {
   toggleCallbackSidebar,
   getCallbackFormValues
 } from "../../redux/reducers/callbackform";
+import { hideScrollOnBody } from "../../utils/scroll";
 
 const openCallBack = toggleCallbackSidebar => () => {
-  const body = document.querySelector("body");
-  body.classList.add("overflow-hidden");
   toggleCallbackSidebar();
+  hideScrollOnBody();
 };
 
 const Header = props => {

@@ -1,4 +1,5 @@
 import React from "react";
+import { hideScrollOnBody, showScrollOnBody } from "../../utils/scroll";
 
 export const withToggle = Component =>
   class extends React.Component {
@@ -29,9 +30,9 @@ export const withToggle = Component =>
       const body = document.querySelector("body");
 
       if (isOpen) {
-        body.classList.add("overflow-hidden");
+        hideScrollOnBody();
       } else {
-        body.classList.remove("overflow-hidden");
+        showScrollOnBody();
       }
 
       const extendedProps = {

@@ -5,7 +5,7 @@ const TOGGLE_POPUP = "estate-test/redux/reducers/popup/TOGGLE_POPUP";
 export const togglePopup = options => {
   return {
     type: TOGGLE_POPUP,
-    payload: options
+    options: options
   };
 };
 
@@ -21,10 +21,17 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         isOpen: !state.isOpen,
-        options: { ...action.payload }
+        options: { ...action.options }
       };
 
     default:
       return state;
   }
 }
+
+export const togglePopupWithTimeout = data => async dispatch => {
+  dispatch(togglePopup(data));
+  setTimeout(() => {
+    dispatch(togglePopup());
+  }, 2000);
+};

@@ -5,6 +5,8 @@ import Pagination from "../../components/Pagination/Pagination";
 import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import constants from "../../constants";
+import Popup from "../../components/Popup/Popup";
+import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 
 class Towns extends Component {
   componentDidMount() {
@@ -28,18 +30,22 @@ class Towns extends Component {
       location: { pathname }
     } = this.props;
     return (
-      <main className="main-container">
-        <CardGrid isLoaded={isLoaded} className="towns-grid">
-          {isLoaded && <TownsGridItems items={items} isLoaded={isLoaded} />}
-        </CardGrid>
-        <Pagination
-          {...pagination}
-          fetch={fetch}
-          itemsPerPage={32}
-          path="/v1/places/settlements/items"
-          pathname={pathname}
-        />
-      </main>
+      <>
+        <Popup />
+        <CallBackSideBar />
+        <main className="main-container">
+          <CardGrid isLoaded={isLoaded} className="towns-grid">
+            {isLoaded && <TownsGridItems items={items} isLoaded={isLoaded} />}
+          </CardGrid>
+          <Pagination
+            {...pagination}
+            fetch={fetch}
+            itemsPerPage={32}
+            path="/v1/places/settlements/items"
+            pathname={pathname}
+          />
+        </main>
+      </>
     );
   }
 }

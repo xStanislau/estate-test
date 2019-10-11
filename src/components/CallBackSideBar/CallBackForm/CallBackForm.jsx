@@ -17,6 +17,7 @@ const CallBackForm = ({ handleSubmit, submitting, className, close, form }) => {
         <span>&times;</span>
       </Button>
       <div className="callback-form__inner">
+        <h1 className="h2 mb-5">Заказать обратный звонок</h1>
         <Name />
         <Phone />
         <Comment />
@@ -26,7 +27,7 @@ const CallBackForm = ({ handleSubmit, submitting, className, close, form }) => {
           className="filter-sidebar__submit-btn"
           disabled={submitting}
         >
-          Отправить
+          Заказать
         </Button>
       </div>
     </form>

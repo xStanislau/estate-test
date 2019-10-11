@@ -11,6 +11,7 @@ import constants from "../../constants/index";
 import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 import Popup from "../../components/Popup/Popup";
+import { hideScrollOnBody } from "../../utils/scroll";
 
 class Rent extends Component {
   componentDidMount() {
@@ -41,11 +42,12 @@ class Rent extends Component {
     }
   }
 
+  componentWillUnmount() {}
+
   openFilter = () => {
     const { toggleFilter } = this.props;
-    const body = document.querySelector("body");
-    body.classList.add("overflow-hidden");
     toggleFilter();
+    hideScrollOnBody();
   };
 
   render() {

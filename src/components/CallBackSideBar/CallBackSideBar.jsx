@@ -8,6 +8,7 @@ import {
 } from "../../redux/reducers/callbackform";
 import "./CallBackSideBar.scss";
 import { connect } from "react-redux";
+import { showScrollOnBody } from "../../utils/scroll";
 
 class CallBackSideBar extends Component {
   onSubmit = async values => {
@@ -17,10 +18,16 @@ class CallBackSideBar extends Component {
 
   closeSidebar = () => {
     const { toggleCallbackSidebar } = this.props;
-    const body = document.querySelector("body");
-    body.classList.remove("overflow-hidden");
     toggleCallbackSidebar();
+    showScrollOnBody();
   };
+
+  componentWillUnmount() {
+    const { isOpen } = this.props;
+    if (isOpen) {
+      this.closeSidebar();
+    }
+  }
 
   render() {
     let { isOpen } = this.props;

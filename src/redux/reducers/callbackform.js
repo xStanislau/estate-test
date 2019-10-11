@@ -1,5 +1,6 @@
 import { sendData } from "../../api/callback/sendCallBack";
-import { togglePopup } from "../reducers/popup";
+import { togglePopupWithTimeout } from "../reducers/popup";
+
 // actions
 const SEND_DATA = "estate-test/redux/reducers/callbackForm/SEND_DATA";
 const SEND_DATA_SUCCEEDED =
@@ -85,9 +86,11 @@ export const sendFormData = data => async dispatch => {
   try {
     const response = await sendData(data);
     dispatch(sendSuccesseded(response));
-    dispatch(togglePopup({ message: response.data, type: "success" }));
+    dispatch(
+      togglePopupWithTimeout({ message: response.data, type: "success" })
+    );
   } catch (error) {
     dispatch(sendFailed(error));
-    dispatch(togglePopup({ message: error.error, type: "error" }));
+    dispatch(togglePopupWithTimeout({ message: error.error, type: "error" }));
   }
 };
