@@ -1,0 +1,15 @@
+.notification {
+  &_error {
+    background: rgb(196, 31, 31);
+    .notification__message {
+      color: white;
+    }
+  }
+
+  &_success {
+    background: rgb(14, 119, 14);
+    .notification__message {
+      color: white;
+    }
+  }
+}

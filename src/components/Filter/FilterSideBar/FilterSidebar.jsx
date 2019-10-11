@@ -61,7 +61,7 @@ class FilterSidebar extends Component {
                     <div className="sidebar__buttons">
                       <Button
                         type="submit"
-                        variant="main_pink"
+                        variant=" btn-main_pink"
                         className="sidebar__submit-btn"
                         disabled={submitting}
                       >
