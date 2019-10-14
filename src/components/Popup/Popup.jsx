@@ -2,17 +2,29 @@ import React from "react";
 import { togglePopup } from "../../redux/reducers/popup";
 import { connect } from "react-redux";
 import "./Popup.scss";
+import { CSSTransition } from "react-transition-group";
 
 const Popup = ({ isOpen, children, togglePopup }) => {
-  if (isOpen) {
-    return (
-      <div className="popup-bg" onClick={togglePopup}>
-        <div className="popup">{children}</div>;
-      </div>
-    );
-  } else {
-    return null;
-  }
+  return (
+    <>
+      <CSSTransition
+        in={isOpen}
+        timeout={300}
+        classNames="popup-transition"
+        unmountOnExit
+      >
+        <div className="popup">{children}</div>
+      </CSSTransition>
+      <CSSTransition
+        in={isOpen}
+        timeout={300}
+        classNames="popup-bg-transition"
+        unmountOnExit
+      >
+        <div className="popup-bg" onClick={togglePopup}></div>
+      </CSSTransition>
+    </>
+  );
 };
 
 const mapStateToProps = state => {
