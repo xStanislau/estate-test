@@ -14,7 +14,6 @@ import "./SalePage.scss";
 import { NavLink } from "react-router-dom";
 import PropertyKind from "./PropertyKind/PropertyKind";
 import Location from "./Location/Location";
-import Popup from "../../components/Popup/Popup";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 import Notification from "../../components/Notification/Notification";
 
@@ -54,9 +53,7 @@ class Sale extends Component {
     const noContent = "-";
     return (
       <>
-        <Popup>
-          <Notification />
-        </Popup>
+        <Notification />
         <CallBackSideBar />
         {!isLoaded && <Loader />}
         <main className="sale main-container">

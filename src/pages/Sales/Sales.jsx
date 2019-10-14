@@ -12,7 +12,6 @@ import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 import PropTypes from "prop-types";
 import { hideScrollOnBody } from "../../utils/scroll";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
-import Popup from "../../components/Popup/Popup";
 import Notification from "../../components/Notification/Notification";
 
 class Sales extends Component {
@@ -63,9 +62,7 @@ class Sales extends Component {
 
     return (
       <>
-        <Popup>
-          <Notification />
-        </Popup>
+        <Notification />
         <CallBackSideBar />
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">

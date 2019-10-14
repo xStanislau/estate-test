@@ -9,18 +9,13 @@ const Popup = ({ isOpen, children, togglePopup }) => {
     <>
       <CSSTransition
         in={isOpen}
-        timeout={300}
+        timeout={250}
         classNames="popup-transition"
         unmountOnExit
       >
         <div className="popup">{children}</div>
       </CSSTransition>
-      <CSSTransition
-        in={isOpen}
-        timeout={300}
-        classNames="popup-bg-transition"
-        unmountOnExit
-      >
+      <CSSTransition in={isOpen} timeout={350} classNames="popup" unmountOnExit>
         <div className="popup-bg" onClick={togglePopup}></div>
       </CSSTransition>
     </>

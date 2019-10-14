@@ -5,7 +5,6 @@ import Pagination from "../../components/Pagination/Pagination";
 import TownsGridItems from "./TownsGridItems";
 import CardGrid from "../../components/CardGrid/CardGrid";
 import constants from "../../constants";
-import Popup from "../../components/Popup/Popup";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 import Notification from "../../components/Notification/Notification";
 
@@ -32,9 +31,7 @@ class Towns extends Component {
     } = this.props;
     return (
       <>
-        <Popup>
-          <Notification />
-        </Popup>
+        <Notification />
         <CallBackSideBar />
         <main className="main-container">
           <CardGrid isLoaded={isLoaded} className="towns-grid">

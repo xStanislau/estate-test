@@ -1,14 +1,11 @@
 import React from "react";
-import Popup from "../../components/Popup/Popup";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 import Notification from "../../components/Notification/Notification";
 
 const About = () => {
   return (
     <>
-      <Popup>
-        <Notification />
-      </Popup>
+      <Notification />
       <CallBackSideBar />
       <main className="content-wrapper main-container mt-4 px-35">
         <h1 className="h1 page-title">About Company</h1>

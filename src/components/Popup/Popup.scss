@@ -9,30 +9,35 @@
 }
 
 .popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: fixed;
-  top: 50%;
-  left: 50%;
+  height: 100%;
+  width: 100%;
   color: black;
   z-index: 1001;
-  transform: translate(-50%, -50%);
 }
 
 .popup-transition-enter {
   opacity: 0;
   transform: scale(0.1);
 }
+
 .popup-transition-enter-active {
   opacity: 1;
-  transform: translateX(50%);
-  transition: opacity 350ms, transform 350ms;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
 }
+
 .popup-transition-exit {
   opacity: 1;
 }
+
 .popup-transition-exit-active {
   opacity: 0;
-  transform: scale(0.1);
-  transition: opacity 350ms, transform 350ms;
+  transform: scale(0);
+  transition: opacity 300ms, transform 300ms;
 }
 
 .popup-bg-transition-enter {
@@ -41,7 +46,7 @@
 
 .popup-bg-transition-enter-active {
   opacity: 1;
-  transition: opacity 350ms;
+  transition: opacity 300ms;
 }
 
 .popup-bg-transition-exit {
