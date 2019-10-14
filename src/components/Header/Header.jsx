@@ -1,5 +1,6 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
+import { connect } from "react-redux";
 import HeaderMenu from "./HeaderMenu/HeaderMenu";
 import constants from "../../constants/";
 import Button from "../Button/Button";
@@ -7,14 +8,10 @@ import withFixed from "../withFixed/withFixed";
 import Burger from "../Burger/Burger";
 import "./Header.scss";
 import Logo from "../Logo/Logo";
-import { connect } from "react-redux";
-import {
-  toggleCallbackSidebar,
-  getCallbackFormValues
-} from "../../redux/reducers/callbackform";
+import { toggleCallbackSidebar } from "../../redux/reducers/callbackform";
 import { hideScrollOnBody } from "../../utils/scroll";
 
-const openCallBack = toggleCallbackSidebar => () => {
+export const openCallBack = toggleCallbackSidebar => () => {
   toggleCallbackSidebar();
   hideScrollOnBody();
 };
@@ -63,15 +60,9 @@ const Header = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    values: state.callbackform.values
-  };
-};
-
 export default withFixed(
   connect(
-    mapStateToProps,
-    { toggleCallbackSidebar, getCallbackFormValues }
+    null,
+    { toggleCallbackSidebar }
   )(Header)
 );
