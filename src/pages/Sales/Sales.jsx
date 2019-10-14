@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import { hideScrollOnBody } from "../../utils/scroll";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
 import Popup from "../../components/Popup/Popup";
+import Notification from "../../components/Notification/Notification";
 
 class Sales extends Component {
   componentDidMount() {
@@ -62,7 +63,9 @@ class Sales extends Component {
 
     return (
       <>
-        <Popup />
+        <Popup>
+          <Notification />
+        </Popup>
         <CallBackSideBar />
         <FilterSidebar isOpen={filterIsOpen} pathname={pathname} />
         <main className="main-container">

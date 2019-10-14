@@ -16,6 +16,7 @@ import PropertyKind from "./PropertyKind/PropertyKind";
 import Location from "./Location/Location";
 import Popup from "../../components/Popup/Popup";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
+import Notification from "../../components/Notification/Notification";
 
 class Sale extends Component {
   componentDidMount() {
@@ -53,7 +54,9 @@ class Sale extends Component {
     const noContent = "-";
     return (
       <>
-        <Popup />
+        <Popup>
+          <Notification />
+        </Popup>
         <CallBackSideBar />
         {!isLoaded && <Loader />}
         <main className="sale main-container">

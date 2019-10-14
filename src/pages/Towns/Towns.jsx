@@ -7,6 +7,7 @@ import CardGrid from "../../components/CardGrid/CardGrid";
 import constants from "../../constants";
 import Popup from "../../components/Popup/Popup";
 import CallBackSideBar from "../../components/CallBackSideBar/CallBackSideBar";
+import Notification from "../../components/Notification/Notification";
 
 class Towns extends Component {
   componentDidMount() {
@@ -31,7 +32,9 @@ class Towns extends Component {
     } = this.props;
     return (
       <>
-        <Popup />
+        <Popup>
+          <Notification />
+        </Popup>
         <CallBackSideBar />
         <main className="main-container">
           <CardGrid isLoaded={isLoaded} className="towns-grid">

@@ -1,4 +1,16 @@
 .notification {
+  display: flex;
+  align-items: center;
+  min-width: 300px;
+  padding: 10px 15px;
+  border-radius: 4px;
+  &__message {
+    margin-bottom: 0;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+  }
+
   &_error {
     background: rgb(196, 31, 31);
     .notification__message {

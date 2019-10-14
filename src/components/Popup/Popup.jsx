@@ -1,17 +1,13 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { togglePopup } from "../../redux/reducers/popup";
 import { connect } from "react-redux";
 import "./Popup.scss";
 
-const Popup = ({ options: { message, type }, togglePopup: onClose }) => {
-  if (message) {
+const Popup = ({ isOpen, children, togglePopup }) => {
+  if (isOpen) {
     return (
-      <div className={`popup ${type}`}>
-        <p className="popup__message">{message}</p>
-        <Button variant="outline-light" onClick={onClose}>
-          x
-        </Button>
+      <div className="popup-bg" onClick={togglePopup}>
+        <div className="popup">{children}</div>;
       </div>
     );
   } else {
@@ -21,7 +17,7 @@ const Popup = ({ options: { message, type }, togglePopup: onClose }) => {
 
 const mapStateToProps = state => {
   return {
-    options: state.popup.options
+    isOpen: state.popup.isOpen
   };
 };
 

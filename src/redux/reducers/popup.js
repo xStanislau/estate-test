@@ -31,7 +31,7 @@ export default function reducer(state = initialState, action) {
 
 export const togglePopupWithTimeout = data => async dispatch => {
   dispatch(togglePopup(data));
-  setTimeout(() => {
-    dispatch(togglePopup());
-  }, 2000);
+  // setTimeout(() => {
+  //   dispatch(togglePopup());
+  // }, 2000);
 };

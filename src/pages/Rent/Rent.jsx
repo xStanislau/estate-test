@@ -12,6 +12,7 @@ import { mapToQueryParams } from "../../utils/mapToQueryParams";
 import SaleGridItems from "../../components/CardGrid/GridItems/SaleGridItems";
 import Popup from "../../components/Popup/Popup";
 import { hideScrollOnBody } from "../../utils/scroll";
+import Notification from "../../components/Notification/Notification";
 
 class Rent extends Component {
   componentDidMount() {
@@ -62,7 +63,9 @@ class Rent extends Component {
 
     return (
       <>
-        <Popup />
+        <Popup>
+          <Notification />
+        </Popup>
         <CallBackSideBar />
         <FilterSidebar pathname={pathname} />
         <main className="main-container">
